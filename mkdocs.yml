@@ -14,7 +14,6 @@ copyright: Copyright &copy; 2022 Yevhen D.
 # Configuration
 theme:
   name: material
-  custom_dir: material/.overrides
   features:
     - content.code.annotate
     - content.tooltips
