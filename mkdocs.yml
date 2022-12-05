@@ -93,3 +93,11 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
+  - Common: common.md
+  - Databases: databases/index.md
+  - Python:
+      - General rules: python/index.md
+      - Variables: python/variables.md
+      - Functions: python/functions.md
+      - Classes: python/classes.md
+      - Class methods: python/class_methods.md
