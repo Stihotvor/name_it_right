@@ -1,6 +1,6 @@
 ??? success "General patterns"
     
-    - Use snake_case in function names ONLY! Don't lookat some bad examples, even if they have 1k+ stars on GitHub  
+    - Use snake_case in function names ONLY! Don't look at some bad examples, even if they have 1k+ stars on GitHub  
     - Functions which validate or check something and return boolean value, should start with `is_`, `has_`: `has_tax_applied()`, `is_valid()`  
     - Functions, which are not covered by the above rule, should have executable names: `compile()`, `collect()`, `process()`, `fetch()`  
     - If the function has `and` in the name, there is a high chance, the function does multiple things. Probably You should split it.  
