@@ -11,8 +11,8 @@
     
     - text
 
-# Naming by the context or usecase
-## Validators
+## Naming examples by the context or usecase
+### Validation
 |           |              |              |               |
 | --------- | ------------ | ------------ | ------------- |
 | Validator | InputChecker | DataVerifier | FormValidator |
