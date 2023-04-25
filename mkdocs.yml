@@ -101,3 +101,4 @@ nav:
       - Functions: python/functions.md
       - Classes: python/classes.md
       - Class methods: python/class_methods.md
+      - Tests: python/tests.md
