@@ -1,17 +1,42 @@
-# Welcome to MkDocs
+---
+status: new
+---
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# Name it Right!
+The current project is here to help You find the best name for Your code entity
 
-## Commands
+<div class="grid cards" markdown>
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+-   :material-folder-pound-outline:{ .lg .middle } __Project directories__
 
-## Project layout
+    ---
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+    How to keep proper structure of the project
+
+    [:octicons-arrow-right-24: Jump to doc](python/dirrectories.md)
+
+-   :fontawesome-car-estate:{ .lg .middle } __Classes__
+
+    ---
+
+    How to choose between manager and controller
+
+    [:octicons-arrow-right-24: Jump to doc](python/classes.md)
+
+-   :material-tire:{ .lg .middle } __Class methods__
+
+    ---
+
+    Run? Operate? Process? Init? Let's be consistent!
+
+    [:octicons-arrow-right-24: Jump to doc](python/class_methods.md)
+
+-   :material-scale-balance:{ .lg .middle } __Functions__
+
+    ---
+
+    There is always a way to make it shorter
+
+    [:octicons-arrow-right-24: Jump to doc](python/functions.md)
+
+</div>

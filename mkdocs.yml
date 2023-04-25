@@ -45,6 +45,9 @@ theme:
   favicon: assets/favicon.png
   icon:
     logo: logo
+  extra:
+    status:
+      new: Recently added
 
 # Plugins
 plugins:
