@@ -20,7 +20,7 @@
     - Avoid using abbreviations in your class names, unless they are commonly understood within your domain. 
       Abbreviations can be confusing and make your code harder to read.
 
-## Naming examples by the context or usecase
+## Naming examples by the context or use-case
 ### Validation
 |           |              |              |               |
 | --------- | ------------ | ------------ | ------------- |
