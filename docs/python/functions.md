@@ -35,4 +35,7 @@
     - Abreviations: `compile_frst()`  
     - One-letter functions: `v()`
 
-# 
+## Glossary
+### A  
+__aggregate_something(**building blocks)__ - function collects all the building blocks' values and generated/aggregate the necessary objects with all the data inside it.  
+_Category: [Domain Driven Development](link-here)_
