@@ -30,3 +30,9 @@
 | IntegrityValidator | TypeChecker | ValueValidator | ValidationEngine |
 | AssertionValidator | ConstraintValidator | DataIntegrityChecker | FormatValidator |
 
+### Event Logging
+
+|                          |   |   |   |
+|--------------------------|---|---|---|
+| \<_Process_\>EventLogger |   |   |   |
+|                          |   |   |   |
