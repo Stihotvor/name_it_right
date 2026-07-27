@@ -2,14 +2,14 @@ site_name: Name it Right
 site_url: https://stihotvor.github.io/name_it_right/
 site_author: Yevhen D.
 site_description: >-
-  Helps You find proper common name for a variable, table field, function, class, etc. Make it common. Make standard.
+  Find the right name for every code entity — variable, table field, function, class, and more. Make it clear. Make it standard.
 
 # Repository
 repo_name: Stihotvor/name_it_right
 repo_url: https://github.com/Stihotvor/name_it_right
 
 # Copyright
-copyright: Copyright &copy; 2024 Yevhen D.
+copyright: Copyright &copy; 2024 &ndash;2026 Yevhen D.
 
 # Configuration
 theme:
@@ -45,13 +45,14 @@ theme:
   favicon: assets/favicon.png
   icon:
     logo: logo
-  extra:
-    status:
-      new: Recently added
 
 # Plugins
 plugins:
   - search
+
+extra:
+  status:
+    new: Recently added
 
 # Extensions
 markdown_extensions:
@@ -70,16 +71,16 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+      user: Stihotvor
+      repo: name_it_right
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -96,8 +97,19 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Common: common.md
-  - Databases: databases/index.md
+  - Common:
+      - Overview: common/index.md
+      - Abbreviations: common/abbreviations.md
+      - Meaning and clarity: common/meaning.md
+      - Consistency: common/consistency.md
+      - Structure: common/structure.md
+  - Databases:
+      - Overview: databases/index.md
+      - Tables: databases/tables.md
+      - Columns: databases/columns.md
+      - Indexes: databases/indexes.md
+      - Constraints: databases/constraints.md
+      - Enums: databases/enums.md
   - Python:
       - General rules: python/index.md
       - Variables: python/variables.md
@@ -105,3 +117,8 @@ nav:
       - Classes: python/classes.md
       - Class methods: python/class_methods.md
       - Tests: python/tests.md
+      - Modules: python/modules.md
+      - Constants: python/constants.md
+      - Exceptions: python/exceptions.md
+      - Enums: python/enums.md
+      - Special functions: python/special_functions.md
