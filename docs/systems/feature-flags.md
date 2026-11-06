@@ -24,7 +24,7 @@ status: new
     - A negative name: `disable_cache`, `no_new_ui`
     - A name with a ticket or a person: `jira_1234`, `anna_test`
     - A vague name: `new_feature`, `flag1`, `test`
-    - A name with the value in it: `search_v2_on`
+    - A name with a version or a state in it: `new_search_v2_on`
     - A flag that is never removed
 
 The examples use an e-commerce shop. No standard sets flag names. The OpenFeature specification only says that a flag key is a string. The patterns below are community practice. The four kinds of flag (release, experiment, operations, permission) come from Martin Fowler's article on feature toggles. For the same rules on environment variables, see [Configuration](configuration.md).
@@ -34,14 +34,14 @@ The examples use an e-commerce shop. No standard sets flag names. The OpenFeatur
 | Kind | Pattern | Examples | Why this name |
 |---|---|---|---|
 | Release flag | `<feature>_enabled` or `<feature>` | `checkout_one_click_enabled`, `new_search_ranking` | Turns on a finished feature step by step. |
-| Experiment | `exp_<name>` or `<feature>_experiment` | `exp_cart_recommendations`, `pricing_page_experiment` | The prefix marks a test that ends. |
+| Experiment | `exp_<name>`; choose this one form | `exp_cart_recommendations`, `exp_pricing_page` | The prefix marks a test that ends. |
 | Operations flag | `<area>_<behavior>_enabled` | `payment_retry_enabled`, `search_cache_enabled` | Controls the load or the behavior of the system. |
-| Kill switch | `<area>_kill_switch` | `recommendations_kill_switch`, `email_sending_kill_switch` | Turns a part off in an incident. |
+| Kill switch (practice) | `<area>_kill_switch` | `recommendations_kill_switch`, `email_sending_kill_switch` | Turns a part off in an incident. |
 | Permission flag | `<capability>_allowed` or `<plan>_<feature>` | `bulk_export_allowed`, `pro_reports` | Gives a feature to a group of users. |
 | Variant | the name of the arm | `control`, `treatment`, `variant_a` | The values of an experiment. |
-| Percentage rollout | the flag stays the same; the percent is data | `new_checkout_enabled` at 10% | Do not put the number in the name. |
-| Dark launch | `<feature>_dark` or `<feature>_shadow` | `new_pricing_shadow` | Runs the code with no effect for the user. |
-| Migration flag | `migrate_<what>` | `migrate_orders_to_new_db` | The flag ends with the migration. |
+| Percentage rollout (practice) | the flag stays the same; the percent is data | `new_checkout_enabled` at 10% | Do not put the number in the name. |
+| Dark launch (practice) | `<feature>_dark` or `<feature>_shadow` | `new_pricing_shadow` | Runs the code with no effect for the user. |
+| Migration flag (practice) | `migrate_<what>` | `migrate_orders_to_new_db` | The flag ends with the migration. |
 
 ## Flag lifecycle
 
@@ -69,7 +69,7 @@ The examples use an e-commerce shop. No standard sets flag names. The OpenFeatur
 | Case | Rule | Examples |
 |---|---|---|
 | Constant for a key | Use the case of the language | `FLAG_NEW_CHECKOUT`, `flags.newCheckoutEnabled` |
-| Call that reads a flag | A boolean question | `is_enabled("new_checkout_enabled")` |
+| Call that reads a flag | A boolean question; OpenFeature names it `getBooleanValue` | `is_enabled("new_checkout_enabled")`, `client.getBooleanValue("new_checkout_enabled", false)` |
 | A branch | Name the new path for what it does | `if new_checkout_enabled: render_one_click()` |
 | A test | Name the flag state | `test_checkout_with_one_click_enabled` |
 
@@ -80,7 +80,7 @@ The examples use an e-commerce shop. No standard sets flag names. The OpenFeatur
 | `disable_old_checkout` | `new_checkout_enabled` | A positive name. |
 | `flag1` | `checkout_one_click_enabled` | A name states the feature. |
 | `jira_1234` | `checkout_one_click_enabled` | A ticket id says nothing about the feature. |
-| `new_search_v2_on` | `new_search_ranking` | The state is the value, not the name. |
+| `new_search_v2_on` | `new_search_ranking` | A version number and `on` become wrong when the flag changes. The suffix `_enabled` is different: it names the question, and the flag value answers it. |
 | `anna_test` | `exp_cart_recommendations` | Name the test, not the person. |
 | `use_new_db` | `migrate_orders_to_new_db` | The flag is for a migration with an end. |
 | `experiment` | `exp_cart_recommendations` | A prefix and a subject. |
