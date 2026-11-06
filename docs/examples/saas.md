@@ -6,7 +6,7 @@ status: new
 
 !!! success "General patterns"
 
-    - Name the customer of the product `account` or `organization`, and the person who signs in `user`. Keep the two apart
+    - Name the customer of the product `account`, and the person who signs in `user`. Keep the two apart
     - Name what the customer buys (`plan`), what they have now (`subscription`) and what they may use (`entitlement`) as three entities
     - Name the bill `invoice` and each line of it `invoice_item`
     - Name the use of the product with a meter: `meter`, `usage_record`
@@ -16,7 +16,7 @@ status: new
 
     - Use `workspace` or `project` for a group inside an account, and pick one word for the whole product
     - Use `seat` for a paid place for a user. A seat is not a user
-    - Use `trial_ends_at`, `current_period_start`, `current_period_end` for time limits. They match Stripe Billing
+    - Use `trial_ends_at`, `current_period_start` and `current_period_end` for time limits. `current_period_start` and `current_period_end` follow Stripe and are a deliberate exception to the `_at` rule. In newer Stripe API versions they live on the subscription item. `trial_ends_at` is the name of this guide for the Stripe field `trial_end`
     - Use `feature_key` for the code name of a feature, and `plan_code` for the code name of a plan
 
 !!! danger "General anti-patterns"
@@ -28,6 +28,8 @@ status: new
     - A plan name in code: `if plan == "Gold"`. Check an entitlement
 
 The billing words follow Stripe Billing (`Customer`, `Product`, `Price`, `Subscription`, `Invoice`). Payment words are in [Payments](payments.md).
+
+On this page `account` is the paying customer. It maps to the Stripe Customer, not to the Stripe Account (the seller). In [Payments](payments.md) the same party is `customer_id`.
 
 ## Entities
 
@@ -49,7 +51,7 @@ The billing words follow Stripe Billing (`Customer`, `Product`, `Price`, `Subscr
 | Entitlement | A feature or a limit that an account may use now. | `entitlements` | Comes from the plan and from add-ons. |
 | Feature | A capability of the product. | `features` | Has a `feature_key`. |
 | Meter | A counter of use. | `meters` | API calls, storage. |
-| Usage record | One reading of a meter. | `usage_records` | |
+| Usage record | One reading of a meter. | `usage_records` | Stripe replaced its `UsageRecord` with `MeterEvent` in newer API versions. Use `meter_events` if you follow Stripe. |
 | Invoice | The bill for a period. | `invoices` | |
 | Invoice item | One line of an invoice. | `invoice_items` | |
 | Credit note | A document that lowers an invoice. | `credit_notes` | |
@@ -79,15 +81,15 @@ Keep the billing state (`past_due`) apart from the access state (`suspended`). A
 | Invite a user | `invite_user` | Sends an invitation. | |
 | Accept an invitation | `accept_invitation` | Creates a membership. | |
 | Subscribe | `subscribe_account` | Starts a subscription. | |
-| Change a plan | `change_plan` | Moves a subscription to another price. | Decide on proration. |
+| Change a price | `change_subscription_price` | Moves a subscription item to another price, and so maybe to another plan. | Decide on proration. |
 | Start a trial | `start_trial` | Sets the trial end. | |
 | Cancel at period end | `cancel_subscription_at_period_end` | The subscription ends later. | Not the same as cancel now. |
 | Cancel now | `cancel_subscription` | The subscription ends now. | |
 | Add a seat | `add_seat` | Adds a paid place. | |
 | Assign a seat | `assign_seat` | Gives a place to a user. | |
 | Record usage | `record_usage` | Adds a meter reading. | Use an idempotency key. |
-| Issue an invoice | `finalize_invoice` | Moves a draft to open. | |
-| Void an invoice | `void_invoice` | Cancels an open invoice. | |
+| Finalize an invoice | `finalize_invoice` | Moves a draft to open. | |
+| Void an invoice | `void_invoice` | Marks an open invoice as void. | Stripe voids only open invoices. A draft is deleted. |
 | Check an entitlement | `has_entitlement` | Answers whether a feature is on. | Do not test the plan name. |
 | Revoke an API key | `revoke_api_key` | Disables a key. | |
 | Suspend an account | `suspend_account` | Blocks access. | |
@@ -99,18 +101,20 @@ Keep the billing state (`past_due`) apart from the access state (`suspended`). A
 | `user` | A person who signs in and a customer who pays are different. | `user` signs in. `account` pays. |
 | `customer` | Stripe calls the payer a customer. Your product may call it an account. | `account`, with `provider_customer_id` for the Stripe id. |
 | `plan` | A plan, a price and a subscription differ. | `plan` for the package, `price` for the cost, `subscription` for the account link. |
-| `organization`, `account`, `tenant`, `workspace` | Four words for a group. | `account` for the payer, `workspace` for a sub-group. Say that `tenant` is a technical word. |
+| `organization`, `account`, `tenant`, `workspace` | Four words for a group. | `account` for the payer, `workspace` for a sub-group. `tenant_id` only for the isolation technique in shared tables. |
 | `member` and `user` | A member is a user in one account. | `membership` for the link. |
 | `seat` and `license` | Two words for a paid place. | `seat`. |
-| `limit` and `quota` | Two words for a cap. | `limit` for the cap on the plan, `usage` for the count. |
-| `subscription_status` | Billing or access? | `billing_status` and `access_status` in code. |
+| `limit` and `quota` | Two words for a cap. `limit` is also a reserved SQL word. | `limit_value` for the cap on the plan, `usage` for the count. Do not use `quota`. |
+| `subscription_status` | Billing or access? | `subscription_status` for billing and `account_status` for access. Do not merge the two. |
 | `is_pro` | A flag on the user hides the source of the right. | `has_entitlement("advanced_reports")`. |
 | `cancel` | Now or at period end? | `cancel_subscription` and `cancel_subscription_at_period_end`. |
-| `expired` and `canceled` | A trial can expire. A subscription is canceled. | `trial_ended_at`, `canceled_at`. |
+| `expired` and `canceled` | A trial can expire. A subscription is canceled. | `trial_ends_at` is the planned end of a trial. `trial_ended_at` is the actual end. `canceled_at` is for a subscription. |
 | `usage` | A reading or a total? | `usage_record` for a reading, `usage_total` for a sum. |
 | `amount_due` and `amount_paid` | An invoice has many amounts. | `amount_due_cents`, `amount_paid_cents`, `amount_remaining_cents`. |
 
 ## Worked example
+
+The tables `plans`, `prices` and `subscription_items` are not shown. A subscription item holds the price. The value `NULL` in `entitlements.limit_value` means no limit, `0` means off, and a positive number is the cap.
 
 ```sql
 CREATE TABLE accounts (
@@ -135,6 +139,7 @@ CREATE TABLE subscriptions (
     CONSTRAINT pk_subscriptions PRIMARY KEY (id),
     CONSTRAINT fk_subscriptions_accounts FOREIGN KEY (account_id) REFERENCES accounts (id),
     CONSTRAINT fk_subscriptions_plans FOREIGN KEY (plan_id) REFERENCES plans (id),
+    CONSTRAINT chk_subscriptions_current_period_end_after_start CHECK (current_period_end > current_period_start),
     CONSTRAINT chk_subscriptions_status_allowed CHECK (status IN (
         'incomplete', 'incomplete_expired', 'trialing', 'active',
         'past_due', 'canceled', 'unpaid', 'paused'
@@ -144,27 +149,37 @@ CREATE TABLE subscriptions (
 CREATE INDEX idx_subscriptions_account_id ON subscriptions (account_id);
 CREATE INDEX idx_subscriptions_plan_id ON subscriptions (plan_id);
 
+CREATE TABLE features (
+    id              bigint GENERATED ALWAYS AS IDENTITY,
+    feature_key     text NOT NULL,
+    CONSTRAINT pk_features PRIMARY KEY (id),
+    CONSTRAINT uq_features_feature_key UNIQUE (feature_key)
+);
+
 CREATE TABLE entitlements (
     account_id      bigint NOT NULL,
     feature_key     text NOT NULL,
     limit_value     bigint,
     CONSTRAINT pk_entitlements PRIMARY KEY (account_id, feature_key),
-    CONSTRAINT fk_entitlements_accounts FOREIGN KEY (account_id) REFERENCES accounts (id)
+    CONSTRAINT fk_entitlements_accounts FOREIGN KEY (account_id) REFERENCES accounts (id),
+    CONSTRAINT fk_entitlements_features FOREIGN KEY (feature_key) REFERENCES features (feature_key),
+    CONSTRAINT chk_entitlements_limit_value_non_negative CHECK (limit_value >= 0)
 );
-```
 
-The table `plans` is not shown.
+CREATE INDEX idx_entitlements_feature_key ON entitlements (feature_key);
+```
 
 ```
 POST /v1/subscriptions                                      subscribe an account
 POST /v1/subscriptions/{subscription_id}:cancel             cancel now
+PATCH /v1/subscriptions/{subscription_id}                   set cancel_at_period_end
 GET  /v1/accounts/{account_id}/entitlements                 list the entitlements
 POST /v1/invoices/{invoice_id}:finalize                     issue an invoice
 POST /v1/usage-records                                      record usage
 ```
 
 ```
-SubscriptionCreated   SubscriptionPastDue   SubscriptionCanceled   InvoicePaid   AccountSuspended
+SubscriptionCreated   InvoicePaymentFailed   SubscriptionCanceled   InvoicePaid   AccountSuspended
 ```
 
 ```py

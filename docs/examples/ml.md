@@ -56,6 +56,8 @@ The words follow MLflow Tracking and the MLflow Model Registry: `Experiment`, `R
 | Drift report | A report on the change of data. | `drift_reports` | |
 | Prompt | A text template for a language model. | `prompts` | |
 
+MLflow keeps experiments, runs, parameters, metrics and tags in its own store. The tables above matter only if you mirror them. The worked example keeps only the registry link.
+
 ## States
 
 | Entity | States |
@@ -67,7 +69,7 @@ The words follow MLflow Tracking and the MLflow Model Registry: `Experiment`, `R
 | Deployment | `creating`, `ready`, `degraded`, `failed`, `retiring`, `retired` |
 | Dataset version | `draft`, `validated`, `deprecated` |
 
-MLflow writes the run states in upper case. When you store them in your own table, use the case of your database. Keep one style in one table.
+MLflow writes these states in upper case. If you mirror MLflow exactly, keep its values. Otherwise store lower case (`ready`) and map at the boundary. The worked example below keeps the MLflow values. The deployment states are the choice of this guide and are lower case. A training job maps to a run: `running` to `RUNNING`, `succeeded` to `FINISHED`, `failed` to `FAILED`, `canceled` to `KILLED`.
 
 ## Actions
 
@@ -77,16 +79,18 @@ MLflow writes the run states in upper case. When you store them in your own tabl
 | Log a parameter | `mlflow.log_param` | Stores an input value. | A param is a string. |
 | Log a metric | `mlflow.log_metric` | Stores a number. | Add a `step` for a curve. |
 | Log an artifact | `mlflow.log_artifact` | Stores a file. | |
-| Log a model | `mlflow.log_model` | Stores a model in a run. | A logged model is not yet registered. |
-| Register a model | `register_model` | Adds a version to the registry. | |
+| Log a model | `mlflow.<flavor>.log_model` | Stores a model in a run. For example `mlflow.sklearn.log_model`. | It is registered only if you pass `registered_model_name`. |
+| Register a model | `mlflow.register_model` | Adds a version to the registry. | |
 | Fit | `fit` | Trains on data. | Not `train_model` in a class that has `fit`. |
 | Predict | `predict` | Gives an answer. | `predict_proba` gives a probability. |
 | Evaluate | `evaluate_model` | Measures on a test set. | Do not use the training set. |
 | Split | `split_dataset` | Makes train, validation and test sets. | Fix the random seed. |
-| Promote | `set_model_alias` | Points an alias to a version. | The old term is a stage transition. |
+| Promote | `MlflowClient.set_registered_model_alias` | Points an alias to a version. | The old term is a stage transition. |
 | Deploy | `deploy_model_version` | Starts serving. | |
 | Roll back | `rollback_deployment` | Returns to the last good version. | |
 | Detect drift | `detect_drift` | Compares live data to training data. | |
+
+Names with the `mlflow.` prefix or `MlflowClient` are MLflow APIs. The other names are wrappers in your own application.
 
 ## Traps
 
@@ -97,14 +101,14 @@ MLflow writes the run states in upper case. When you store them in your own tabl
 | `loss` | Training or validation? | `train_loss`, `val_loss`. |
 | `acc` and `accuracy` | Two names in two runs. | `accuracy` with a split: `val_accuracy`. |
 | `data_v2_final` | The name tells nothing and the file can change. | `dataset_version` with a hash. |
-| `train`, `test`, `val`, `eval`, `dev` | Names for splits vary. | `train`, `validation`, `test`. Use `val` as a short form in metrics. |
+| `train`, `test`, `val`, `eval`, `dev` | Names for splits vary. | `train`, `validation`, `test` in stored fields. `val_` only as a metric prefix. |
 | `X` and `y` | Fine in a formula, vague in a field. | `features` and `labels` in stored fields. |
 | `feature` | A column, a feature view or a flag? | `feature` for the model input. A [feature flag](../systems/feature-flags.md) is a different thing. |
 | `prod` | An environment or a version? | `production` environment, and an alias `champion`. |
 | `stage` | Pipeline stage or model stage? | `pipeline_step` and `model_alias`. |
 | `target`, `label`, `y` | Three words for the answer. | `label` for a stored true answer, `target` for the column name in a training table. |
 | `score` | A probability, a metric or a ranking? | `predicted_probability`, `metric_value`, `ranking_score`. |
-| `seed` | Which one? | `random_seed` for a split, `training_seed` for the model. |
+| `seed` | Which one? | `split_seed` for a split, `training_seed` for the model. |
 
 ## Worked example
 
@@ -113,7 +117,7 @@ CREATE TABLE model_versions (
     id                  bigint GENERATED ALWAYS AS IDENTITY,
     model_id            bigint NOT NULL,
     version_number      integer NOT NULL,
-    run_id              text NOT NULL,
+    run_id              text,
     dataset_version_id  bigint NOT NULL,
     git_commit          text NOT NULL,
     status              text NOT NULL DEFAULT 'READY',
@@ -121,6 +125,7 @@ CREATE TABLE model_versions (
     CONSTRAINT pk_model_versions PRIMARY KEY (id),
     CONSTRAINT chk_model_versions_status_allowed CHECK (status IN ('PENDING_REGISTRATION', 'FAILED_REGISTRATION', 'READY')),
     CONSTRAINT uq_model_versions_model_id_version_number UNIQUE (model_id, version_number),
+    CONSTRAINT uq_model_versions_model_id_id UNIQUE (model_id, id),
     CONSTRAINT fk_model_versions_models FOREIGN KEY (model_id) REFERENCES models (id),
     CONSTRAINT fk_model_versions_dataset_versions FOREIGN KEY (dataset_version_id) REFERENCES dataset_versions (id)
 );
@@ -133,38 +138,40 @@ CREATE TABLE model_aliases (
     model_version_id    bigint NOT NULL,
     CONSTRAINT pk_model_aliases PRIMARY KEY (model_id, alias),
     CONSTRAINT fk_model_aliases_models FOREIGN KEY (model_id) REFERENCES models (id),
-    CONSTRAINT fk_model_aliases_model_versions FOREIGN KEY (model_version_id) REFERENCES model_versions (id)
+    CONSTRAINT fk_model_aliases_model_versions FOREIGN KEY (model_id, model_version_id) REFERENCES model_versions (model_id, id)
 );
 
-CREATE INDEX idx_model_aliases_model_version_id ON model_aliases (model_version_id);
+CREATE INDEX idx_model_aliases_model_id_model_version_id ON model_aliases (model_id, model_version_id);
 ```
 
-The tables `models` and `dataset_versions` are not shown.
+The tables `models` and `dataset_versions` are not shown. The column `run_id` points into the MLflow tracking server, so it has no foreign key. A version can exist without a run.
 
 ```py
 import mlflow
 
 
 def train_churn_classifier(dataset_version: str, learning_rate: float) -> str:
+    mlflow.set_experiment("churn_prediction")
     with mlflow.start_run(run_name="churn_classifier") as run:
         mlflow.log_param("dataset_version", dataset_version)
+        mlflow.log_param("git_commit", current_git_commit())
         mlflow.log_param("learning_rate", learning_rate)
         model = fit_classifier(dataset_version, learning_rate)
         mlflow.log_metric("val_accuracy", evaluate_accuracy(model, split="validation"))
         mlflow.log_metric("val_auc", evaluate_auc(model, split="validation"))
-        mlflow.sklearn.log_model(model, "model")
+        mlflow.sklearn.log_model(model, name="model", registered_model_name="churn_classifier")
         return run.info.run_id
 ```
 
 ```
 POST /v1/models/{model_id}/versions                   register a version
-POST /v1/models/{model_id}:set-alias                  point an alias to a version
+PUT  /v1/models/{model_id}/aliases/{alias}            point an alias to a version
 POST /v1/deployments                                  deploy a model version
 POST /v1/endpoints/{endpoint_id}:predict           get predictions
 ```
 
 ```
-ModelVersionRegistered   ModelAliasSet   DeploymentReady   DriftDetected   DeploymentRolledBack
+ModelVersionRegistered   ModelAliasSet   DeploymentActivated   DriftDetected   DeploymentRolledBack
 ```
 
 !!! info "See also"

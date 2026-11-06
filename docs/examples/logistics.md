@@ -14,7 +14,7 @@ status: new
 
 !!! tip "Useful tips"
 
-    - Use a global code for places and goods: GLN for a location, GTIN for a product, SSCC for a pallet or a parcel
+    - Use a global code for places and goods: GLN for a location, GTIN for a product, SSCC for a pallet or another logistic unit
     - Give each leg of a route its own record. One shipment can have many legs
     - Use UN/LOCODE for a port or a city, and ISO 3166 for a country
     - Use the incoterm as a code: `incoterm_code` with `DAP`, `DDP`, `FOB`
@@ -29,6 +29,8 @@ status: new
 
 The examples use the words of carriers and of GS1 EPCIS. EPCIS is a standard for events about objects in a supply chain. Its event types are `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `TransformationEvent` and `AssociationEvent`.
 
+A shipment on this page is one transport of goods. In [E-commerce](ecommerce.md) a shipment is a group of packages sent together, and the tracking number is on the package. Carrier systems often keep the number on the shipment. Pick one owner for the number and keep it. This page names the first state `created`, where the e-commerce page uses `label_created`. The shipment owns the state `delivered`, and a parcel scan updates it.
+
 ## Entities
 
 | Entity | Meaning | Table | Notes |
@@ -37,8 +39,8 @@ The examples use the words of carriers and of GS1 EPCIS. EPCIS is a standard for
 | Consignee | The party that receives the goods. | `consignees` | |
 | Carrier | The company that moves the goods. | `carriers` | |
 | Consignment | A group of goods for one consignee under one transport contract. | `consignments` | The booking. |
-| Shipment | One transport of goods from one place to another. | `shipments` | |
-| Parcel | One physical package. | `parcels` | Has a tracking number. |
+| Shipment | One transport of goods from one place to another. | `shipments` | Has the tracking number of the carrier. |
+| Parcel | One physical package. | `parcels` | Can have its own label code. |
 | Pallet | A group of parcels on a base. | `pallets` | Has an SSCC. |
 | Container | A sealed unit for sea or rail transport. | `containers` | Has a container number. |
 | Leg | One part of the route of a shipment. | `legs` | |
@@ -67,13 +69,14 @@ The examples use the words of carriers and of GS1 EPCIS. EPCIS is a standard for
 | Pickup | `scheduled`, `completed`, `missed`, `canceled` |
 | Customs declaration | `draft`, `submitted`, `cleared`, `held`, `rejected` |
 
-EPCIS describes each event with a business step (`bizStep`), such as `shipping`, `receiving` or `departing`, and a disposition, such as `in_transit` or `in_progress`. Many carriers show a shorter status list to the customer. The states above are the choice of this guide.
+EPCIS describes each event with a business step (`bizStep`), such as `shipping`, `receiving` or `departing`, and a disposition, such as `in_transit` or `in_progress`. GS1 CBV defines these values as URNs, for example `urn:epcglobal:cbv:bizstep:shipping`. The short form is the choice of this guide. Many carriers show a shorter status list to the customer. The states above are the choice of this guide.
 
 ## Actions
 
 | Action | Function name | Meaning | Trap |
 |---|---|---|---|
 | Book a consignment | `book_consignment` | Confirms the transport order. | |
+| Cancel a consignment | `cancel_consignment` | Stops a booked order before pickup. | |
 | Create a shipment | `create_shipment` | Makes the record of one transport. | |
 | Plan a route | `plan_route` | Chooses the legs. | |
 | Schedule a pickup | `schedule_pickup` | Plans the collection. | |
@@ -95,21 +98,21 @@ EPCIS describes each event with a business step (`bizStep`), such as `shipping`,
 |---|---|---|
 | `shipment` | The order, the box and the trip are different things. | `consignment` for the order, `parcel` for the box, `shipment` for the trip. |
 | `package` and `parcel` | Two words for the box. | `parcel` for the carrier unit. Keep `package` for the software meaning. |
-| `tracking_number` | Whose number? One shipment can have a number for each carrier. | `tracking_number` with `carrier_id`. A pair is unique. |
-| `status` | Transport, customs and billing have different states. | `shipment_status`, `customs_status`, `billing_status` in code. |
+| `tracking_number` | Whose number? Two carriers can issue the same number. | `tracking_number` with `carrier_id`. A pair is unique. |
+| `status` | Transport, customs and billing have different states. | `shipment_status`, `customs_status`, `billing_status` in code. Inside a table the column is `status`. A customs state lives in `customs_declarations.status`. |
 | `delivery` and `shipment` | A delivery is the last step, not the whole move. | `shipment` for the move, `delivery_attempt` for a try. |
 | `weight` | Gross, net or chargeable? | `gross_weight_grams`, `net_weight_grams`, `chargeable_weight_grams`. |
-| `eta` | Estimated by whom? | `estimated_delivery_at` and the source of the estimate. |
+| `eta` | Estimated by whom? | `estimated_delivery_at` and `estimate_source` (carrier, model or manual). |
 | `from` and `to` | `from` is a keyword in SQL and in Python imports. | `origin_location_id`, `destination_location_id`. |
 | `address` | A place may be a depot, a home or a port. | `location_id` for a depot, `delivery_address_id` for a home. |
 | `event` | An EPCIS event and a software event differ. | `tracking_event` for a fact on the move. |
 | `leg` and `hop` | Two words for a part of a route. | `leg`. |
-| `sscc` and `tracking_number` | A pallet code and a carrier code. | Keep both, and name the kind. |
+| `sscc` and `tracking_number` | A pallet code and a carrier code. | `sscc` for a pallet or a logistic unit, `tracking_number` for a carrier parcel. |
 | `incoterm` as free text | The rule needs a fixed code. | `incoterm_code` with a check list. |
 
 ## Worked example
 
-The tables `consignments`, `carriers` and `locations` are not shown.
+The tables `consignments`, `carriers`, `locations` and `parcels` are not shown. The table `consignments` holds `incoterm_code` with a check on the allowed codes (EXW, FCA, CPT, CIP, DAP, DPU, DDP, FAS, FOB, CFR, CIF).
 
 ```sql
 CREATE TABLE shipments (
@@ -142,6 +145,7 @@ CREATE INDEX idx_shipments_destination_location_id ON shipments (destination_loc
 CREATE TABLE tracking_events (
     id                  bigint GENERATED ALWAYS AS IDENTITY,
     shipment_id         bigint NOT NULL,
+    parcel_id           bigint,
     event_type          text NOT NULL,
     business_step       text NOT NULL,
     disposition         text,
@@ -150,30 +154,45 @@ CREATE TABLE tracking_events (
     recorded_at         timestamptz NOT NULL DEFAULT now(),
     CONSTRAINT pk_tracking_events PRIMARY KEY (id),
     CONSTRAINT fk_tracking_events_shipments FOREIGN KEY (shipment_id) REFERENCES shipments (id),
-    CONSTRAINT fk_tracking_events_locations FOREIGN KEY (location_id) REFERENCES locations (id)
+    CONSTRAINT fk_tracking_events_parcels FOREIGN KEY (parcel_id) REFERENCES parcels (id),
+    CONSTRAINT fk_tracking_events_locations FOREIGN KEY (location_id) REFERENCES locations (id),
+    CONSTRAINT chk_tracking_events_event_type_allowed CHECK (event_type IN (
+        'ObjectEvent', 'AggregationEvent', 'TransactionEvent',
+        'TransformationEvent', 'AssociationEvent'
+    ))
 );
 
 CREATE INDEX idx_tracking_events_shipment_id_occurred_at ON tracking_events (shipment_id, occurred_at);
+CREATE INDEX idx_tracking_events_parcel_id ON tracking_events (parcel_id);
 CREATE INDEX idx_tracking_events_location_id ON tracking_events (location_id);
 ```
 
 ```
-POST /v1/consignments                          book a consignment
-GET  /v1/shipments/{shipment_id}               get one shipment
-GET  /v1/shipments/{shipment_id}/tracking-events   list the tracking events
-POST /v1/shipments/{shipment_id}:cancel        cancel a shipment
+POST /v1/consignments                                  create a consignment
+POST /v1/consignments/{consignment_id}:book             book a consignment
+POST /v1/consignments/{consignment_id}:cancel           cancel a consignment
+GET  /v1/shipments/{shipment_id}                        get one shipment
+GET  /v1/shipments/{shipment_id}/tracking-events        list the tracking events
 ```
 
 ```
-ShipmentCreated   ParcelPickedUp   ParcelScanned   DeliveryAttempted   ParcelDelivered
+ConsignmentBooked   ConsignmentCanceled   ShipmentCreated   ParcelPickedUp
+ParcelScanned   DeliveryAttempted   DeliveryFailed   ParcelDelivered
 ```
 
 ```py
-def record_scan(shipment: Shipment, location_id: int, business_step: str, occurred_at: datetime) -> TrackingEvent:
+def record_scan(
+    shipment: Shipment,
+    location_id: int,
+    business_step: str,
+    occurred_at: datetime,
+    parcel_id: int | None = None,
+) -> TrackingEvent:
     if shipment.shipment_status in {"delivered", "returned_to_sender", "lost"}:
         raise ShipmentClosedError(shipment.id)
     return TrackingEvent(
         shipment_id=shipment.id,
+        parcel_id=parcel_id,
         event_type="ObjectEvent",
         business_step=business_step,
         location_id=location_id,
