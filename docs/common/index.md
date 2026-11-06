@@ -63,12 +63,10 @@ Naming conventions that apply across **every** language — Python, SQL, JavaScr
 
 </div>
 
-## Where to go next
+!!! info "See also"
 
-| You want | Go to |
-|---|---|
-| Rules that hold in every language | [Naming patterns](../patterns/index.md) |
-| Case styles and names by kind | [Languages](../languages/index.md) |
-| Names of tables, columns and indexes | [Databases](../databases/index.md) |
-| Names in APIs, events and configuration | [Systems](../systems/index.md) |
-| Full vocabularies of a business domain | [Examples](../examples/index.md) |
+    - [Naming patterns](../patterns/index.md) for rules that hold in every language
+    - [Languages](../languages/index.md) for case styles and names by kind
+    - [Databases](../databases/index.md) for names of tables, columns and indexes
+    - [Systems](../systems/index.md) for names in APIs, events and configuration
+    - [Examples](../examples/index.md) for full vocabularies of a business domain

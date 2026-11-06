@@ -190,11 +190,11 @@ def has_entitlement(account: Account, feature_key: str) -> bool:
 
 ## Related patterns
 
-- [Negation and optionality](../patterns/negation-and-optionality.md) for `cancel_at_period_end` and optional dates
-- [Feature flags](../systems/feature-flags.md) for the difference between a flag and an entitlement
-- [Configuration](../systems/configuration.md) for plan limits and settings
+- [Negation and optionality](../patterns/negation-and-optionality.md) for optional dates such as `trial_ends_at`
+- [Feature flags](../systems/feature-flags.md) for permission flags such as `pro_reports`, which this page replaces with `has_entitlement`
+- [Configuration](../systems/configuration.md) for settings of the application, not for plan limits
 
 !!! info "See also"
 
-    - [Examples overview](index.md), [Payments](payments.md), [Tables](../databases/tables.md) and [Feature flags](../systems/feature-flags.md)
+    - [Examples overview](index.md), [Payments](payments.md) and [Tables](../databases/tables.md)
     - [Stripe Billing](https://docs.stripe.com/billing)

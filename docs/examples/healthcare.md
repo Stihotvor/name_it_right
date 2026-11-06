@@ -178,9 +178,8 @@ def mark_observation_entered_in_error(observation: Observation, practitioner_id:
 
 ## Related patterns
 
-- [Negation and optionality](../patterns/negation-and-optionality.md) for `unknown`, missing values and `entered_in_error`
+- [Negation and optionality](../patterns/negation-and-optionality.md) for `NULL` as missing, not yet and not applicable
 - [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for units and the two clock times
-- [Abbreviations](../common/abbreviations.md) for codes such as LOINC, SNOMED CT and UCUM
 
 !!! info "See also"
 

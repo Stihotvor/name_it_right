@@ -264,7 +264,7 @@ def can_cancel_order(order: Order) -> bool:
 
 ## Related patterns
 
-- [Action, high context, low context](../patterns/action-context.md) for names such as `add_item_to_cart` and `place_order`
+- [Action and context](../patterns/action-context.md) for names such as `add_item_to_cart` and `place_order`
 - [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for `_cents`, `currency_code` and `_at`
 - [Symmetry](../patterns/symmetry.md) for pairs such as `reserve_stock` and `release_stock`
 

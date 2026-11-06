@@ -195,5 +195,5 @@ def post_journal(journal: Journal) -> None:
 
 !!! info "See also"
 
-    - [Examples overview](index.md), [Payments](payments.md), [Columns](../databases/columns.md) and [Constraints](../databases/constraints.md)
+    - [Examples overview](index.md), [Payments](payments.md) and [Columns](../databases/columns.md)
     - [ISO 20022 message definitions](https://www.iso20022.org/iso-20022-message-definitions), [ISO 4217 currency codes](https://www.iso.org/iso-4217-currency-codes.html)

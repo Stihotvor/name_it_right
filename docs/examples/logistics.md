@@ -203,10 +203,10 @@ def record_scan(
 ## Related patterns
 
 - [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for `weight_grams` and `estimated_delivery_at`
-- [Action, high context, low context](../patterns/action-context.md) for `scan_parcel` and `deliver_parcel`
+- [Action and context](../patterns/action-context.md) for `scan_parcel` and `deliver_parcel`
 - [Events](../systems/events.md) for names such as `ParcelDelivered`
 
 !!! info "See also"
 
-    - [Examples overview](index.md), [E-commerce](ecommerce.md), [Tables](../databases/tables.md) and [Events](../systems/events.md)
+    - [Examples overview](index.md), [E-commerce](ecommerce.md) and [Tables](../databases/tables.md)
     - [GS1 EPCIS and CBV](https://www.gs1.org/standards/epcis), [UN/LOCODE](https://unece.org/trade/uncefact/unlocode), [Incoterms](https://iccwbo.org/business-solutions/incoterms-rules/)

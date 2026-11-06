@@ -4,13 +4,14 @@ status: new
 
 # Site map
 
-Every page of the guide, grouped by section. Open a section to see its pages.
+Every page of the guide, grouped by section.
 
 ## Home
 
 | Page | Path |
 |---|---|
 | [Home](../index.md) | `index.md` |
+| [Site map](README.md) | `interlinks/README.md` |
 
 ## Common
 
@@ -56,6 +57,11 @@ Every page of the guide, grouped by section. Open a section to see its pages.
 | [C# and .NET](../languages/csharp-dotnet.md) | `languages/csharp-dotnet.md` |
 | [Go](../languages/go.md) | `languages/go.md` |
 | [Rust](../languages/rust.md) | `languages/rust.md` |
+
+### Python
+
+| Page | Path |
+|---|---|
 | [General rules](../python/index.md) | `python/index.md` |
 | [Variables](../python/variables.md) | `python/variables.md` |
 | [Functions](../python/functions.md) | `python/functions.md` |

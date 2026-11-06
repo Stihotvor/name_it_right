@@ -36,6 +36,14 @@ Find the right name for every code entity — variable, function, class, table, 
 
     [:octicons-arrow-right-24: Databases](databases/index.md)
 
+-   __Languages__
+
+    ---
+
+    Case styles and names by kind in JavaScript and TypeScript, Java and Kotlin, C# and .NET, Go, and Rust.
+
+    [:octicons-arrow-right-24: Languages](languages/index.md)
+
 -   __Python__
 
     ---
@@ -47,14 +55,6 @@ Find the right name for every code entity — variable, function, class, table, 
     **Types:** [Modules](python/modules.md) · [Constants](python/constants.md) · [Exceptions](python/exceptions.md) · [Enums](python/enums.md) · [Special functions](python/special_functions.md)
 
     [**:octicons-arrow-right-24: General rules**](python/index.md)
-
--   __Languages__
-
-    ---
-
-    Case styles and names by kind in JavaScript and TypeScript, Java and Kotlin, C# and .NET, Go, and Rust.
-
-    [:octicons-arrow-right-24: Languages](languages/index.md)
 
 -   __Systems__
 

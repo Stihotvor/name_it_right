@@ -48,7 +48,7 @@ Python is a dynamically typed language — you can assign different types to the
 
 !!! info "See also"
 
-    - [Languages overview](../languages/index.md) to compare Python with five other languages
+    - [Languages overview](../languages/index.md) to compare Python with the other language groups
     - [Naming patterns](../patterns/index.md) and [Common rules](../common/index.md) for rules that do not depend on a language
     - [Databases](../databases/index.md) and [Systems](../systems/index.md) for the names that code shares with a schema or an API
     - [Examples](../examples/index.md) for Python snippets in seven domains

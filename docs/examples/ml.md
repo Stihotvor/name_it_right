@@ -176,11 +176,10 @@ ModelVersionRegistered   ModelAliasSet   DeploymentActivated   DriftDetected   D
 
 ## Related patterns
 
-- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for units and split names
-- [Observability](../systems/observability.md) for metric names such as `val_accuracy`
-- [Python variables](../python/variables.md) for `snake_case` names of parameters and metrics
+- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for units and `_at` timestamps
+- [Observability](../systems/observability.md) for the metric name format and unit suffixes
 
 !!! info "See also"
 
-    - [Examples overview](index.md), [Python variables](../python/variables.md), [Tables](../databases/tables.md) and [Observability](../systems/observability.md)
+    - [Examples overview](index.md), [Python variables](../python/variables.md) and [Tables](../databases/tables.md)
     - [MLflow Tracking](https://mlflow.org/docs/latest/ml/tracking/), [MLflow Model Registry](https://mlflow.org/docs/latest/ml/model-registry/)
