@@ -6,7 +6,7 @@
     - Functions which validate or check something and return boolean should start with `is_`, `has_`: `has_tax_applied()`, `is_valid()`  
     - Functions not covered by the above rule should have executable names: `compile()`, `collect()`, `process()`, `fetch()`  
     - If the function has `and` in the name, there is a high chance it does multiple things. Split it.  
-    - Name CRUD functions after the resource and action: `create_order()`, `list_customer_orders()`, `update_shipping_address()`, `delete_expired_carts()`  
+    - Name CRUD functions after the resource and action: `create_order()`, `list_customer_orders()`, `update_shipping_address()`, `delete_expired_carts()`
     - Name query functions by what they return: `list_pending_payments()`, `find_user_by_email()`, `search_products()`, `list_active_discounts()`
     - Name action functions by the side effect: `apply_discount_to()`, `refund_payment()`, `cancel_subscription()`, `dispatch_order()`
     - Use domain vocabulary consistently — if you say `fetch` throughout, never mix in `retrieve` or `get` for the same operation
@@ -32,7 +32,7 @@
 !!! tip "Useful tips"  
 
     - Good function arguments can help to shorten the function name: `add_car_to_catalog(name: str)` → `add_car_to(catalog: Catalog)`  
-    - Pick one verb per operation and never mix. If the codebase uses `fetch_` for remote reads, use `fetch_` for all remote reads — no `retrieve_`.  
+    - Pick one verb per operation and never mix. If the codebase uses `fetch_` for remote reads, use `fetch_` for all remote reads — no `retrieve_`.
     - Use the module name to shorten function names:  
     ```py
     # Before
