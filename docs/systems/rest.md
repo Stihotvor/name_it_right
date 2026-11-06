@@ -28,7 +28,7 @@ status: new
     - `snake_case` in one response and `camelCase` in another
     - A name from the database that leaks in the API: `tbl_orders`, `order_fk`
 
-The examples use an e-commerce shop. For names inside a database, see [Databases](../databases/index.md).
+The examples use an e-commerce shop. Where this guide differs from the AIPs, the text says so. For names inside a database, see [Databases](../databases/index.md).
 
 ## Resource paths
 
@@ -37,13 +37,13 @@ The examples use an e-commerce shop. For names inside a database, see [Databases
 | Collection: plural noun | `/v1/orders`, `/v1/products` | The path names a set. |
 | Item: collection plus id | `/v1/orders/{order_id}` | The id picks one member. |
 | Nested collection | `/v1/customers/{customer_id}/orders` | Orders that belong to one customer. |
-| Nested item | `/v1/customers/{customer_id}/orders/{order_id}` | Two levels is enough. |
+| Nested item | `/v1/customers/{customer_id}/orders/{order_id}` | A third level makes the path long, so use a filter instead. |
 | Singleton | `/v1/customers/{customer_id}/profile` | One profile for each customer. |
 | Multi-word segment | `/v1/shipping-addresses` or `/v1/shippingAddresses` | See the conflict below. |
-| Path variable | `{order_id}` | The resource and the word `id`. |
+| Path variable | `{order_id}` (house style) | The resource name and `id` say what the value is. AIP-122 writes `{order}`. |
 | Collection name, not a verb | `/v1/payments` | Not `/v1/makePayment`. |
 
-Conflict: AIP-122 asks for `lowerCamelCase` collection ids (`shippingAddresses`). Many other style guides use `kebab-case` (`shipping-addresses`). Choose one and do not mix them.
+Conflict: AIP-122 asks for `lowerCamelCase` collection ids (`shippingAddresses`). The Microsoft REST guidelines allow `kebab-case` (`shipping-addresses`) or `camelCase`. Choose one and do not mix them.
 
 ## Standard methods
 
@@ -66,12 +66,12 @@ AIP-136 names a custom method with a colon and a verb after the resource.
 | Endpoint | Meaning | Why this name |
 |---|---|---|
 | `POST /v1/orders/{order_id}:cancel` | Cancel one order. | A verb for an action that is not a standard method. |
-| `POST /v1/orders/{order_id}:ship` | Mark an order as shipped. | Same form. |
-| `POST /v1/orders/{order_id}:refund` | Refund an order. | Same form. |
-| `POST /v1/orders:batchGet` | Get many orders in one call. | A verb on the collection. |
+| `POST /v1/orders/{order_id}:ship` | Mark an order as shipped. | A verb after a colon, as in `:cancel`. |
+| `POST /v1/orders/{order_id}:refund` | Refund an order. | A verb after a colon, as in `:cancel`. |
+| `GET /v1/orders:batchGet` | Get many orders in one call (AIP-231). | A verb on the collection. |
 | `POST /v1/products:search` | Search with a body that is too big for a query. | `search` is a verb on the collection. |
-| `POST /v1/customers/{customer_id}:merge` | Merge two customers. | Same form. |
-| `POST /v1/orders/{order_id}/cancellation` | The same as `:cancel`, written as a sub-resource. | An alternative style when the action has its own state. |
+| `POST /v1/customers/{customer_id}:merge` | Merge two customers. | A verb after a colon, as in `:cancel`. |
+| `POST /v1/orders/{order_id}/cancellation` | The same as `:cancel`, written as a sub-resource (community practice). | An alternative style when the action has its own state. |
 
 Conflict: some APIs avoid the colon form and use a sub-resource such as `/cancellation`. Choose one form for the API.
 
@@ -98,22 +98,22 @@ Conflict: some APIs avoid the colon form and use a sub-resource such as `/cancel
 | `GET /v1/me` | Get the current user. A common alias. |
 | `GET /v1/health` | A health check for a load balancer. |
 | `GET /v1/orders/{order_id}/invoice` | The invoice of an order (a singleton). |
-| `PUT /v1/customers/{customer_id}/preferences` | Replace a singleton. |
+| `PATCH /v1/customers/{customer_id}/preferences` | Update a singleton (AIP-156 allows Get and Update). |
 
 ## Query parameters
 
 | Purpose | Parameter | Examples | Why this name |
 |---|---|---|---|
-| Filter by value | the field name | `?status=pending`, `?customer_id=42` | The same name as the field. |
-| Filter by range | `<field>_after`, `<field>_before` | `?created_after=2026-11-01`, `?created_before=2026-12-01` | Clearer than `from` and `to`. |
-| Filter expression | `filter` | `?filter=status="pending" AND total>100` | AIP-160 defines a filter language. |
+| Filter by value | the field name | `?status=pending`, `?customer_id=42` | The same name as the field, so no new word to learn. |
+| Filter by range (community practice) | `<field>_after`, `<field>_before` | `?created_after=2026-11-01`, `?created_before=2026-12-01` | The field name says which date the bound is for. |
+| Filter expression | `filter` | `?filter=status = "pending" AND total_amount_cents > 10000` | AIP-160 defines a filter language. Microsoft guidelines use `$filter`. |
 | Sort | `order_by` | `?order_by=created_at desc` | AIP-132 uses `order_by` with a direction. |
 | Sort, short form | `sort` | `?sort=-created_at` | JSON:API uses a leading minus. |
-| Fields to return | `fields` or `read_mask` | `?fields=id,status,total_amount_cents` | Fewer bytes. |
-| Include a related resource | `include` or `expand` | `?include=items`, `?expand=customer` | JSON:API uses `include`, Stripe uses `expand`. |
-| Search text | `q` or `query` | `?q=blue+shirt` | `q` is a common short form. |
+| Fields to return | `read_mask` (AIP-157); `fields` is community practice | `?read_mask=id,status,total_amount_cents` | The caller asks only for the fields it needs. JSON:API writes `fields[type]`. |
+| Include a related resource | `include` or `expand` | `?include=items`, `?expand[]=customer` | JSON:API uses `include`. Stripe uses `expand[]`. Microsoft guidelines use `$expand`. |
+| Search text (community practice) | `q` or `query` | `?q=blue+shirt` | A short name that many search APIs use. |
 | Show deleted items | `show_deleted` | `?show_deleted=true` | AIP-135 uses this name. |
-| Validate only | `validate_only` | `?validate_only=true` | AIP-163. |
+| Validate only | `validate_only` | `?validate_only=true` | AIP-163: a request that checks a change and does not apply it. |
 
 ## Pagination
 
@@ -122,18 +122,19 @@ AIP-158 defines token pagination. Other APIs use limit and offset or a page numb
 | Style | Request | Response | Examples |
 |---|---|---|---|
 | Token (AIP-158) | `page_size`, `page_token` | `next_page_token` | `?page_size=50&page_token=ey...` |
-| Cursor | `limit`, `cursor` or `after` | `next_cursor` | `?limit=50&after=ord_123` |
+| Cursor (community practice; Stripe: `starting_after`, `has_more`) | `limit`, `cursor` or `after` | `next_cursor` | `?limit=50&after=ord_123` |
 | Offset | `limit`, `offset` | `total_count` | `?limit=50&offset=100` |
 | Page number | `page`, `per_page` | `page`, `total_pages` | `?page=3&per_page=50` |
 
 | Case | Rule | Example |
 |---|---|---|
 | Last page | An empty `next_page_token` | `"next_page_token": ""` |
-| `page_size` above the maximum | Reduce it to the maximum | `page_size=10000` returns 100 items |
+| `page_size` of 0 or missing | Use a default | `page_size` omitted returns the default (for example 50) |
+| `page_size` above the maximum | Reduce it to the maximum | With a maximum of 100, `page_size=10000` returns 100 items |
 | `page_size` below zero | Return `400` | `page_size=-1` returns `INVALID_ARGUMENT` |
 | `offset` past the end (common practice) | Return `200` with an empty list | `offset=9999` returns `"orders": []` |
 | Bad `page_token` | Return `400` | `page_token=abc` returns `INVALID_ARGUMENT` |
-| Token from another query | Return `400` | A token is valid for the same filter and sort only |
+| Token from another query | Should return `400` (AIP-158) | A token is valid for the same filter and sort only |
 
 ## Request and response types
 
@@ -152,15 +153,15 @@ AIP-158 defines token pagination. Other APIs use limit and offset or a page numb
 
 | Kind | Rule | Examples |
 |---|---|---|
-| JSON field | one style: `snake_case` or `camelCase` | `order_id` or `orderId` |
+| JSON field | one style: `snake_case` or `camelCase` | `next_page_token` or `nextPageToken` |
 | Identifier | `<resource>_id` | `customer_id`, `order_id` |
-| Timestamp | `<event>_at`, in UTC and ISO 8601 | `created_at`, `shipped_at` |
+| Timestamp | `<event>_at`, in UTC and RFC 3339 (AIP-142 uses `create_time`) | `created_at`, `shipped_at` |
 | Money | an integer in minor units plus a currency code | `total_amount_cents`, `currency_code` |
-| Boolean | `is_` or `has_` plus a word | `is_active` |
-| Request id | `X-Request-Id` | `X-Request-Id: 7d9a...` |
-| Idempotency | `Idempotency-Key` | `Idempotency-Key: 9c1f...` |
+| Boolean (AIP-140 omits the `is_` prefix) | `is_` or `has_` plus a word in this guide | `is_active` |
+| Request id | `X-Request-Id` (a legacy form that is still common) | `X-Request-Id: 7d9a...` |
+| Idempotency | `Idempotency-Key` (Stripe, and an IETF draft) | `Idempotency-Key: 9c1f...` |
 | Concurrency | `ETag`, `If-Match` | `If-Match: "v3"` |
-| Custom header | a clear name; avoid `X-` for new ones (RFC 6648) | `RateLimit-Remaining` (from an IETF draft) |
+| Custom header | a clear name; avoid `X-` for new ones (RFC 6648) | `Request-Id`, `Deprecation` |
 
 Conflict: the JSON style guide of Google uses `camelCase`. The AIP rules use `snake_case` in the protocol definition and `camelCase` in the JSON form. Many public APIs use `snake_case`. The choice matters less than the rule that all fields use the same one.
 
@@ -168,8 +169,8 @@ Conflict: the JSON style guide of Google uses `camelCase`. The AIP rules use `sn
 
 | Style | Example | Notes |
 |---|---|---|
-| Path | `/v1/orders`, `/v2/orders` | The most common. Easy to see in logs. |
-| Header | `API-Version: 2026-11-01` | Date-based versions are used by some payment APIs. |
+| Path | `/v1/orders`, `/v2/orders` | AIP-185 puts the major version in the path. Easy to see in logs. |
+| Header | `Stripe-Version: 2024-06-20` | Stripe uses date-based versions in a header. Azure uses an `api-version` query parameter. |
 | Media type | `Accept: application/vnd.shop.v2+json` | Hard to try in a browser. |
 | Package | `shop.orders.v1` | Used in Protobuf and gRPC. |
 

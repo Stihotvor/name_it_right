@@ -14,7 +14,7 @@ status: new
 !!! tip "Useful tips"
 
     - A rename in a language is a refactor. A rename in an API is a breaking change. Choose the name before the first release
-    - Write the naming rules of the interface in its style guide, and check them with a linter (for example `buf lint` or `spectral`)
+    - Write the naming rules of the interface in its style guide, and check them with a linter (for example `api-linter` for AIP rules or `spectral` for OpenAPI)
     - Keep a glossary of domain words. The [references and glossary](../common/references-and-glossary.md) page is a start
 
 !!! danger "General anti-patterns"
