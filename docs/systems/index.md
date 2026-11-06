@@ -30,6 +30,8 @@ status: new
 | HTTP APIs (REST) | [REST](rest.md) |
 | GraphQL APIs | [GraphQL](graphql.md) |
 | Events, commands and topics | [Events](events.md) |
+| Error codes and exceptions | [Errors](errors.md) |
+| Environment variables, secrets and Kubernetes | [Configuration](configuration.md) |
 
 ## Where the names meet
 
