@@ -1,5 +1,111 @@
 # Class methods
 
+## Method patterns
+
+The tables use an e-commerce checkout. For function names outside classes, see [Functions](functions.md). For class names, see [Classes](classes.md).
+
+### Mutating and non-mutating
+
+A method that changes the object and a method that returns a changed copy need different names. Python itself shows the pair: `list.sort()` changes the list and returns `None`, and `sorted()` returns a new list.
+
+| Mutates the object | Returns a new object | Why |
+|---|---|---|
+| `cart.add_item(item)` | `cart.with_item(item)` | `add` changes the cart. `with_` returns a changed copy. |
+| `order.apply_coupon(code)` | `order.with_coupon(code)` | The `with_` form is safe for frozen objects. |
+| `cart.sort_items()` | `cart.sorted_items()` | The Python pair: `sort` changes, `sorted` returns. |
+| `cart.reverse_items()` | `cart.reversed_items()` | The Python pair: `reverse` changes, `reversed` returns. |
+| `address.normalize()` | `address.normalized()` | The past participle marks a result with no change. |
+| `cart.set_note(text)` | `cart.with_note(text)` | `pathlib` uses `with_name` and `with_suffix` for the same idea. |
+
+!!! tip "Rule of thumb"
+
+    - A verb in the imperative changes the object: `sort`, `add`, `clear`.
+    - A past participle or a `with_` prefix returns a new object: `sorted`, `normalized`, `with_item`.
+    - A mutating method returns `None`. Do not return `self` unless the class is a builder.
+
+### Conversions
+
+| Pattern | Use it when | Examples |
+|---|---|---|
+| `to_<target>` | The object converts itself. | `order.to_dict()`, `money.to_decimal()`, `address.to_label()` |
+| `as_<view>` | The method is a cheap view, not a copy. | `order.as_summary()`, `cart.as_read_only()` |
+| `from_<source>` | A class method builds an object from another shape. | `Order.from_cart(cart)`, `Money.from_cents(1999, "EUR")`, `Address.from_dict(data)` |
+| `parse` | A class method reads text. | `CouponCode.parse("SAVE10")`, `Money.parse("19.99 EUR")` |
+| `<source>_to_<target>` | A function converts between two other types. | `cart_to_order`, `order_to_invoice` |
+
+### Predicates
+
+| Pattern | Use it when | Examples |
+|---|---|---|
+| `is_<state>()` | The method checks a state. | `order.is_paid()`, `cart.is_empty()`, `coupon.is_expired()` |
+| `has_<thing>()` | The method checks ownership. | `order.has_discount()`, `customer.has_saved_card()` |
+| `can_<action>()` | The method checks ability. | `order.can_cancel()`, `payment.can_refund()` |
+| `should_<action>()` | The method checks a decision. | `payment.should_retry()`, `order.should_ship()` |
+
+A predicate returns a `bool` and does not change the object. See [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md).
+
+### Properties and methods
+
+| Use a property when | Use a method when | Examples |
+|---|---|---|
+| The value is cheap and has no arguments. | The work costs time or needs arguments. | `order.total_cents` and `order.calculate_tax(region)` |
+| The name is a noun. | The name is a verb. | `cart.item_count` and `cart.merge(other_cart)` |
+| Reading has no side effect. | The call has a side effect or does input and output. | `customer.full_name` and `customer.send_welcome_email()` |
+| The value looks like a field. | The call may fail or wait. | `order.status` and `order.fetch_tracking()` |
+
+### Dunder methods
+
+Python reserves the names with double underscores. Use the standard ones. Do not invent your own `__name__` methods.
+
+| Method | Purpose | Example class |
+|---|---|---|
+| `__init__` | Set up a new instance. | `Order`, `Cart` |
+| `__post_init__` | Check or derive fields after a dataclass `__init__`. | `Money` |
+| `__repr__` | Show a developer-friendly text. | `Order(id=7, status="paid")` |
+| `__str__` | Show a human-friendly text. | `Address` as a label |
+| `__eq__` | Compare for equality. | `Money` |
+| `__hash__` | Make the object usable in sets and as a dict key. | `Money`, `CustomerId` |
+| `__len__` | Return the number of items. | `Cart` |
+| `__iter__` | Loop over the items. | `Cart`, `Order` |
+| `__contains__` | Support `in`. | `Cart` with `sku in cart` |
+| `__enter__` / `__exit__` | Support `with`. | `CheckoutSession` |
+| `__call__` | Make the object callable. | `PricingStrategy` |
+
+See also [Special functions](special_functions.md).
+
+### classmethod and staticmethod
+
+| Kind | Naming rule | Examples |
+|---|---|---|
+| `@classmethod` constructor | `from_<source>`, `parse`, or a noun for a named instance. | `Order.from_cart`, `Money.zero`, `Address.parse` |
+| `@classmethod` factory with a rule | A verb and the thing created. | `Coupon.create_percent_off(10)`, `Order.create_draft()` |
+| `@staticmethod` helper | Name it by what it checks or computes. No `self`, no `cls`. | `Sku.is_valid_format(text)`, `Money.round_to_cents(value)` |
+| Module function | Use it when the code needs no class. | `order_to_invoice(order)` |
+
+If a static method never touches the class, a module-level function is often simpler.
+
+## Bad → better
+
+| Bad | Better | Why |
+|---|---|---|
+| `cart.get_sorted()` that sorts in place | `cart.sort_items()` | The name must match the change. |
+| `cart.sort()` that returns a copy | `cart.sorted_items()` | `sort` suggests a change in place. |
+| `order.paid()` | `order.is_paid()` | The prefix shows a boolean. |
+| `order.total()` that reads a stored field | `order.total_cents` (property) | A cheap value fits a property. |
+| `customer.get_name()` | `customer.full_name` (property) | Python style prefers attributes and properties to getters. |
+| `order.convert()` | `order.to_invoice()` | Name the target. |
+| `Order.make(cart)` | `Order.from_cart(cart)` | `from_` is the common name for an alternative constructor. |
+| `Money.parse_static()` | `Money.parse()` | Do not put the decorator in the name. |
+| `order.__calc__()` | `order.calculate_total()` | Do not invent dunder names. |
+| `cart.items_count()` | `cart.item_count` (property) | A count is cheap and noun-like. |
+
+!!! info "See also"
+
+    - [Functions](functions.md) for the verb families
+    - [Classes](classes.md) for the class suffixes
+    - [Variables](variables.md) for attribute names
+    - [Symmetry](../patterns/symmetry.md) for paired methods such as `open` and `close`
+
 ## Glossary
 
 A curated reference of verbs commonly used as class method names. Pick a verb and pair it with a domain noun — `add_order()`, `validate_email()`, `to_json()`, `from_row()`.
