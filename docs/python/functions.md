@@ -59,6 +59,133 @@
     - Abbreviations: `compile_frst()`  
     - One-letter functions: `v()`
 
+## Verb families
+
+Choose one verb per operation and keep it in the whole code base. The tables group the verbs by the job they do. For the word order inside a name, see [Action and context](../patterns/action-context.md). For the full verb list, see the [Glossary](#glossary) below and the [master glossary](../common/references-and-glossary.md).
+
+### Query
+
+| Verb | Use it when | Examples |
+|---|---|---|
+| `get` | You read known data cheaply, and the data exists. | `get_order`, `get_user_email`, `get_order_total` |
+| `find` | You search, and no result is a normal answer. | `find_user_by_email`, `find_product_by_sku`, `find_open_cart` |
+| `list` | You return a collection, often filtered or paged. | `list_open_orders`, `list_active_discounts`, `list_user_addresses` |
+| `fetch` | You read from a remote or slow source. | `fetch_exchange_rates`, `fetch_carrier_tracking`, `fetch_customer_profile` |
+| `load` | You read stored data into memory. | `load_cart`, `load_pricing_rules`, `load_tax_table` |
+| `search` | You look for matches in text or a large set. | `search_products`, `search_orders_by_note` |
+| `count` | You return the number of matches. | `count_open_orders`, `count_unread_notices` |
+
+### Command
+
+| Verb | Use it when | Examples |
+|---|---|---|
+| `create` | You make a new record. | `create_order`, `create_refund`, `create_shipment` |
+| `update` | You change a record. | `update_shipping_address`, `update_cart_item`, `update_payment_method` |
+| `delete` | You remove a record. | `delete_expired_carts`, `delete_draft_order`, `delete_saved_card` |
+| `cancel` | You stop a planned or running operation. | `cancel_order`, `cancel_subscription`, `cancel_shipment` |
+| `send` | You cause a message to go out. | `send_receipt_email`, `send_shipping_notice`, `send_payment_reminder` |
+| `apply` | You put a rule or an effect on data. | `apply_coupon`, `apply_tax_rule`, `apply_shipping_discount` |
+| `refund` | You give money back. | `refund_payment`, `refund_line_item`, `refund_shipping` |
+
+### Boolean
+
+| Prefix | Use it when | Examples |
+|---|---|---|
+| `is_` | You check a state. | `is_cart_empty`, `is_order_paid`, `is_in_stock` |
+| `has_` | You check ownership. | `has_discount`, `has_saved_card`, `has_open_order` |
+| `can_` | You check ability or permission. | `can_cancel_order`, `can_refund_payment`, `can_ship_express` |
+| `should_` | You check a decision. | `should_retry_payment`, `should_send_receipt` |
+| `must_` | You check a requirement. | `must_verify_address`, `must_accept_terms` |
+
+### Conversion
+
+| Pattern | Use it when | Examples |
+|---|---|---|
+| `<source>_to_<target>` | You convert one shape to another. | `order_to_invoice`, `cents_to_decimal`, `cart_to_order` |
+| `to_<target>` | A method converts its own object. | `order.to_dict`, `money.to_decimal`, `address.to_label` |
+| `from_<source>` | A class method builds an object. | `Order.from_cart`, `Money.from_cents`, `Address.from_dict` |
+| `parse_<thing>` | You read text into a structure. | `parse_coupon_code`, `parse_delivery_date`, `parse_price` |
+| `format_<thing>` | You write a structure as text. | `format_price`, `format_address`, `format_tracking_number` |
+| `serialize` / `deserialize` | You convert to and from a transfer format. | `serialize_order`, `deserialize_order` |
+
+### Lifecycle
+
+| Verb | Use it when | Examples |
+|---|---|---|
+| `open` / `close` | You hold a resource. | `open_session`, `close_session`, `open_connection` |
+| `start` / `stop` | You run a process. | `start_worker`, `stop_worker`, `start_checkout` |
+| `pause` / `resume` | A process continues later. | `pause_subscription`, `resume_subscription` |
+| `initialize` | You set up state once. | `initialize_cart`, `initialize_gateway` |
+| `reset` | You return to the initial state. | `reset_cart`, `reset_retry_count` |
+| `dispose` | You release what an object owns. | `dispose_connection_pool`, `dispose_temp_files` |
+
+### Event handler
+
+| Pattern | Use it when | Examples |
+|---|---|---|
+| `on_<owner>_<event>` | A function reacts to an event. | `on_order_created`, `on_payment_failed`, `on_cart_expired` |
+| `handle_<event>` | One function routes an event. | `handle_payment_webhook`, `handle_refund_event` |
+| `emit_<event>` | You publish an event. | `emit_order_created`, `emit_payment_captured` |
+| `subscribe_to_<topic>` | You register for events. | `subscribe_to_orders`, `subscribe_to_refunds` |
+
+### Validation
+
+| Verb | Use it when | Examples |
+|---|---|---|
+| `validate` | You check input and report problems. | `validate_order`, `validate_address`, `validate_coupon` |
+| `verify` | You check proof of a claim. | `verify_signature`, `verify_email_token`, `verify_webhook_secret` |
+| `ensure` | You raise unless a condition holds. | `ensure_cart_not_empty`, `ensure_stock_available` |
+| `check` | You test a condition and return a result. | `check_stock_level`, `check_fraud_score` |
+| `sanitize` | You remove unsafe content. | `sanitize_order_note`, `sanitize_search_query` |
+
+### Calculation
+
+| Verb | Use it when | Examples |
+|---|---|---|
+| `calculate` | You compute a value from inputs. | `calculate_order_total`, `calculate_cart_tax`, `calculate_shipping_cost` |
+| `estimate` | The result is approximate. | `estimate_delivery_date`, `estimate_shipping_weight` |
+| `sum` | You add numbers. | `sum_line_item_cents`, `sum_refunds` |
+| `round` | You change precision. | `round_to_cents`, `round_price_up` |
+| `convert` | You change a unit or currency. | `convert_currency`, `convert_grams_to_ounces` |
+
+## Name by return type
+
+| Returns | Pattern | Examples |
+|---|---|---|
+| `bool` | `is_`, `has_`, `can_`, `should_` | `is_cart_empty`, `has_discount` |
+| One item that must exist | `get_<item>` | `get_order`, `get_customer` |
+| One item or `None` | `find_<item>` | `find_coupon`, `find_user_by_email` |
+| A list | `list_<items>` | `list_open_orders`, `list_refunds` |
+| A number | `count_<items>`, `calculate_<value>` | `count_open_orders`, `calculate_order_total` |
+| A new object | `create_<thing>`, `build_<thing>` | `create_order`, `build_invoice` |
+| Nothing | a verb for the side effect | `cancel_order`, `send_receipt_email` |
+| An iterator | `iter_<items>` | `iter_order_rows`, `iter_pending_refunds` |
+| A converted value | `<source>_to_<target>`, `parse_`, `format_` | `order_to_invoice`, `parse_price` |
+
+## Bad → better
+
+| Bad | Better | Why |
+|---|---|---|
+| `order_cancel()` | `cancel_order()` | Verb first reads as a command. |
+| `check_stock(sku)` returning a boolean | `is_in_stock(sku)` | A boolean function uses `is_`, `has_`, `can_` or `should_`. |
+| `do_checkout()` | `complete_checkout()` | `do` adds no meaning. |
+| `get_and_save_user()` | `get_user()` and `save_user()` | `and` often hides two jobs. |
+| `get_coupon()` that may return `None` | `find_coupon()` | `find` says that no result is a normal answer. |
+| `get_all_orders()` that returns a list | `list_orders()` | `list` states the return shape. |
+| `fetch_total()` that adds numbers | `calculate_order_total()` | `fetch` suggests a remote read. |
+| `validate_order()` that saves | `validate_order()` and `save_order()` | A check must not change state. |
+| `handle_data(order)` | `apply_coupon(order)` | Name the action, not the act of dealing with it. |
+| `process()` | `capture_payment()` | `process` hides the action. |
+| `convert(order)` | `order_to_invoice(order)` | Name both the source and the target. |
+| `email(order)` | `send_order_email(order)` | `email` could be a noun or a verb. |
+
+!!! info "See also"
+
+    - [Variables](variables.md) for the values these functions take and return
+    - [Class methods](class_methods.md) for methods on objects
+    - [Bad → better cookbook](../patterns/cookbook.md) for more rewrites
+    - [Symmetry](../patterns/symmetry.md) for matching pairs such as `open` and `close`
+
 ## Glossary
 ### A
 |                    |                     |                      |               |
@@ -367,3 +494,13 @@
 *[unlock]: Remove an access restriction from a resource
 *[update]: Modify an existing entity with new values
 *[write]: Write data to storage, a stream, or an output
+*[calculate]: Compute a value from inputs by following fixed rules
+*[dispose]: Release the resources that an object owns
+*[emit]: Publish an event or signal to its listeners
+*[ensure]: Raise an error unless a condition holds
+*[estimate]: Produce an approximate value
+*[initialize]: Set up state once, before first use
+*[reset]: Return an object to its initial state
+*[send]: Cause a message or request to go to a destination
+*[sum]: Add numbers into one total
+*[verify]: Check proof of a claim, such as a signature or a token
