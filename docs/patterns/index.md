@@ -9,7 +9,7 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 !!! success "General patterns"
 
     - Order the words as action, high context, low context: `get_user_messages`. See [Action and context](action-context.md).
-    - Use one verb for one operation across the code base: `fetch_order`, `fetch_invoice`, `fetch_refund`.
+    - Use one verb for one operation across the code base: `get_order`, `get_invoice`, `get_refund`.
     - Use two to four words per name: `order_total_price`, not `total`, and not `the_total_price_of_the_order_after_tax`.
     - Prefer full words over abbreviations: `customer_id`, not `cust_id`. See [Abbreviations](../common/abbreviations.md).
     - Name a boolean as a statement that is true or false: `is_paid`, `has_discount`, `can_cancel`, `should_retry`.
@@ -36,7 +36,7 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 
 ## Pages planned
 
-These pages are not published yet. The same running example, an e-commerce checkout, appears on each page.
+These pages are not published yet. The same running example, an e-commerce checkout, appears on each page. Events and commands get their own pages in the systems section.
 
 | Planned page | Topic | Example names |
 |---|---|---|
@@ -53,16 +53,16 @@ These pages are not published yet. The same running example, an e-commerce check
 |---|---|---|---|
 | A/HC/LC | Action, high context, low context | `get_user_messages` | `messages_user_get` |
 | Verb first | Functions start with a verb | `cancel_order` | `order_cancel` |
-| One verb per operation | Same operation, same verb | `fetch_invoice` | `retrieve_invoice` next to `get_order` |
+| One verb per operation | Same operation, same verb | `get_invoice` and `get_order` | `retrieve_invoice` next to `get_order` |
 | Short and clear | Two to four words | `order_total_price` | `o_tp` |
 | Full words | No guessable abbreviations | `customer_id` | `cust_id` |
 | Boolean statement | `is_`, `has_`, `can_`, `should_` | `has_discount` | `discount_flag` |
 | Units | Unit in the name | `timeout_seconds` | `timeout` |
 | Event as fact | Past tense | `order_created` | `create_order_event` |
-| Command as order | Imperative | `create_order` | `order_creation` |
+| Command as instruction | Imperative, as a function name | `create_order` | `order_creation` |
 
 ## Sources
 
-- [kettanaito/naming-cheatsheet](https://github.com/kettanaito/naming-cheatsheet) — A/HC/LC and S-I-D.
+- [kettanaito/naming-cheatsheet](https://github.com/kettanaito/naming-cheatsheet) — A/HC/LC and S-I-D (short, intuitive, descriptive).
 - [Naming Guidelines for Professional Programmers, Hilton and Hermans](https://ppig.org/files/2017-PPIG-28th-hilton.pdf) — length of names and defects.
 - [How Developers Choose Names, Feitelson et al.](https://arxiv.org/abs/2103.07487) — only about 7% of developers choose the same name.
