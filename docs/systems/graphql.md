@@ -7,16 +7,16 @@ status: new
 !!! success "General patterns"
 
     - Use `PascalCase` for type names: `Order`, `OrderStatus`, `CreateOrderInput`
-    - Use `camelCase` for fields, arguments and operation names: `orderTotal`, `customerId`, `createOrder`
+    - Use `camelCase` for fields, arguments and mutation fields: `orderTotal`, `customerId`, `createOrder`
     - Use `SCREAMING_SNAKE_CASE` for enum values: `PENDING`, `SHIPPED`
     - Name a mutation with a verb first: `createOrder`, `cancelOrder`
-    - Name a query with a noun: `order`, `orders`, `viewer`
-    - Give each mutation one input type and one payload type: `CancelOrderInput`, `CancelOrderPayload`
+    - Name a query field with a noun: `order`, `orders`
+    - Give each mutation one input type and one payload type: `CancelOrderInput`, `CancelOrderPayload`. This is a GitHub-style convention
 
 !!! tip "Useful tips"
 
     - Name a field after what it is, not after where it comes from: `customer`, not `customerFromCrm`
-    - Use the same word for the same thing in every type. `id` is the global identifier of an object
+    - Use the same word for the same thing in every type. `id` is an opaque global identifier of an object (Relay `Node`). The `order_id` of the REST API maps to `orderId` when a field needs the plain key
     - Return the changed object in the payload, so the client needs no second call
     - Use a linter, for example `graphql-eslint` with the `naming-convention` rule
 
@@ -34,26 +34,26 @@ The examples use an e-commerce shop.
 | Kind | Rule | Examples | Why this name |
 |---|---|---|---|
 | Object type | `PascalCase` noun | `Order`, `Customer`, `OrderLine` | Apollo and the public GraphQL APIs use `PascalCase`. The spec only requires a valid name. |
-| Interface | `PascalCase` noun or adjective | `Node`, `Timestamped` | Names a shared shape. |
-| Union | `PascalCase` noun for the choice | `SearchResult`, `PaymentMethod` | Names the group of types. |
+| Interface | `PascalCase` noun or adjective | `Node`, `Timestamped` | An interface names a shape that many types share. `Node` is the Relay interface for objects with a global id. |
+| Union | `PascalCase` noun for the choice | `SearchResult`, `PaymentMethod` | The name states what the member types have in common. |
 | Input type (Apollo and GitHub style) | mutation name plus `Input` | `CreateOrderInput`, `CancelOrderInput` | Ties the input to its mutation. |
 | Payload type (Apollo and GitHub style) | mutation name plus `Payload` | `CreateOrderPayload`, `CancelOrderPayload` | Ties the result to its mutation. |
 | Enum | singular `PascalCase` noun | `OrderStatus`, `Currency` | One value is one status. |
 | Enum value | `SCREAMING_SNAKE_CASE` | `PENDING`, `PARTIALLY_SHIPPED` | The spec examples and Apollo use this style. |
-| Scalar | `PascalCase` noun | `DateTime`, `Money`, `Url` | A custom value type. |
-| Field | `camelCase` noun | `totalAmount`, `shippedAt` | Fields are properties. |
+| Scalar | `PascalCase` noun | `DateTime`, `Url` | A custom value type. For money, use an object: `Money { amountCents currencyCode }`. |
+| Field | `camelCase` noun | `totalAmountCents`, `shippedAt` | The unit is in the name, as in the REST API and the database. |
 | Boolean field | `is`, `has` plus a word | `isActive`, `hasGiftWrap` | A boolean reads as a statement. |
 | Timestamp field | `<event>At` | `createdAt`, `shippedAt` | The same suffix as in the database and REST. |
-| List field | plural noun | `items`, `orders` | A plural shows a list. |
-| Argument | `camelCase` noun | `first`, `after`, `status` | The spec examples use short nouns. |
+| List field | plural noun | `items`, `orders` | A plural tells the client that the value is a list. |
+| Argument | `camelCase` word | `first`, `after`, `status` | Arguments follow the field style. Relay fixes `first`, `after`, `last` and `before`. |
 | Query, one item | singular noun | `order(id: ID!)`, `customer(id: ID!)` | One object by id. |
 | Query, a list | plural noun | `orders(first: Int)`, `products` | A set of objects. |
-| Query, current user | `viewer` or `me` | `viewer`, `me` | A common alias. |
-| Mutation | verb plus noun | `createOrder`, `cancelOrder`, `addOrderItem` | An action on a resource. |
-| Subscription (community practice) | noun plus past event | `orderUpdated`, `shipmentDelivered` | An event stream. |
-| Directive | `camelCase` | `@deprecated`, `@auth` | The spec uses lower camel case. |
-| Fragment | the type plus a purpose | `OrderSummaryFields` | Clear in a client file. |
-| Operation name | verb or noun, `PascalCase` | `GetOrderDetails`, `CancelOrder` | Shows in logs and tools. |
+| Query, current user (community practice) | `viewer` (GitHub, Relay) or `me` | `viewer`, `me` | An alias for the caller, so the client needs no id. |
+| Mutation | verb plus noun (Shopify uses noun first: `orderCancel`) | `createOrder`, `cancelOrder`, `addOrderItem` | An action on a resource. Choose one order and keep it. |
+| Subscription (community practice) | noun plus past event | `orderShipped`, `shipmentDelivered` | A stream of events. Use the event names from [Events](events.md). |
+| Directive | `camelCase` | `@deprecated`, `@specifiedBy` | The spec directives use lower camel case. |
+| Fragment | the type plus a purpose | `OrderSummaryFields` | A client file may hold many fragments, so the name says the type and the use. |
+| Operation name (client side) | `PascalCase`; a verb is fine here | `GetOrderDetails`, `CancelOrder` | It shows in logs and tools. The no-verb rule is for query fields, not for operation names. |
 
 ## Mutations
 
