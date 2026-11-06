@@ -4,7 +4,7 @@ status: new
 
 # Booleans, collections, units and time
 
-Four small decisions appear in almost every code base: how to name a flag, a group of things, a number with a unit, and a moment in time. This page gives a pattern for each one, with examples in Python, SQL, TypeScript and Go.
+Four small decisions appear in almost every code base: how to name a flag, a group of things, a number with a unit, and a moment in time. This page gives a pattern for each one, with examples in Python, SQL, TypeScript and Go. A table of verb families at the end helps you to choose one verb per operation.
 
 !!! success "General patterns"
 
@@ -13,24 +13,24 @@ Four small decisions appear in almost every code base: how to name a flag, a gro
     - Name a collection in the plural: `orders`, `line_items`. Name a map `<value>_by_<key>`: `orders_by_id`.
     - Name a count `<thing>_count`: `order_count`, `retry_count`.
     - Put the unit in the name when the type does not carry it: `timeout_seconds`, `amount_cents`, `file_size_bytes`.
-    - Store money as integer minor units plus a currency code: `total_amount_cents` and `currency_code`.
+    - Store money as integer minor units plus a currency code: `order_total_cents` and `currency_code`. `_cents` fits currencies with 100 minor units. For others, use `_minor_units`.
     - End a timestamp with `_at` and a date with `_on` or `_date`: `paid_at`, `delivered_on`.
 
 !!! tip "Useful tips"
 
     - Read the boolean in an `if`: `if order.is_paid:` reads like speech. `if order.paid_flag:` does not.
-    - Some languages and style guides choose other forms. Swift prefers a bare assertion such as `isEmpty`, and .NET recommends an affirmative name for a boolean. See [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/#naming) and [Names of type members](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-type-members). This guide uses the `is_/has_/can_/should_` family as the project convention, not as a universal law.
+    - Some languages and style guides choose other forms. Swift asks that a boolean reads as an assertion about the receiver, such as `x.isEmpty` or `a.intersects(b)`, and does not require a prefix for verb forms. .NET recommends an affirmative name and makes the `Is/Can/Has` prefix optional. See [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/#naming) and [Names of type members](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-type-members). This guide uses the `is_/has_/can_/should_` family as the project convention, not as a universal law.
     - If a language type carries the unit (`timedelta`, `time.Duration`), do not repeat the unit in the name.
     - For function names with the same prefixes, see [Functions](../python/functions.md). For variable rules, see [Variables](../python/variables.md). For column rules, see [Columns](../databases/columns.md).
 
 !!! danger "General anti-patterns"
 
     - Flags: `paid_flag`, `discount_flag` → `is_paid`, `has_discount`
-    - Negative booleans: `is_not_active`, `disable_cache = False` → `is_active`, `use_cache = True`
+    - Negative booleans: `is_not_active`, `disable_cache = False` → `is_active`, `is_cache_enabled = True`
     - A singular name for a collection: `order = get_open_orders()` → `orders = get_open_orders()`
     - A bare number for a duration: `timeout = 30` → `timeout_seconds = 30`
     - A float for money: `price = 19.99` → `price_cents = 1999`
-    - A timestamp with no zone information: `created = now()` → `created_at_utc = now()`
+    - A timestamp with no zone information: `created = now()` → `created_at = now(tz=UTC)`
 
 ## Booleans
 
@@ -54,9 +54,9 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 | Bad | Better | Why |
 |---|---|---|
 | `paid_flag` | `is_paid` | `flag` says the type, not the meaning. |
-| `status_ok` | `is_successful` | Reads as a statement in an `if`. |
+| `status_ok` | `is_status_ok` | The prefix marks a boolean and reads as a statement in an `if`. |
 | `is_not_disabled` | `is_enabled` | Double negatives make readers stop and think. |
-| `disable_notifications = False` | `send_notifications = True` | A negative name with `False` becomes a double negative. |
+| `disable_notifications = False` | `should_send_notifications = True` | A negative name with `False` becomes a double negative. |
 | `no_discount` | `has_discount` | State the fact in the positive form. |
 | `discount` (as a boolean) | `has_discount` | A noun can be an amount, a code or a flag. |
 | `check_stock` (as a field) | `should_check_stock` | A verb alone reads as an action, not as a value. |
@@ -73,10 +73,10 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 | Pattern | Rule | Python | TypeScript | SQL | Go |
 |---|---|---|---|---|---|
 | List | Plural noun | `orders` | `orders` | `orders` | `orders` |
-| Map | `<value>_by_<key>` | `orders_by_id` | `ordersById` | `orders_by_id` (CTE) | `ordersByID` |
-| Set | `unique_<items>` or `<items>_set` | `unique_skus` | `uniqueSkus` | `unique_skus` (CTE) | `uniqueSKUs` |
+| Map | `<value>_by_<key>` | `orders_by_id` | `ordersById` | n/a (a table keyed by id) | `ordersByID` |
+| Unique values | `unique_<items>` | `unique_skus` | `uniqueSkus` | n/a (use `DISTINCT`) | `uniqueSKUs` |
 | Count | `<thing>_count` | `order_count` | `orderCount` | `order_count` | `orderCount` |
-| Total | `total_<thing>` | `total_items` | `totalItems` | `total_items` | `totalItems` |
+| Sum of money | `<owner>_total_<value>` | `order_total_cents` | `orderTotalCents` | `order_total_cents` | `orderTotalCents` |
 | Index | `<thing>_index` | `item_index` | `itemIndex` | `item_index` | `itemIndex` |
 | Id list | `<thing>_ids` | `order_ids` | `orderIds` | `order_ids` | `orderIDs` |
 | Batch | `<thing>_batch` | `order_batch` | `orderBatch` | `order_batch` | `orderBatch` |
@@ -84,7 +84,7 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 
 !!! note "Id casing"
 
-    Go style writes initialisms in capitals: `orderID`, `orderIDs`. Python and SQL use lower case. TypeScript commonly writes `orderId`. See [Abbreviations](../common/abbreviations.md).
+    Go style writes initialisms in capitals: `orderID`, `orderIDs`. Python and SQL use lower case. TypeScript commonly writes `orderId`.
 
 ### Bad → better
 
@@ -99,13 +99,13 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 | `count` | `retry_count` | A bare `count` does not say what is counted. |
 | `i` (index of an item) | `item_index` | One-letter names are fine only in tiny loops. |
 | `id_list` | `order_ids` | The name says what the ids belong to. |
-| `data` | `order_rows` | `data` fits any variable. |
-| `total` (number of rows) | `total_row_count` | `total` can also be a money total. |
+| `data` | `order_summary` | `data` fits any variable. Use a name that says what the data is. |
+| `total` (number of rows) | `row_count` | `total` can also be a money sum. Count with `_count`. |
 | `items_array` | `line_items` | Never put the type in the name. |
 
 !!! warning "Count or total?"
 
-    `order_count` is the number of orders. `order_total` is a sum of money for an order. Do not mix the two. See [Action and context](action-context.md).
+    `order_count` is the number of orders. `order_total_cents` is a sum of money for an order. Do not mix the two.
 
 ## Units, money and ratios
 
@@ -117,31 +117,37 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 | Retry delay | `retry_delay_ms` | milliseconds | The short form `ms` is common and clear. |
 | Cache lifetime | `cache_ttl_seconds` | seconds | TTL needs a unit. |
 | File size | `file_size_bytes` | bytes | `size` alone could be KB or MB. |
-| Upload limit | `max_upload_mb` | megabytes | The limit and the unit are in the name. |
+| Upload limit | `max_upload_megabytes` | megabytes | `mb` could mean megabytes or megabits. |
 | Distance | `distance_km` | kilometres | Avoids a mix of miles and km. |
 | Weight | `package_weight_grams` | grams | Shipping systems often use grams or ounces. |
 | Temperature | `temperature_celsius` | °C | Kelvin and Fahrenheit also exist. |
 | Rate limit | `requests_per_minute` | per minute | The period is part of the meaning. |
 | Bandwidth | `bandwidth_mbps` | megabits per second | Avoids confusion with megabytes. |
 
+!!! note "Unit symbols"
+
+    Standard unit symbols such as `ms`, `km` and `mbps`, and standard acronyms such as `ttl`, are exceptions to the full-words rule. Write them in lower case. Spell out a unit when two readings are possible.
+
 ### Money
 
-Store money as an integer amount in minor units, with an ISO 4217 currency code. Floating-point numbers cannot store `0.1` exactly. The [ISO 20022 message definitions](https://www.iso20022.org/iso-20022-message-definitions) pair an amount with a currency code, and [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) defines the codes.
+Store money as an integer amount in minor units, with an ISO 4217 currency code. Floating-point numbers cannot store `0.1` exactly. The [ISO 20022 message definitions](https://www.iso20022.org/iso-20022-message-definitions) pair every amount with a currency code. ISO 20022 uses decimal amounts in major units, so convert at the system boundary. [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) defines the codes and the number of minor-unit digits.
 
 | Concept | Name | Example value | Why |
 |---|---|---|---|
-| Total in minor units | `total_amount_cents` | `1999` | Integers avoid rounding errors. |
+| Total in minor units | `order_total_cents` | `1999` | Integers avoid rounding errors. |
 | Currency | `currency_code` | `"EUR"` | Use the three-letter ISO 4217 code. |
 | Tax | `tax_amount_cents` | `320` | Same unit as the total. |
 | Discount | `discount_amount_cents` | `500` | `discount` alone could be a percent. |
 | Refund | `refunded_amount_cents` | `1999` | Past participle shows a fact. |
-| Exchange rate | `exchange_rate` | `1.0842` | A ratio has no unit. |
+| Exchange rate | `eur_to_usd_rate` | `1.0842` | A rate between two currencies. Name the pair. |
 | Fee rate | `fee_rate` | `0.029` | A ratio from 0 to 1. |
 | Rounding | `rounding_mode` | `"half_even"` | Name the rule, not the code. |
 
-Use `_cents` only for currencies with 100 minor units. For currencies with another number of minor units, use `_minor_units`: `total_minor_units`.
+Use `_cents` only for currencies with 100 minor units. For currencies with another number of minor units, use `_minor_units`: `order_total_minor_units`.
 
 ### Ratios and percentages
+
+In this guide, `rate` means a ratio. For events per period, put the period in the name: `requests_per_minute`.
 
 | Name | Meaning | Example value | Why |
 |---|---|---|---|
@@ -172,14 +178,14 @@ Use `_cents` only for currencies with 100 minor units. For currencies with anoth
 |---|---|---|
 | `timeout = 30` | `timeout_seconds = 30` | The reader does not need to open the docs. |
 | `created` | `created_at` | `created` could be a boolean or an object. |
-| `date` (timestamp) | `paid_at` | A timestamp is not a date. |
+| `date` (timestamp) | `occurred_at` | A timestamp is not a date. Use a verb in the past tense that fits the event. |
 | `delivery_time` (a date) | `delivered_on` | `time` could be a duration. |
 | `ttl = 3600` | `ttl_seconds = 3600` | A unit removes the guess. |
 | `price = 19.99` | `price_cents = 1999` | Integer money avoids rounding errors. |
 | `amount` | `amount_cents` | A bare `amount` hides the unit. |
 | `tax = 0.2` | `tax_rate = 0.2` | `tax` could be an amount. |
 | `expiry` | `expires_at` | A noun does not say if it is a date or a duration. |
-| `created_at` (local time, no zone) | `created_at_utc` | State the zone when the value is not a timezone-aware type. |
+| `created_at` (naive local time) | `created_at` stored as UTC, or `created_at_local` | A name may claim UTC only if the value is UTC. Convert first, or say `local`. |
 | `retry_interval = 5` | `retry_interval_seconds = 5` | A bare number hides the unit. |
 | `size` | `file_size_bytes` | `size` has many meanings. |
 
@@ -193,10 +199,10 @@ Use this table to choose one verb per operation. Keep the same verb in the whole
 
 | Verb | Meaning | Example 1 | Example 2 | Example 3 |
 |---|---|---|---|---|
-| `get` | Read known data cheaply | `get_order` | `get_user_email` | `get_cart_total` |
+| `get` | Read known data cheaply | `get_order` | `get_user_email` | `get_order_total` |
 | `find` | Search, may return nothing | `find_user_by_email` | `find_product_by_sku` | `find_open_cart` |
 | `list` | Return a collection | `list_open_orders` | `list_active_coupons` | `list_user_addresses` |
-| `calculate` | Compute a value | `calculate_order_total` | `calculate_tax` | `calculate_shipping_cost` |
+| `calculate` | Compute a value | `calculate_cart_subtotal` | `calculate_cart_tax` | `calculate_shipping_cost` |
 | `create` | Make a new record | `create_order` | `create_refund` | `create_shipment` |
 | `update` | Change a record | `update_shipping_address` | `update_cart_item` | `update_payment_method` |
 | `delete` | Remove a record | `delete_expired_carts` | `delete_draft_order` | `delete_saved_card` |
