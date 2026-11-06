@@ -58,7 +58,7 @@ Each cell holds the usual convention of the language. A cell with two answers ma
 |---|---|---|---|---|---|---|
 | Acronym in a name | all capitals: `HTTPServerError` | words: `HttpClient` (Google guide) | words: `HttpClient` (Google Java); Kotlin conventions keep two-letter acronyms in capitals: `IOStream` | two letters in capitals: `IOStream`; longer as words: `HtmlParser` | all capitals: `HTTPClient`, `userID` | words: `Uuid` |
 | Constant case | all capitals | all capitals | all capitals | `PascalCase` | `MixedCaps`, no capitals | all capitals |
-| Name of a getter | `order.total` (property) | `order.total` or `getTotal()` | `getTotal()` (Java); property `total` (Kotlin) | property `Total` | `Total()`, no `Get` prefix | `total()`, no `get_` prefix |
+| Name of a getter | `order.total` (property) | `order.total` or `getTotal()` | `getTotal()` (JavaBeans); `total()` (records, newer APIs); property `total` (Kotlin) | property `Total` | `Total()`, no `Get` prefix | `total()`, no `get_` prefix |
 
 For `is_`, `has_` and other word choices that do not depend on the language, see [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) and [Action and context](../patterns/action-context.md).
 
@@ -68,7 +68,7 @@ For `is_`, `has_` and other word choices that do not depend on the language, see
 |---|---|
 | Python | [PEP 8](https://peps.python.org/pep-0008/#naming-conventions) and the [enum documentation](https://docs.python.org/3/library/enum.html) |
 | JavaScript / TypeScript | [Google TypeScript style guide](https://google.github.io/styleguide/tsguide.html). It is not an official language standard. The [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/enums.html) shows enum member style. |
-| Java | [Google Java style guide](https://google.github.io/styleguide/javaguide.html) |
+| Java | [Google Java style guide](https://google.github.io/styleguide/javaguide.html) and [Oracle naming conventions](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html) |
 | Kotlin | [Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html#naming-rules) |
 | C# | [.NET naming guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines) and [C# coding conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names) |
 | Go | [Effective Go](https://go.dev/doc/effective_go#names) and [Go code review comments](https://go.dev/wiki/CodeReviewComments) |
