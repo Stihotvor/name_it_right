@@ -119,15 +119,17 @@ nav:
       - Constraints: databases/constraints.md
       - Enums: databases/enums.md
       - Warehouse and analytics: databases/warehouse.md
-  - Python:
-      - General rules: python/index.md
-      - Variables: python/variables.md
-      - Functions: python/functions.md
-      - Classes: python/classes.md
-      - Class methods: python/class_methods.md
-      - Tests: python/tests.md
-      - Modules: python/modules.md
-      - Constants: python/constants.md
-      - Exceptions: python/exceptions.md
-      - Enums: python/enums.md
-      - Special functions: python/special_functions.md
+  - Languages:
+      - Overview: languages/index.md
+      - Python:
+          - General rules: python/index.md
+          - Variables: python/variables.md
+          - Functions: python/functions.md
+          - Classes: python/classes.md
+          - Class methods: python/class_methods.md
+          - Tests: python/tests.md
+          - Modules: python/modules.md
+          - Constants: python/constants.md
+          - Exceptions: python/exceptions.md
+          - Enums: python/enums.md
+          - Special functions: python/special_functions.md
