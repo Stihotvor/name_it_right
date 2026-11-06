@@ -121,6 +121,7 @@ nav:
       - Warehouse and analytics: databases/warehouse.md
   - Languages:
       - Overview: languages/index.md
+      - JavaScript and TypeScript: languages/javascript-typescript.md
       - Python:
           - General rules: python/index.md
           - Variables: python/variables.md
