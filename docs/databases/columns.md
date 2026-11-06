@@ -1,7 +1,7 @@
 !!! success "General patterns"
 
     - Use `snake_case`: `first_name`, `created_at`, `order_total`
-    - Primary key: `id` (surrogate) or a descriptive natural key: `email`, `slug`
+    - Primary key: `id` (surrogate) or a descriptive natural key: `email`, `slug`. Warehouse tables use `_key` for surrogate keys (see [Warehouse](warehouse.md))
     - Foreign key: `<referenced_table_singular>_id`: `user_id`, `order_id`, `country_code`
     - Boolean columns: `is_` or `has_` prefix: `is_active`, `has_shipped`, `is_available`
     - Timestamps: `_at` suffix: `created_at`, `updated_at`, `deleted_at`, `expires_at`
