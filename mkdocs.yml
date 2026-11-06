@@ -143,3 +143,5 @@ nav:
       - REST: systems/rest.md
       - GraphQL: systems/graphql.md
       - Events: systems/events.md
+      - Errors: systems/errors.md
+      - Configuration: systems/configuration.md
