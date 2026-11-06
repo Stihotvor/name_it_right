@@ -83,6 +83,7 @@ For `is_`, `has_` and other word choices that do not depend on the language, see
 | Java / Kotlin | [Java and Kotlin](java-kotlin.md) |
 | C# | [C# and .NET](csharp-dotnet.md) |
 | Go | [Go](go.md) |
+| Rust | [Rust](rust.md) |
 
 !!! info "See also"
 
