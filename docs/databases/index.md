@@ -39,7 +39,7 @@ General naming conventions for database schemas — tables, columns, indexes, co
 
     ---
 
-    `idx_` and `uq_` prefixes, composite index naming, selectivity ordering.
+    `idx_` and `uq_` prefixes, index kinds, column order in composite indexes.
 
     [:octicons-arrow-right-24: Indexes](indexes.md)
 
@@ -58,6 +58,14 @@ General naming conventions for database schemas — tables, columns, indexes, co
     Database enums, lookup tables, CHECK constraints — when to use what.
 
     [:octicons-arrow-right-24: Enums](enums.md)
+
+-   __Warehouse and analytics__
+
+    ---
+
+    dbt layers, medallion layers, fact and dimension tables, keys, SCD type 2.
+
+    [:octicons-arrow-right-24: Warehouse](warehouse.md)
 
 </div>
 

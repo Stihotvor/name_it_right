@@ -118,6 +118,7 @@ nav:
       - Indexes: databases/indexes.md
       - Constraints: databases/constraints.md
       - Enums: databases/enums.md
+      - Warehouse and analytics: databases/warehouse.md
   - Python:
       - General rules: python/index.md
       - Variables: python/variables.md
