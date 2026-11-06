@@ -6,8 +6,8 @@
     - Functions which validate or check something and return boolean should start with `is_`, `has_`: `has_tax_applied()`, `is_valid()`  
     - Functions not covered by the above rule should have executable names: `compile()`, `collect()`, `process()`, `fetch()`  
     - If the function has `and` in the name, there is a high chance it does multiple things. Split it.  
-    - Name CRUD functions after the resource and action: `create_order()`, `fetch_customer_orders()`, `update_shipping_address()`, `delete_expired_carts()`  
-    - Name query functions by what they return: `get_pending_payments()`, `find_user_by_email()`, `search_products()`, `list_active_discounts()`
+    - Name CRUD functions after the resource and action: `create_order()`, `list_customer_orders()`, `update_shipping_address()`, `delete_expired_carts()`  
+    - Name query functions by what they return: `list_pending_payments()`, `find_user_by_email()`, `search_products()`, `list_active_discounts()`
     - Name action functions by the side effect: `apply_discount_to()`, `refund_payment()`, `cancel_subscription()`, `dispatch_order()`
     - Use domain vocabulary consistently — if you say `fetch` throughout, never mix in `retrieve` or `get` for the same operation
 
@@ -32,7 +32,7 @@
 !!! tip "Useful tips"  
 
     - Good function arguments can help to shorten the function name: `add_car_to_catalog(name: str)` → `add_car_to(catalog: Catalog)`  
-    - Pick one verb per operation and never mix. If the codebase uses `fetch_`, use `fetch_` everywhere — no `retrieve_` or `get_`.  
+    - Pick one verb per operation and never mix. If the codebase uses `fetch_` for remote reads, use `fetch_` for all remote reads — no `retrieve_`.  
     - Use the module name to shorten function names:  
     ```py
     # Before
@@ -61,19 +61,21 @@
 
 ## Verb families
 
-Choose one verb per operation and keep it in the whole code base. The tables group the verbs by the job they do. For the word order inside a name, see [Action and context](../patterns/action-context.md). For the full verb list, see the [Glossary](#glossary) below and the [master glossary](../common/references-and-glossary.md).
+Choose one verb per operation and keep it in the whole code base. The tables group the verbs by the job they do. For the word order inside a name, see [Action and context](../patterns/action-context.md). For more verbs, see the [Glossary](#glossary) below and the [master glossary](../common/references-and-glossary.md).
 
 ### Query
 
 | Verb | Use it when | Examples |
 |---|---|---|
-| `get` | You read known data cheaply, and the data exists. | `get_order`, `get_user_email`, `get_order_total` |
-| `find` | You search, and no result is a normal answer. | `find_user_by_email`, `find_product_by_sku`, `find_open_cart` |
+| `get` | You read data from memory or by a cheap lookup. It raises an error if the item is missing, unlike `dict.get`. | `get_order`, `get_user_email`, `get_order_total` (a stored value) |
+| `find` | You return one item by key or criteria, or `None`. No result is a normal answer. | `find_user_by_email`, `find_product_by_sku`, `find_open_cart` |
 | `list` | You return a collection, often filtered or paged. | `list_open_orders`, `list_active_discounts`, `list_user_addresses` |
-| `fetch` | You read from a remote or slow source. | `fetch_exchange_rates`, `fetch_carrier_tracking`, `fetch_customer_profile` |
-| `load` | You read stored data into memory. | `load_cart`, `load_pricing_rules`, `load_tax_table` |
-| `search` | You look for matches in text or a large set. | `search_products`, `search_orders_by_note` |
+| `fetch` | You read over a network or from a slow API. | `fetch_exchange_rates`, `fetch_carrier_tracking`, `fetch_customer_profile` |
+| `load` | You read stored data from a file or a database into memory. | `load_cart`, `load_pricing_rules`, `load_tax_table` |
+| `search` | You return many matches, possibly ranked, as a list. | `search_products`, `search_orders_by_note` |
 | `count` | You return the number of matches. | `count_open_orders`, `count_unread_notices` |
+
+One rule decides between the read verbs: `get` for memory or a cheap lookup, `load` for local storage, `fetch` for a network or a slow API. Do not use `get_` and `fetch_` for the same operation.
 
 ### Command
 
@@ -81,6 +83,7 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 |---|---|---|
 | `create` | You make a new record. | `create_order`, `create_refund`, `create_shipment` |
 | `update` | You change a record. | `update_shipping_address`, `update_cart_item`, `update_payment_method` |
+| `save` | You persist a record, new or changed. It pairs with `load`. | `save_order`, `save_cart`, `save_user` |
 | `delete` | You remove a record. | `delete_expired_carts`, `delete_draft_order`, `delete_saved_card` |
 | `cancel` | You stop a planned or running operation. | `cancel_order`, `cancel_subscription`, `cancel_shipment` |
 | `send` | You cause a message to go out. | `send_receipt_email`, `send_shipping_notice`, `send_payment_reminder` |
@@ -95,7 +98,9 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 | `has_` | You check ownership. | `has_discount`, `has_saved_card`, `has_open_order` |
 | `can_` | You check ability or permission. | `can_cancel_order`, `can_refund_payment`, `can_ship_express` |
 | `should_` | You check a decision. | `should_retry_payment`, `should_send_receipt` |
-| `must_` | You check a requirement. | `must_verify_address`, `must_accept_terms` |
+| `must_` | You check a requirement. | `must_validate_address`, `must_accept_terms` |
+
+For all boolean prefixes, including `was_`, `will_` and `allows_`, see [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md).
 
 ### Conversion
 
@@ -112,19 +117,19 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 
 | Verb | Use it when | Examples |
 |---|---|---|
-| `open` / `close` | You hold a resource. | `open_session`, `close_session`, `open_connection` |
-| `start` / `stop` | You run a process. | `start_worker`, `stop_worker`, `start_checkout` |
+| `open` / `close` | You acquire and release a resource, as a pair. | `open_session`, `close_session`, `open_connection` |
+| `start` / `stop` | You run a process. | `start_worker`, `stop_worker`, `start_scheduler` |
 | `pause` / `resume` | A process continues later. | `pause_subscription`, `resume_subscription` |
-| `initialize` | You set up state once. | `initialize_cart`, `initialize_gateway` |
+| `initialize` | You set up state before first use. `setup` overlaps, so keep one of the two. | `initialize_cart`, `initialize_gateway` |
 | `reset` | You return to the initial state. | `reset_cart`, `reset_retry_count` |
-| `dispose` | You release what an object owns. | `dispose_connection_pool`, `dispose_temp_files` |
+| `dispose` | You free what an object owns, with no matching `open`. Where there is an `open`, use `close`. | `dispose_connection_pool`, `dispose_temp_files` |
 
 ### Event handler
 
 | Pattern | Use it when | Examples |
 |---|---|---|
-| `on_<owner>_<event>` | A function reacts to an event. | `on_order_created`, `on_payment_failed`, `on_cart_expired` |
-| `handle_<event>` | One function routes an event. | `handle_payment_webhook`, `handle_refund_event` |
+| `on_<owner>_<event>` | The callback for one named event. | `on_order_created`, `on_payment_failed`, `on_cart_expired` |
+| `handle_<source>` | An entry point receives a raw message, such as a webhook or a queue message, and calls the `on_` functions. | `handle_payment_webhook`, `handle_refund_message` |
 | `emit_<event>` | You publish an event. | `emit_order_created`, `emit_payment_captured` |
 | `subscribe_to_<topic>` | You register for events. | `subscribe_to_orders`, `subscribe_to_refunds` |
 
@@ -132,32 +137,32 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 
 | Verb | Use it when | Examples |
 |---|---|---|
-| `validate` | You check input and report problems. | `validate_order`, `validate_address`, `validate_coupon` |
-| `verify` | You check proof of a claim. | `verify_signature`, `verify_email_token`, `verify_webhook_secret` |
-| `ensure` | You raise unless a condition holds. | `ensure_cart_not_empty`, `ensure_stock_available` |
-| `check` | You test a condition and return a result. | `check_stock_level`, `check_fraud_score` |
+| `validate` | You read the input and return or raise a list of problems. It never changes state. | `validate_order`, `validate_address`, `validate_coupon` |
+| `verify` | You confirm that a claim is genuine and raise if it is not. A boolean form is `is_signature_valid`. | `verify_signature`, `verify_email_token`, `verify_webhook_secret` |
+| `ensure` | You raise on the first failure of a condition that must hold. It does not repair anything. | `ensure_cart_has_items`, `ensure_stock_available` |
+| `check` | You run a test and return a report or an outcome, not a bare boolean. | `check_fraud_risk`, `check_address_deliverability` |
 | `sanitize` | You remove unsafe content. | `sanitize_order_note`, `sanitize_search_query` |
 
 ### Calculation
 
 | Verb | Use it when | Examples |
 |---|---|---|
-| `calculate` | You compute a value from inputs. | `calculate_order_total`, `calculate_cart_tax`, `calculate_shipping_cost` |
+| `calculate` | You compute a value from inputs. Prefer `calculate_` to `compute_`. | `calculate_order_total`, `calculate_cart_tax`, `calculate_shipping_cost` |
 | `estimate` | The result is approximate. | `estimate_delivery_date`, `estimate_shipping_weight` |
-| `sum` | You add numbers. | `sum_line_item_cents`, `sum_refunds` |
+| `sum` | You add numbers. It is a narrow case of `calculate`. | `sum_line_item_cents`, `sum_refunds` |
 | `round` | You change precision. | `round_to_cents`, `round_price_up` |
-| `convert` | You change a unit or currency. | `convert_currency`, `convert_grams_to_ounces` |
+| `convert` | You change a currency with a rate. For other units, use the `_to_` form: `grams_to_ounces`. | `convert_currency`, `convert_price_to_eur` |
 
 ## Name by return type
 
 | Returns | Pattern | Examples |
 |---|---|---|
-| `bool` | `is_`, `has_`, `can_`, `should_` | `is_cart_empty`, `has_discount` |
+| `bool` | `is_`, `has_`, `can_`, `should_`, `must_` | `is_cart_empty`, `has_discount` |
 | One item that must exist | `get_<item>` | `get_order`, `get_customer` |
 | One item or `None` | `find_<item>` | `find_coupon`, `find_user_by_email` |
-| A list | `list_<items>` | `list_open_orders`, `list_refunds` |
+| A list | `list_<items>`, `search_<items>` | `list_open_orders`, `search_products` |
 | A number | `count_<items>`, `calculate_<value>` | `count_open_orders`, `calculate_order_total` |
-| A new object | `create_<thing>`, `build_<thing>` | `create_order`, `build_invoice` |
+| A new object | `create_<thing>` (stored), `build_<thing>` (in memory only) | `create_order`, `build_invoice` |
 | Nothing | a verb for the side effect | `cancel_order`, `send_receipt_email` |
 | An iterator | `iter_<items>` | `iter_order_rows`, `iter_pending_refunds` |
 | A converted value | `<source>_to_<target>`, `parse_`, `format_` | `order_to_invoice`, `parse_price` |
@@ -168,16 +173,16 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 |---|---|---|
 | `order_cancel()` | `cancel_order()` | Verb first reads as a command. |
 | `check_stock(sku)` returning a boolean | `is_in_stock(sku)` | A boolean function uses `is_`, `has_`, `can_` or `should_`. |
-| `do_checkout()` | `complete_checkout()` | `do` adds no meaning. |
+| `do_checkout()` (if it completes the checkout) | `complete_checkout()` | `do` adds no meaning. |
 | `get_and_save_user()` | `get_user()` and `save_user()` | `and` often hides two jobs. |
 | `get_coupon()` that may return `None` | `find_coupon()` | `find` says that no result is a normal answer. |
 | `get_all_orders()` that returns a list | `list_orders()` | `list` states the return shape. |
-| `fetch_total()` that adds numbers | `calculate_order_total()` | `fetch` suggests a remote read. |
+| `fetch_total()` that adds numbers locally | `calculate_order_total()` | `fetch` suggests a remote read. |
 | `validate_order()` that saves | `validate_order()` and `save_order()` | A check must not change state. |
-| `handle_data(order)` | `apply_coupon(order)` | Name the action, not the act of dealing with it. |
-| `process()` | `capture_payment()` | `process` hides the action. |
-| `convert(order)` | `order_to_invoice(order)` | Name both the source and the target. |
-| `email(order)` | `send_order_email(order)` | `email` could be a noun or a verb. |
+| `handle_data(order)` (if it applies a coupon) | `apply_coupon(order)` | Bare `handle_` names no action. |
+| `process()` (if it captures a payment) | `capture_payment()` | `process` hides the action. |
+| bare `convert(order)` (if it builds an invoice) | `order_to_invoice(order)` | Name both the source and the target. |
+| `email(order)` (if it sends an email) | `send_order_email(order)` | `email` could be a noun or a verb. |
 
 !!! info "See also"
 
@@ -412,7 +417,7 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 *[enqueue]: Add an item to the end of a queue
 *[enumerate]: Iterate over items with their index
 *[extrapolate]: Estimate values beyond the known range
-*[fetch]: Retrieve data from a remote or persistent source
+*[fetch]: Retrieve data over a network or from a slow source
 *[finalize]: Perform the last required steps to complete a process
 *[generate]: Produce data or objects, often lazily or programmatically
 *[handle]: Respond to an event, signal, or incoming data
@@ -448,7 +453,7 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 *[validate]: Check that data meets required constraints or rules
 *[build]: Construct a complex object step by step, often with configuration
 *[cancel]: Abort a planned or running operation before completion
-*[check]: Test a condition and return a boolean result
+*[check]: Run a test and return a report or an outcome
 *[clean]: Remove temporary, invalid, or unwanted data
 *[close]: Release an open resource or connection
 *[configure]: Set up an object or system with given parameters
@@ -494,13 +499,13 @@ Choose one verb per operation and keep it in the whole code base. The tables gro
 *[unlock]: Remove an access restriction from a resource
 *[update]: Modify an existing entity with new values
 *[write]: Write data to storage, a stream, or an output
-*[calculate]: Compute a value from inputs by following fixed rules
-*[dispose]: Release the resources that an object owns
+*[calculate]: Compute a value from inputs by following fixed rules (preferred over compute)
+*[dispose]: Free what an object owns, when there is no matching open
 *[emit]: Publish an event or signal to its listeners
-*[ensure]: Raise an error unless a condition holds
+*[ensure]: Raise on the first failure of a condition that must hold
 *[estimate]: Produce an approximate value
-*[initialize]: Set up state once, before first use
+*[initialize]: Set up state before first use
 *[reset]: Return an object to its initial state
-*[send]: Cause a message or request to go to a destination
+*[send]: Cause a message to go out to a recipient or destination
 *[sum]: Add numbers into one total
-*[verify]: Check proof of a claim, such as a signature or a token
+*[verify]: Confirm that a claim, such as a signature or a token, is genuine, or raise if it is not
