@@ -205,3 +205,107 @@ A test name is a short sentence about one behaviour. The pattern is `test_<unit>
     - [Classes](classes.md) for production class names
     - [Bad → better cookbook](../patterns/cookbook.md) for more rewrites
     - [pytest: conventions for Python test discovery](https://docs.pytest.org/en/stable/explanation/goodpractices.html#conventions-for-python-test-discovery) for the rules about `test_` names
+
+## Advanced test topics
+
+The tables below extend the sections above. The examples use an e-commerce checkout.
+
+### Parametrized ids
+
+An id is the label of one case in the test report. Write the id as a short phrase about the case.
+
+| Kind | Pattern | Examples |
+|---|---|---|
+| Valid case | `valid_<case>` | `valid_standard_email`, `valid_plus_alias`, `valid_long_domain` |
+| Invalid case | `invalid_<reason>` | `invalid_missing_domain`, `invalid_empty_string`, `invalid_double_at` |
+| Edge case | `edge_<case>` | `edge_zero_quantity`, `edge_max_quantity`, `edge_single_cent` |
+| Business case | `<role>_<situation>` | `guest_with_coupon`, `member_free_shipping`, `vip_double_points` |
+| Generated ids | `ids=` with a function when the data is large | `ids=lambda case: case.name` |
+
+```py
+@pytest.mark.parametrize("quantity,expected_cents", [
+    pytest.param(0, 0, id="edge_zero_quantity"),
+    pytest.param(1, 1999, id="valid_single_item"),
+    pytest.param(10, 18990, id="valid_bulk_discount"),
+])
+def test_calculate_line_total_applies_bulk_discount(quantity: int, expected_cents: int) -> None:
+    ...
+```
+
+### Mocks, spies and fakes
+
+| Kind | Rule | Examples |
+|---|---|---|
+| Mock | `mock_` and the replaced object. | `mock_payment_gateway`, `mock_email_service` |
+| Spy | `spy_` and the wrapped object. The real code still runs. | `spy_logger`, `spy_cache` |
+| Fake | `fake_` and the replaced object. It is a working light version. | `fake_clock`, `fake_inventory`, `fake_payment_gateway` |
+| Stub | `stub_` and the replaced object. It returns fixed answers. | `stub_tax_rates`, `stub_carrier_quotes` |
+| Patch target | Patch where the name is used, not where it is defined. | `patch("checkout.service.send_email")` |
+| Mock call | `assert_called_once_with(...)` states the contract. | `mock_email_service.send.assert_called_once_with(user.email)` |
+
+Use `autospec=True` or `create_autospec` so the mock keeps the real signature. Then `mock_payment_gateway.charge` fails if the real class has no `charge`.
+
+### Exception tests
+
+| Pattern | Examples |
+|---|---|
+| `test_<unit>_raises_<error>_when_<cause>` | `test_apply_coupon_raises_expired_error_when_code_is_old` |
+| `test_<unit>_rejects_<input>` | `test_create_order_rejects_empty_cart` |
+| `test_<unit>_fails_when_<cause>` | `test_checkout_fails_when_card_is_declined` |
+| `test_<unit>_does_not_raise_<error>` | `test_refund_does_not_raise_for_zero_amount` |
+
+```py
+def test_apply_coupon_raises_expired_error_when_code_is_old(old_coupon: Coupon) -> None:
+    with pytest.raises(CouponExpiredError, match="expired"):
+        apply_coupon(old_coupon)
+```
+
+### Async tests
+
+| Kind | Rule | Examples |
+|---|---|---|
+| Test function | The same name as a sync test. Add `async def`. | `async def test_capture_payment_returns_receipt` |
+| Async fixture | The same noun or verb as a sync fixture. | `async_client`, `open_connection` |
+| Marker | Use the marker or the mode of your async plugin. | `@pytest.mark.asyncio` with pytest-asyncio |
+| Timing | Name the wait in the test, not in the unit. | `test_poll_order_status_stops_after_timeout` |
+
+An async test needs a plugin, such as pytest-asyncio or anyio. Without a plugin, pytest does not run the coroutine.
+
+### Performance and slow tests
+
+| Kind | Rule | Examples |
+|---|---|---|
+| Benchmark test | `test_<unit>_benchmark` or `test_<unit>_is_fast_for_<size>` | `test_calculate_total_benchmark`, `test_search_products_is_fast_for_10k_items` |
+| Marker | A marker for slow tests. | `@pytest.mark.slow`, `@pytest.mark.integration` |
+| Limits in the name | Put the limit and the unit in the name. | `test_checkout_finishes_within_2_seconds` |
+
+Register custom markers in `pytest.ini` or `pyproject.toml`, so that a typo in a marker name does not pass silently.
+
+### Snapshot tests
+
+| Kind | Rule | Examples |
+|---|---|---|
+| Test name | State what the snapshot captures. | `test_invoice_pdf_matches_snapshot`, `test_order_json_matches_snapshot` |
+| Snapshot name | Use the test name, or a short name with the snapshot plugin. | `invoice_with_discount`, `order_with_two_items` |
+| Update rule | Review each snapshot change as a code change. | `--snapshot-update` with syrupy |
+
+A snapshot name should describe the scenario. The plugin may add the file name for you.
+
+## Advanced bad → better
+
+| Bad | Better | Why |
+|---|---|---|
+| `id="case1"` | `id="invalid_missing_domain"` | The report shows the reason. |
+| `mock` | `mock_payment_gateway` | A bare `mock` hides the replaced object. |
+| `patch("payment.gateway.charge")` in a test of checkout | `patch("checkout.service.charge")` | Patch the name where the code under test uses it. |
+| `test_exception` | `test_apply_coupon_raises_expired_error_when_code_is_old` | The name shows the error and the cause. |
+| `test_async` | `async def test_capture_payment_returns_receipt` | The test states the behaviour. The word `async` is in the keyword. |
+| `test_speed` | `test_checkout_finishes_within_2_seconds` | The limit is in the name. |
+| `test_snapshot_1` | `test_order_json_matches_snapshot` | A counter says nothing. |
+| `slow_test_checkout` | `test_checkout_end_to_end` with `@pytest.mark.slow` | Use a marker, not a prefix. pytest finds tests by `test_`. |
+
+!!! info "See also"
+
+    - [pytest: parametrize](https://docs.pytest.org/en/stable/how-to/parametrize.html) for ids
+    - [unittest.mock: where to patch](https://docs.python.org/3/library/unittest.mock.html#where-to-patch) for patch targets
+    - [pytest: custom markers](https://docs.pytest.org/en/stable/how-to/mark.html) for markers
