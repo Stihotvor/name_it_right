@@ -123,6 +123,7 @@ nav:
       - Overview: languages/index.md
       - JavaScript and TypeScript: languages/javascript-typescript.md
       - Java and Kotlin: languages/java-kotlin.md
+      - C# and .NET: languages/csharp-dotnet.md
       - Python:
           - General rules: python/index.md
           - Variables: python/variables.md
