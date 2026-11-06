@@ -94,8 +94,3 @@ Every page of the guide, grouped by section. Open a section to see its pages.
 | [Logistics](../examples/logistics.md) | `examples/logistics.md` |
 | [SaaS](../examples/saas.md) | `examples/saas.md` |
 | [Machine learning](../examples/ml.md) | `examples/ml.md` |
-
-## Site map
-
-| Page | Path |
-|---|---|
