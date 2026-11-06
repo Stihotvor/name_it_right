@@ -80,6 +80,7 @@ For `is_`, `has_` and other word choices that do not depend on the language, see
 |---|---|
 | Python | [General rules](../python/index.md), [Variables](../python/variables.md), [Functions](../python/functions.md), [Classes](../python/classes.md), [Class methods](../python/class_methods.md), [Tests](../python/tests.md), [Modules](../python/modules.md), [Constants](../python/constants.md), [Exceptions](../python/exceptions.md), [Enums](../python/enums.md), [Special functions](../python/special_functions.md) |
 | JavaScript / TypeScript | [JavaScript and TypeScript](javascript-typescript.md) |
+| Java / Kotlin | [Java and Kotlin](java-kotlin.md) |
 
 !!! info "See also"
 
