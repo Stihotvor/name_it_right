@@ -50,7 +50,7 @@ The page uses Stripe words for the examples. Stripe is a de facto reference. The
 | Fee | A cost of the provider for a charge. | `fees` | |
 | Transfer | A move of money between two accounts of the provider. | `transfers` | Not a payout. |
 | Mandate | The permission to debit a bank account again. | `mandates` | SEPA, ACH. |
-| Invoice payment | A payment for an invoice. | `invoice_payments` | Used with subscriptions. |
+| Invoice payment | A payment for an invoice. | `invoice_payments` | See [SaaS](saas.md). |
 | Webhook event | A message from the provider about a change. | `webhook_events` | Store the id to remove duplicates. |
 | Idempotency key | A unique key for a create call. | column `idempotency_key` | Not a table in most designs. |
 
