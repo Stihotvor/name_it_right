@@ -174,6 +174,12 @@ POST /v1/endpoints/{endpoint_id}:predict           get predictions
 ModelVersionRegistered   ModelAliasSet   DeploymentActivated   DriftDetected   DeploymentRolledBack
 ```
 
+## Related patterns
+
+- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for units and split names
+- [Observability](../systems/observability.md) for metric names such as `val_accuracy`
+- [Python variables](../python/variables.md) for `snake_case` names of parameters and metrics
+
 !!! info "See also"
 
     - [Examples overview](index.md), [Python variables](../python/variables.md), [Tables](../databases/tables.md) and [Observability](../systems/observability.md)

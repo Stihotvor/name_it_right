@@ -188,6 +188,12 @@ def has_entitlement(account: Account, feature_key: str) -> bool:
     return entitlement is not None and (entitlement.limit_value is None or entitlement.limit_value > 0)
 ```
 
+## Related patterns
+
+- [Negation and optionality](../patterns/negation-and-optionality.md) for `cancel_at_period_end` and optional dates
+- [Feature flags](../systems/feature-flags.md) for the difference between a flag and an entitlement
+- [Configuration](../systems/configuration.md) for plan limits and settings
+
 !!! info "See also"
 
     - [Examples overview](index.md), [Payments](payments.md), [Tables](../databases/tables.md) and [Feature flags](../systems/feature-flags.md)

@@ -45,3 +45,10 @@ Python is a dynamically typed language — you can assign different types to the
 | Enums | class `CamelCase`, members `UPPER_SNAKE_CASE` | [Enum naming conventions](enums.md) |
 | Generators, async, decorators | `snake_case` | [Special function naming](special_functions.md) |
 | Tests | `test_` prefix | [Test functions, fixtures, mocks](tests.md) |
+
+!!! info "See also"
+
+    - [Languages overview](../languages/index.md) to compare Python with five other languages
+    - [Naming patterns](../patterns/index.md) and [Common rules](../common/index.md) for rules that do not depend on a language
+    - [Databases](../databases/index.md) and [Systems](../systems/index.md) for the names that code shares with a schema or an API
+    - [Examples](../examples/index.md) for Python snippets in seven domains

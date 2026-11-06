@@ -201,6 +201,12 @@ def capture_payment_intent(intent: PaymentIntent, capture_amount_cents: int | No
     return intent.with_capture(captured_amount_cents)
 ```
 
+## Related patterns
+
+- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for amounts, currency codes and timestamps
+- [Symmetry](../patterns/symmetry.md) for `authorize` and `capture`, `refund` and `dispute`
+- [Errors](../systems/errors.md) for `failure_code` and error names
+
 !!! info "See also"
 
     - [Examples overview](index.md), [E-commerce](ecommerce.md), [Fintech](fintech.md) and [REST](../systems/rest.md)

@@ -53,4 +53,22 @@ Naming conventions that apply across **every** language — Python, SQL, JavaScr
 
     [:octicons-arrow-right-24: Structure](structure.md)
 
+-   __References and glossary__
+
+    ---
+
+    Sources, verbs, nouns, suffixes, and states to choose names from.
+
+    [:octicons-arrow-right-24: References and glossary](references-and-glossary.md)
+
 </div>
+
+## Where to go next
+
+| You want | Go to |
+|---|---|
+| Rules that hold in every language | [Naming patterns](../patterns/index.md) |
+| Case styles and names by kind | [Languages](../languages/index.md) |
+| Names of tables, columns and indexes | [Databases](../databases/index.md) |
+| Names in APIs, events and configuration | [Systems](../systems/index.md) |
+| Full vocabularies of a business domain | [Examples](../examples/index.md) |

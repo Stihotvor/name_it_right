@@ -20,6 +20,14 @@ Find the right name for every code entity — variable, function, class, table, 
 
     [:octicons-arrow-right-24: Common](common/index.md)
 
+-   __Naming patterns__
+
+    ---
+
+    Rules that hold in every language: action and context, booleans, units, symmetry, optional results.
+
+    [:octicons-arrow-right-24: Naming patterns](patterns/index.md)
+
 -   __Databases__
 
     ---
@@ -39,6 +47,38 @@ Find the right name for every code entity — variable, function, class, table, 
     **Types:** [Modules](python/modules.md) · [Constants](python/constants.md) · [Exceptions](python/exceptions.md) · [Enums](python/enums.md) · [Special functions](python/special_functions.md)
 
     [**:octicons-arrow-right-24: General rules**](python/index.md)
+
+-   __Languages__
+
+    ---
+
+    Case styles and names by kind in JavaScript and TypeScript, Java and Kotlin, C# and .NET, Go, and Rust.
+
+    [:octicons-arrow-right-24: Languages](languages/index.md)
+
+-   __Systems__
+
+    ---
+
+    REST, GraphQL, events, errors, configuration, feature flags, observability, and command-line tools.
+
+    [:octicons-arrow-right-24: Systems](systems/index.md)
+
+-   __Examples__
+
+    ---
+
+    Entities, states, actions, and traps in e-commerce, payments, fintech, healthcare, logistics, SaaS, and machine learning.
+
+    [:octicons-arrow-right-24: Examples](examples/index.md)
+
+-   __Site map__
+
+    ---
+
+    Every page of the guide in one list.
+
+    [:octicons-arrow-right-24: Site map](interlinks/README.md)
 
 </div>
 
