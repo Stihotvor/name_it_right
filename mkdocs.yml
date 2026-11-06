@@ -147,3 +147,4 @@ nav:
       - Configuration: systems/configuration.md
       - Feature flags: systems/feature-flags.md
       - Observability: systems/observability.md
+      - Command line: systems/cli.md
