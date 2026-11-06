@@ -34,6 +34,7 @@ status: new
 | Environment variables, secrets and Kubernetes | [Configuration](configuration.md) |
 | Feature flags | [Feature flags](feature-flags.md) |
 | Metrics, logs and traces | [Observability](observability.md) |
+| Command-line tools | [Command line](cli.md) |
 
 ## Where the names meet
 
