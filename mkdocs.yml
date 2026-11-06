@@ -145,3 +145,5 @@ nav:
       - Events: systems/events.md
       - Errors: systems/errors.md
       - Configuration: systems/configuration.md
+      - Feature flags: systems/feature-flags.md
+      - Observability: systems/observability.md
