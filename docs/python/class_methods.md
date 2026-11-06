@@ -13,22 +13,23 @@ A method that changes the object and a method that returns a changed copy need d
 | `cart.add_item(item)` | `cart.with_item(item)` | `add` changes the cart. `with_` returns a changed copy. |
 | `order.apply_coupon(code)` | `order.with_coupon(code)` | The `with_` form is safe for frozen objects. |
 | `cart.sort_items()` | `cart.sorted_items()` | The Python pair: `sort` changes, `sorted` returns. |
-| `cart.reverse_items()` | `cart.reversed_items()` | The Python pair: `reverse` changes, `reversed` returns. |
-| `address.normalize()` | `address.normalized()` | The past participle marks a result with no change. |
-| `cart.set_note(text)` | `cart.with_note(text)` | `pathlib` uses `with_name` and `with_suffix` for the same idea. |
+| `cart.reverse_items()` | `cart.reversed_items()` | `reverse` changes the list in place. `reversed()` returns an iterator, so `reversed_items()` should return a new list. |
+| `address.normalize()` | `address.normalized()` | The past participle marks a new, normalized copy. The original stays unchanged. |
+| `cart.attach_note(text)` | `cart.with_note(text)` | `pathlib` uses `with_name` and `with_suffix` for the same idea. |
 
 !!! tip "Rule of thumb"
 
-    - A verb in the imperative changes the object: `sort`, `add`, `clear`.
+    - A method that changes the object uses an imperative verb: `sort`, `add`, `clear`. The reverse is not true: `calculate_tax` is a verb and does not change the object.
     - A past participle or a `with_` prefix returns a new object: `sorted`, `normalized`, `with_item`.
-    - A mutating method returns `None`. Do not return `self` unless the class is a builder.
+    - A mutating method usually returns `None`. Do not return `self` unless the class is a builder.
 
 ### Conversions
 
 | Pattern | Use it when | Examples |
 |---|---|---|
 | `to_<target>` | The object converts itself. | `order.to_dict()`, `money.to_decimal()`, `address.to_label()` |
-| `as_<view>` | The method is a cheap view, not a copy. | `order.as_summary()`, `cart.as_read_only()` |
+| `as_<view>` | The method is a thin wrapper over the same data. This is a project convention, not a Python rule. | `cart.as_read_only()`, `order.as_line_items()` |
+| `to_summary` | The method builds a new summary object. | `order.to_summary()` |
 | `from_<source>` | A class method builds an object from another shape. | `Order.from_cart(cart)`, `Money.from_cents(1999, "EUR")`, `Address.from_dict(data)` |
 | `parse` | A class method reads text. | `CouponCode.parse("SAVE10")`, `Money.parse("19.99 EUR")` |
 | `<source>_to_<target>` | A function converts between two other types. | `cart_to_order`, `order_to_invoice` |
@@ -42,7 +43,7 @@ A method that changes the object and a method that returns a changed copy need d
 | `can_<action>()` | The method checks ability. | `order.can_cancel()`, `payment.can_refund()` |
 | `should_<action>()` | The method checks a decision. | `payment.should_retry()`, `order.should_ship()` |
 
-A predicate returns a `bool` and does not change the object. See [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md).
+A predicate returns a `bool` and does not change the object. A cheap predicate without arguments may be a property (`order.is_paid`). Use a method (`order.can_cancel()`) when the check takes arguments or does work. Pick one form per code base, because a forgotten `()` on a method makes `if order.is_paid:` always true. See [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md).
 
 ### Properties and methods
 
@@ -55,16 +56,16 @@ A predicate returns a `bool` and does not change the object. See [Booleans, coll
 
 ### Dunder methods
 
-Python reserves the names with double underscores. Use the standard ones. Do not invent your own `__name__` methods.
+Python reserves the names with double underscores at both ends. Use the standard ones. Do not invent names of the form `__something__`, such as `__calc__`.
 
-| Method | Purpose | Example class |
+| Method | Purpose | Example |
 |---|---|---|
 | `__init__` | Set up a new instance. | `Order`, `Cart` |
 | `__post_init__` | Check or derive fields after a dataclass `__init__`. | `Money` |
 | `__repr__` | Show a developer-friendly text. | `Order(id=7, status="paid")` |
 | `__str__` | Show a human-friendly text. | `Address` as a label |
 | `__eq__` | Compare for equality. | `Money` |
-| `__hash__` | Make the object usable in sets and as a dict key. | `Money`, `CustomerId` |
+| `__hash__` | Make the object hashable for sets and dict keys. Define it with `__eq__`, on an immutable class. | `Money`, `Address` |
 | `__len__` | Return the number of items. | `Cart` |
 | `__iter__` | Loop over the items. | `Cart`, `Order` |
 | `__contains__` | Support `in`. | `Cart` with `sku in cart` |
@@ -78,11 +79,11 @@ See also [Special functions](special_functions.md).
 | Kind | Naming rule | Examples |
 |---|---|---|
 | `@classmethod` constructor | `from_<source>`, `parse`, or a noun for a named instance. | `Order.from_cart`, `Money.zero`, `Address.parse` |
-| `@classmethod` factory with a rule | A verb and the thing created. | `Coupon.create_percent_off(10)`, `Order.create_draft()` |
+| `@classmethod` named instance | A noun for the instance. Use `create_` only if the method stores the object. | `Coupon.percent_off(10)`, `Order.draft()` |
 | `@staticmethod` helper | Name it by what it checks or computes. No `self`, no `cls`. | `Sku.is_valid_format(text)`, `Money.round_to_cents(value)` |
 | Module function | Use it when the code needs no class. | `order_to_invoice(order)` |
 
-If a static method never touches the class, a module-level function is often simpler.
+If a static method has no real tie to the concept of the class, make it a module-level function.
 
 ## Bad → better
 
@@ -92,7 +93,7 @@ If a static method never touches the class, a module-level function is often sim
 | `cart.sort()` that returns a copy | `cart.sorted_items()` | `sort` suggests a change in place. |
 | `order.paid()` | `order.is_paid()` | The prefix shows a boolean. |
 | `order.total()` that reads a stored field | `order.total_cents` (property) | A cheap value fits a property. |
-| `customer.get_name()` | `customer.full_name` (property) | Python style prefers attributes and properties to getters. |
+| `customer.get_name()` | `customer.name` (property) | Python style prefers attributes and properties to getters. |
 | `order.convert()` | `order.to_invoice()` | Name the target. |
 | `Order.make(cart)` | `Order.from_cart(cart)` | `from_` is the common name for an alternative constructor. |
 | `Money.parse_static()` | `Money.parse()` | Do not put the decorator in the name. |
