@@ -148,3 +148,6 @@ nav:
       - Feature flags: systems/feature-flags.md
       - Observability: systems/observability.md
       - Command line: systems/cli.md
+  - Examples:
+      - Overview: examples/index.md
+      - E-commerce: examples/ecommerce.md
