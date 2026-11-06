@@ -28,6 +28,8 @@ status: new
 | Interface | Page |
 |---|---|
 | HTTP APIs (REST) | [REST](rest.md) |
+| GraphQL APIs | [GraphQL](graphql.md) |
+| Events, commands and topics | [Events](events.md) |
 
 ## Where the names meet
 

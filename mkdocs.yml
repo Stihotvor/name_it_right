@@ -141,3 +141,5 @@ nav:
   - Systems:
       - Overview: systems/index.md
       - REST: systems/rest.md
+      - GraphQL: systems/graphql.md
+      - Events: systems/events.md
