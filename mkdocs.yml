@@ -125,6 +125,7 @@ nav:
       - Java and Kotlin: languages/java-kotlin.md
       - C# and .NET: languages/csharp-dotnet.md
       - Go: languages/go.md
+      - Rust: languages/rust.md
       - Python:
           - General rules: python/index.md
           - Variables: python/variables.md
