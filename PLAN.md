@@ -11,8 +11,9 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 
 ## Status on 2026-11-06
 - Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- All 32 steps are `Pending`.
-- Step A01 has uncommitted work in `~/PycharmProjects/name_it_right` on branch `docs/01-references-and-glossary`: `docs/common/references-and-glossary.md` (381 lines) and one `mkdocs.yml` nav line. Copy both into this repo, then review against the A01 criteria.
+- A01 is `Done` (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)). The other 31 steps are `Pending`.
+- A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
+- The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
 
 ## Rules for every page
@@ -44,7 +45,7 @@ Branch numbers follow the opencode plan. Fix the numbering conflicts below befor
 
 | Phase | Step | Branch | Scope |
 |---|---|---|---|
-| A Foundations | A01 | `docs/01-references-and-glossary` | Sources (30+) and master glossary |
+| A Foundations | A01 (Done) | `docs/01-references-and-glossary` | Sources (30+) and master glossary |
 | | A02 | `docs/03-patterns-index-action-context` | Patterns overview, action-and-context page |
 | B Patterns | B01 | `docs/04-patterns-booleans-collections-units-time` | Booleans, collections, units, money, time |
 | | B02 | `docs/05-patterns-symmetry-negation` | Symmetry pairs, negation, optionality |
