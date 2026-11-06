@@ -12,7 +12,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 
 ## Status on 2026-11-06
 - Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)), B01 (2026-11-06, [PR #8](https://github.com/Stihotvor/name_it_right/pull/8)), B02 (2026-11-06, [PR #9](https://github.com/Stihotvor/name_it_right/pull/9)), B03 (2026-11-06, [PR #10](https://github.com/Stihotvor/name_it_right/pull/10)), C01 (2026-11-06, [PR #11](https://github.com/Stihotvor/name_it_right/pull/11)), C02 (2026-11-06, [PR #12](https://github.com/Stihotvor/name_it_right/pull/12)), C03 (2026-11-06, [PR #13](https://github.com/Stihotvor/name_it_right/pull/13)), C04 (2026-11-06, [PR #14](https://github.com/Stihotvor/name_it_right/pull/14)), C05a (2026-11-06, [PR #15](https://github.com/Stihotvor/name_it_right/pull/15)), C05b (2026-11-06, [PR #16](https://github.com/Stihotvor/name_it_right/pull/16)). The other 20 steps are `Pending`.
+- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)), B01 (2026-11-06, [PR #8](https://github.com/Stihotvor/name_it_right/pull/8)), B02 (2026-11-06, [PR #9](https://github.com/Stihotvor/name_it_right/pull/9)), B03 (2026-11-06, [PR #10](https://github.com/Stihotvor/name_it_right/pull/10)), C01 (2026-11-06, [PR #11](https://github.com/Stihotvor/name_it_right/pull/11)), C02 (2026-11-06, [PR #12](https://github.com/Stihotvor/name_it_right/pull/12)), C03 (2026-11-06, [PR #13](https://github.com/Stihotvor/name_it_right/pull/13)), C04 (2026-11-06, [PR #14](https://github.com/Stihotvor/name_it_right/pull/14)), C05a (2026-11-06, [PR #15](https://github.com/Stihotvor/name_it_right/pull/15)), C05b (2026-11-06, [PR #16](https://github.com/Stihotvor/name_it_right/pull/16)), D01 (2026-11-06, [PR #17](https://github.com/Stihotvor/name_it_right/pull/17)). The other 19 steps are `Pending`.
 - A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
 - The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
@@ -55,7 +55,7 @@ Branch numbers follow the opencode plan. Fix the numbering conflicts below befor
 | | B03 (Done) | `docs/06-patterns-cookbook` | 60+ bad -> better rows in 10+ categories |
 | C Python | C01-C04 (Done) | `docs/08` to `docs/11-python-*` | Variables, functions, classes, class methods |
 | | C05a (Done), C05b (Done) | `docs/12a-...`, `docs/12b-...` | Test naming patterns, advanced test topics |
-| D Databases | D01-D04 | `docs/13` to `docs/16-db-*` | Columns, tables, indexes and constraints, warehouse |
+| D Databases | D01 (Done), D02-D04 | `docs/13` to `docs/16-db-*` | Columns, tables, indexes and constraints, warehouse |
 | E Languages | E01 | `docs/17-languages-index` | Languages overview, move Python nav, check links |
 | | E02-E06 | `docs/18` to `docs/22` | JS/TS, Java/Kotlin, C#/.NET, Go, Rust |
 | F Systems | F01-F05 | `docs/23` to `docs/27` | REST, GraphQL and events, errors and config, flags and observability, CLI |
