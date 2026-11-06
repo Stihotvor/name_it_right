@@ -34,6 +34,8 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 |---|---|---|
 | [Action and context](action-context.md) | You choose the word order of a function or field. | `get_user_messages`, `cancel_order`, `shipping_address_city` |
 | [Booleans, collections, units and time](booleans-collections-units-time.md) | You name a flag, a group, a number with a unit or a moment. | `is_paid`, `orders_by_id`, `timeout_seconds`, `created_at_utc` |
+| [Symmetry](symmetry.md) | You name two sides of one idea. | `min_price`, `max_price`, `open_session`, `close_session` |
+| [Negation and optionality](negation-and-optionality.md) | You name an opposite state or a value that may be missing. | `is_enabled`, `get_coupon_or_none`, `expires_at` |
 
 ## Pages planned
 
@@ -41,8 +43,6 @@ These pages are not published yet. The same running example, an e-commerce check
 
 | Planned page | Topic | Example names |
 |---|---|---|
-| Symmetry | Pairs that match | `min_price`, `max_price` |
-| Negation and optionality | Avoid double negatives | `is_enabled` instead of `is_not_disabled` |
 | Bad → better cookbook | 60+ rewrites | `data` → `order_summary` |
 
 ## Pattern at a glance
