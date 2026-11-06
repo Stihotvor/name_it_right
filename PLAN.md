@@ -36,9 +36,11 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 2. `git-agent` syncs `main` (`git switch main`, `git pull --ff-only`).
 3. Create branch `docs/NN-slug`. Implement only that step. Extra work becomes a new step.
 4. Verify. Commit as `docs(NN): <short title>`.
-5. `git-agent` pushes and opens the PR. The user reviews and merges (squash). The agent never self-merges.
-6. After the user confirms the merge, mark the step `Done` here with date and PR URL.
-7. Ask the user to compact the chat. Repeat.
+5. `git-agent` pushes and opens the PR. A review subagent checks the diff. Fix findings on the same branch. Then `git-agent` squash merges.
+   - Default rule: the user reviews and merges, and the agent never self-merges.
+   - Exception from 2026-11-06: the user authorized the agent to push, review with a subagent, merge and continue while the user is away. The exception ends when the user says so.
+6. After the merge, mark the step `Done` here with date and PR URL (in the next step's branch).
+7. Ask the user to compact the chat when the user is present. Repeat.
 
 ## Backlog
 Branch numbers follow the opencode plan. Fix the numbering conflicts below before step B01.
