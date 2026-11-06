@@ -151,3 +151,6 @@ nav:
   - Examples:
       - Overview: examples/index.md
       - E-commerce: examples/ecommerce.md
+      - Payments: examples/payments.md
+      - Fintech and banking: examples/fintech.md
+      - Healthcare: examples/healthcare.md

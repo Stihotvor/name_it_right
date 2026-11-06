@@ -38,6 +38,9 @@ status: new
 | Domain | Page |
 |---|---|
 | E-commerce | [E-commerce](ecommerce.md) |
+| Payments | [Payments](payments.md) |
+| Fintech and banking | [Fintech and banking](fintech.md) |
+| Healthcare | [Healthcare](healthcare.md) |
 
 !!! info "See also"
 
