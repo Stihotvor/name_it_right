@@ -71,7 +71,7 @@ For `is_`, `has_` and other word choices that do not depend on the language, see
 | Java | [Google Java style guide](https://google.github.io/styleguide/javaguide.html) and [Oracle naming conventions](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html) |
 | Kotlin | [Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html#naming-rules) |
 | C# | [.NET naming guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines) and [C# coding conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names) |
-| Go | [Effective Go](https://go.dev/doc/effective_go#names) and [Go code review comments](https://go.dev/wiki/CodeReviewComments) |
+| Go | [Effective Go](https://go.dev/doc/effective_go#names), [Go code review comments](https://go.dev/wiki/CodeReviewComments) and the Go blog on [package names](https://go.dev/blog/package-names) |
 | Rust | [Rust API guidelines: naming](https://rust-lang.github.io/api-guidelines/naming.html) and [RFC 430](https://rust-lang.github.io/rfcs/0430-finalizing-naming-conventions.html) |
 
 ## Pages
