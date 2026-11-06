@@ -12,7 +12,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 
 ## Status on 2026-11-06
 - Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- A01 is `Done` (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)). The other 30 steps are `Pending`.
+- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)). The other 29 steps are `Pending`.
 - A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
 - The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
@@ -40,7 +40,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 5. `git-agent` pushes and opens the PR. A review subagent checks the diff. Fix findings on the same branch. Then `git-agent` squash merges.
    - Default rule: the user reviews and merges, and the agent never self-merges.
    - Exception from 2026-11-06: the user authorized the agent to push, review with a subagent, merge and continue while the user is away. The exception ends when the user says so.
-6. After the merge, mark the step `Done` here with date and PR URL (in the next step's branch).
+6. Mark the step `Done` here with date and PR URL, in the step's own PR before the merge. The PR number is known after step 5 opens it.
 7. Ask the user to compact the chat when the user is present. Repeat.
 
 ## Backlog
@@ -49,7 +49,7 @@ Branch numbers follow the opencode plan. Fix the numbering conflicts below befor
 | Phase | Step | Branch | Scope |
 |---|---|---|---|
 | A Foundations | A01 (Done) | `docs/01-references-and-glossary` | Sources (30+) and master glossary |
-| | A02 | `docs/03-patterns-index-action-context` | Patterns overview, action-and-context page |
+| | A02 (Done) | `docs/03-patterns-index-action-context` | Patterns overview, action-and-context page |
 | B Patterns | B01 | `docs/04-patterns-booleans-collections-units-time` | Booleans, collections, units, money, time |
 | | B02 | `docs/05-patterns-symmetry-negation` | Symmetry pairs, negation, optionality |
 | | B03 | `docs/06-patterns-cookbook` | 60+ bad -> better rows in 10+ categories |
