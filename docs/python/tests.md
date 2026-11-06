@@ -6,7 +6,7 @@ Pytest is the de-facto standard for Python tests. These conventions apply to tes
 
 !!! success "General patterns"
 
-    - Use `test_<unit>_<condition>` pattern: `test_calculate_total_returns_zero_for_empty_cart()`
+    - Use the `test_<unit>_<condition>_<expected>` pattern: `test_calculate_total_for_empty_cart_returns_zero()`
     - Every test name should describe one specific behavior or outcome
     - Name tests so a failing name tells you what broke without reading the body
 
@@ -33,7 +33,7 @@ Pytest is the de-facto standard for Python tests. These conventions apply to tes
 !!! success "General patterns"
 
     - Use descriptive `id` values with `pytest.param` so failures pin-point the exact case
-    - Name the test `test_<unit>_<condition>` and let the param id carry the variation
+    - Name the test `test_<unit>_<condition>_<expected>` and let the param id carry the variation
 
     ```py
     @pytest.mark.parametrize("email,expected", [
@@ -77,7 +77,7 @@ Pytest is the de-facto standard for Python tests. These conventions apply to tes
     - Keep the mock name in the test function signature aligned with the patched target
 
     ```py
-    def test_send_email_calls_external_service(
+    def test_send_welcome_email_sends_to_user_address(
         mock_email_service: MagicMock,
         sample_user: User,
     ) -> None:
@@ -143,13 +143,13 @@ A test name is a short sentence about one behaviour. The pattern is `test_<unit>
 
 | Situation | Pattern | Examples |
 |---|---|---|
-| Normal result | `test_<unit>_returns_<value>` | `test_calculate_total_returns_sum_of_line_items`, `test_find_user_returns_none_for_unknown_email` |
+| Normal result | `test_<unit>_returns_<value>` | `test_calculate_total_returns_sum_of_line_items`, `test_find_user_for_unknown_email_returns_none` |
 | Edge case | `test_<unit>_<condition>_<expected>` | `test_calculate_total_for_empty_cart_returns_zero`, `test_apply_coupon_with_expired_code_raises_error` |
 | Side effect | `test_<unit>_<effect>` | `test_cancel_order_refunds_payment`, `test_checkout_sends_receipt_email` |
 | State change | `test_<unit>_sets_<state>` | `test_pay_order_sets_status_to_paid`, `test_cancel_order_sets_cancelled_at` |
 | Rule | `test_<rule>_<outcome>` | `test_free_shipping_applies_above_threshold`, `test_discount_never_exceeds_order_total` |
 | Failure | `test_<unit>_fails_when_<cause>` | `test_checkout_fails_when_card_is_declined`, `test_refund_fails_when_already_refunded` |
-| Permission | `test_<actor>_can_<action>` | `test_customer_can_cancel_unshipped_order`, `test_guest_cannot_view_other_orders` |
+| Permission | `test_<actor>_can_<action>` or `test_<actor>_cannot_<action>` | `test_customer_can_cancel_unshipped_order`, `test_guest_cannot_view_other_orders` |
 
 ### Behaviour, not implementation
 
@@ -166,21 +166,21 @@ A test name is a short sentence about one behaviour. The pattern is `test_<unit>
 | Kind | Rule | Examples |
 |---|---|---|
 | Test file | `test_<module>.py`, mirrors the module under test. | `test_order_checkout.py`, `test_coupon_rules.py` |
-| Test class | `Test<Unit>` or `Test<Feature>`. No `__init__`. | `TestOrderCheckout`, `TestCouponRules`, `TestCartMerge` |
-| Nested scenario | One class per scenario when the setup is shared. | `TestCheckoutWithDeclinedCard`, `TestCheckoutAsGuest` |
-| Test method | Same as a test function. The class carries the unit. | `TestCart.test_add_item_increases_item_count` |
+| Test class | `Test<Unit>` or `Test<Feature>`. No `__init__`, because pytest does not collect a class that has one. | `TestOrderCheckout`, `TestCouponRules`, `TestCartMerge` |
+| Scenario class | One class per scenario when the setup is shared. | `TestCheckoutWithDeclinedCard`, `TestCheckoutAsGuest` |
+| Test method | Same as a test function. The class names the feature. The method names the rule under test. | `TestCart.test_add_item_increases_item_count` |
 
 ## Fixtures and factories
 
 | Kind | Rule | Examples |
 |---|---|---|
 | Plain fixture | A noun for the object it returns. | `order`, `cart`, `customer` |
-| Fixture in a state | An adjective and a noun. | `paid_order`, `empty_cart`, `guest_customer` |
-| Factory fixture | A verb for the function it returns. | `make_order`, `build_cart`, `create_customer` |
-| Library factory | A class named for the model, in a `factories` module. | `OrderFactory`, `CustomerFactory` |
-| Mock fixture | `mock_` and the replaced object. | `mock_payment_gateway`, `mock_email_service` |
+| Fixture in a state | A state word and a noun. | `paid_order`, `empty_cart`, `guest_customer` |
+| Factory fixture | A verb for the function it returns. Use `create_` if the factory stores the object, `build_` if it stays in memory, and `make_` if neither applies. | `make_order`, `build_cart`, `create_customer` |
+| Test data factory | A class named for the model, in a `factories` module. This is the accepted use of the `Factory` suffix for test data, for example with factory_boy. See [Classes](classes.md). | `OrderFactory`, `CustomerFactory` |
+| Mock fixture | `mock_` and the replaced object. Use `spy_` for a spy. | `mock_payment_gateway`, `mock_email_service`, `spy_logger` |
 | Session resource | A noun for the shared resource. | `database`, `http_client`, `redis_connection` |
-| Autouse fixture | A verb that states the setup. | `freeze_time`, `reset_cache`, `disable_network` |
+| Autouse fixture | A verb that states the effect. It runs for every test without being requested (`autouse=True`). | `freeze_clock`, `reset_cache`, `disable_network` |
 
 ## Bad → better
 
@@ -194,9 +194,10 @@ A test name is a short sentence about one behaviour. The pattern is `test_<unit>
 | `test_calculate_total_and_tax` | `test_calculate_total_adds_line_items` and `test_calculate_tax_uses_region_rate` | `and` hides two behaviours. |
 | `test_cart_1`, `test_cart_2` | `test_cart_merge_keeps_both_items` | Use the rule instead of a counter. |
 | `user_fixture` | `user` | The decorator already marks the fixture. |
-| `fixture_order` | `paid_order` | Name the state, not the mechanism. |
+| `fixture_order` | `order` | The decorator already marks the fixture. |
+| `order` (a paid order) | `paid_order` | Name the state. |
 | `get_order` (a factory fixture) | `make_order` | `get` suggests a read. |
-| `class OrderTests` | `class TestOrderCheckout` | `Test` prefix is needed for discovery. |
+| `class OrderTests` | `class TestOrderCheckout` | The `Test` prefix is needed by pytest's default discovery. |
 
 !!! info "See also"
 
