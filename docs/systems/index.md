@@ -32,6 +32,8 @@ status: new
 | Events, commands and topics | [Events](events.md) |
 | Error codes and exceptions | [Errors](errors.md) |
 | Environment variables, secrets and Kubernetes | [Configuration](configuration.md) |
+| Feature flags | [Feature flags](feature-flags.md) |
+| Metrics, logs and traces | [Observability](observability.md) |
 
 ## Where the names meet
 
