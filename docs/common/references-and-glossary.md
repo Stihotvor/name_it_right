@@ -242,53 +242,53 @@ A reference of entity nouns for naming classes, tables, variables, and data stru
 A reference of common suffixes with their meanings and usage examples.
 
 #### _at
-**Meaning**: Timestamp or specific point in time  
-**Example**: `created_at`, `updated_at`, `expires_at`  
+**Meaning**: Timestamp or specific point in time<br>
+**Example**: `created_at`, `updated_at`, `expires_at`<br>
 **Avoid**: `when` or `time` suffixes which are redundant
 
 #### _by
-**Meaning**: The entity that performed an action  
-**Example**: `created_by`, `modified_by`, `processed_by`  
+**Meaning**: The entity that performed an action<br>
+**Example**: `created_by`, `modified_by`, `processed_by`<br>
 **Avoid**: `author` or `user` when the meaning is about who performed the action
 
 #### _count
-**Meaning**: The number of items in a collection  
-**Example**: `item_count`, `error_count`, `retry_count`  
+**Meaning**: The number of items in a collection<br>
+**Example**: `item_count`, `error_count`, `retry_count`<br>
 **Avoid**: Using `number` or `total` when referring to a count
 
 #### _date
-**Meaning**: A calendar date without time component  
-**Example**: `birth_date`, `order_date`, `expiry_date`  
+**Meaning**: A calendar date without time component<br>
+**Example**: `birth_date`, `order_date`, `expiry_date`<br>
 **Avoid**: `day` which is ambiguous (could mean day of month or calendar day)
 
 #### _id
-**Meaning**: Identifier for a specific entity  
-**Example**: `user_id`, `order_id`, `session_id`  
+**Meaning**: Identifier for a specific entity<br>
+**Example**: `user_id`, `order_id`, `session_id`<br>
 **Avoid**: Bare `id` when there might be ambiguity about what is being identified
 
 #### _index
-**Meaning**: Position in an ordered sequence  
-**Example**: `page_index`, `record_index`, `current_index`  
+**Meaning**: Position in an ordered sequence<br>
+**Example**: `page_index`, `record_index`, `current_index`<br>
 **Avoid**: `position` which is longer and less precise
 
 #### _list
-**Meaning**: A collection or array of items  
-**Example**: `product_list`, `error_list`, `pending_tasks`  
+**Meaning**: A collection or array of items<br>
+**Example**: `product_list`, `error_list`, `pending_tasks`<br>
 **Avoid**: `array` which is implementation-specific
 
 #### _map
-**Meaning**: A key-value data structure  
-**Example**: `user_map`, `settings_map`, `cache_map`  
+**Meaning**: A key-value data structure<br>
+**Example**: `user_map`, `settings_map`, `cache_map`<br>
 **Avoid**: `dictionary` or `hash` which are language-specific terms
 
 #### _total
-**Meaning**: The sum of all values in a collection  
-**Example**: `order_total`, `price_total`, `amount_total`  
+**Meaning**: The sum of all values in a collection<br>
+**Example**: `order_total`, `price_total`, `amount_total`<br>
 **Avoid**: Using bare `total` without specifying what is being totaled
 
 #### _url
-**Meaning**: A uniform resource locator  
-**Example**: `api_url`, `base_url`, `endpoint_url`  
+**Meaning**: A uniform resource locator<br>
+**Example**: `api_url`, `base_url`, `endpoint_url`<br>
 **Avoid**: `link` or `address` which are less specific
 
 ### States
