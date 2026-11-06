@@ -36,14 +36,9 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 | [Booleans, collections, units and time](booleans-collections-units-time.md) | You name a flag, a group, a number with a unit or a moment. | `is_paid`, `orders_by_id`, `timeout_seconds`, `created_at_utc` |
 | [Symmetry](symmetry.md) | You name two sides of one idea. | `price_min`, `price_max`, `open_session`, `close_session` |
 | [Negation and optionality](negation-and-optionality.md) | You name an opposite state or a value that may be missing. | `is_enabled`, `find_coupon`, `expires_at` |
+| [Bad → better cookbook](cookbook.md) | You review a name and want the fast answer. | `data` → `order_summary`, `timeout` → `timeout_seconds` |
 
-## Pages planned
-
-These pages are not published yet. Most pages use an e-commerce checkout as the running example. Events and commands get their own pages in the systems section.
-
-| Planned page | Topic | Example names |
-|---|---|---|
-| Bad → better cookbook | 60+ rewrites | `data` → `order_summary` |
+Most pages use an e-commerce checkout as the running example. Events and commands get their own pages in the systems section.
 
 ## Pattern at a glance
 

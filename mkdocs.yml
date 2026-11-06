@@ -110,6 +110,7 @@ nav:
       - Booleans, collections, units and time: patterns/booleans-collections-units-time.md
       - Symmetry: patterns/symmetry.md
       - Negation and optionality: patterns/negation-and-optionality.md
+      - Bad → better cookbook: patterns/cookbook.md
   - Databases:
       - Overview: databases/index.md
       - Tables: databases/tables.md
