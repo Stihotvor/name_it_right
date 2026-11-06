@@ -104,6 +104,9 @@ nav:
       - Meaning and clarity: common/meaning.md
       - Consistency: common/consistency.md
       - Structure: common/structure.md
+  - Naming patterns:
+      - Overview: patterns/index.md
+      - Action and context: patterns/action-context.md
   - Databases:
       - Overview: databases/index.md
       - Tables: databases/tables.md
