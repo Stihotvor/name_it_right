@@ -154,3 +154,6 @@ nav:
       - Payments: examples/payments.md
       - Fintech and banking: examples/fintech.md
       - Healthcare: examples/healthcare.md
+      - Logistics: examples/logistics.md
+      - SaaS: examples/saas.md
+      - Machine learning: examples/ml.md

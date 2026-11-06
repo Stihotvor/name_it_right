@@ -41,6 +41,9 @@ status: new
 | Payments | [Payments](payments.md) |
 | Fintech and banking | [Fintech and banking](fintech.md) |
 | Healthcare | [Healthcare](healthcare.md) |
+| Logistics | [Logistics](logistics.md) |
+| SaaS | [SaaS](saas.md) |
+| Machine learning | [Machine learning](ml.md) |
 
 !!! info "See also"
 
