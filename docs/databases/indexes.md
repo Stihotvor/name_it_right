@@ -18,7 +18,7 @@
 CREATE INDEX idx_orders_customer_id ON orders(customer_id);
 CREATE UNIQUE INDEX uq_customers_email ON customers(email);
 CREATE INDEX idx_order_items_order_id_product_id ON order_items(order_id, product_id);
-CREATE INDEX idx_orders_created_at ON orders(created_at DESC);
+CREATE INDEX idx_orders_customer_id_created_at_desc ON orders(customer_id, created_at DESC);
 ```
 
 ## Index kinds
@@ -28,13 +28,13 @@ The examples use an e-commerce checkout. Add a suffix for the index method only 
 | Kind | Pattern | Example | Why this name |
 |---|---|---|---|
 | Single column | `idx_<table>_<column>` | `idx_orders_customer_id` | The table and the column, in this order. |
-| Foreign key support | `idx_<table>_<fk_column>` | `idx_order_items_order_id` | Same pattern. A foreign key needs an index on the child side for fast joins and deletes. |
+| Foreign key support | `idx_<table>_<fk_column>` | `idx_order_items_order_id` | Same pattern. A foreign key needs an index on the child side for fast joins and deletes. PostgreSQL does not make it for you. MySQL InnoDB makes one and names it after the constraint. |
 | Composite | `idx_<table>_<col1>_<col2>` | `idx_orders_customer_id_created_at` | Column order in the name equals column order in the index. |
-| Descending | `idx_<table>_<column>_desc` | `idx_orders_created_at_desc` | Add `_desc` only when the direction matters for a sort. |
+| Descending | `idx_<table>_<columns>_desc` | `idx_orders_customer_id_created_at_desc` | Add `_desc` only for a mixed sort, such as `customer_id ASC, created_at DESC`. A single-column B-tree index can be read backward. |
 | Unique | `uq_<table>_<columns>` | `uq_customers_email` | `uq_` marks a rule, not only speed. |
 | Unique composite | `uq_<table>_<col1>_<col2>` | `uq_order_items_order_id_product_id` | One product only once per order. |
 | Partial | `idx_<table>_<columns>_<condition>` | `idx_orders_created_at_open` | The condition word says which rows are in the index. |
-| Partial unique | `uq_<table>_<columns>_<condition>` | `uq_customers_email_active` | Unique only for rows where `deleted_at IS NULL`. |
+| Partial unique | `uq_<table>_<columns>_<condition>` | `uq_customers_email_not_deleted` | Unique only for rows where `deleted_at IS NULL`. |
 | Covering | `idx_<table>_<columns>_incl_<columns>` | `idx_orders_customer_id_incl_total_cents` | `incl` is short for `INCLUDE`. This is a convention of this guide. |
 | Expression | `idx_<table>_<function>_<column>` | `idx_customers_lower_email` | The function is part of what you search for. |
 | Unique expression | `uq_<table>_<function>_<column>` | `uq_customers_lower_email` | A case-insensitive unique email. |
@@ -74,7 +74,7 @@ For example, the query `WHERE customer_id = ? AND created_at > ?` needs `idx_ord
 | MySQL | Unique per table. | 64 characters. |
 | SQL Server | Unique per table. | 128 characters. |
 
-The table name in the index name keeps names unique in PostgreSQL and clear in every database. If a name is too long, shorten the column words in the same way everywhere, for example `cust_id`. Never cut the name at random. PostgreSQL then cuts it, and two long names can end up equal.
+The table name in the index name keeps names unique in PostgreSQL and clear in every database. If a name is too long, shorten the column words in the same way everywhere, for example `cust_id`. Keep names under 63 bytes. PostgreSQL cuts a longer name, two cut names can become equal, and then the second `CREATE` fails.
 
 PostgreSQL makes a name when you give none: `<table>_<column>_idx`. This is a valid but weak choice, because it lacks a prefix that tells unique from non-unique.
 
@@ -84,7 +84,7 @@ PostgreSQL makes a name when you give none: `<table>_<column>_idx`. This is a va
 |---|---|---|
 | `idx_1` | `idx_orders_customer_id` | A number says nothing. |
 | `ix_email` | `idx_customers_email` | The name lacks the table. |
-| `email_idx` | `idx_customers_email` | The suffix form hides the table in some tools. Use one prefix form. |
+| `email_idx` | `idx_customers_email` | The name lacks the table. Use the prefix form. |
 | `idx_orders_created_at_customer_id` for `WHERE customer_id = ? ORDER BY created_at` | `idx_orders_customer_id_created_at` | The equality column goes first. |
 | `idx_customers_email` (case-insensitive search by `lower(email)`) | `idx_customers_lower_email` | The name must match what the index stores. |
 | `idx_orders_status` on a column with 3 values | a partial index such as `idx_orders_created_at_open` | A low-selectivity index on its own rarely helps. |

@@ -2,13 +2,13 @@
 
     - Primary key: `pk_<table>` — `pk_customers`, `pk_order_items`
     - Foreign key: `fk_<table>_<referenced_table>` — `fk_orders_customers`, `fk_order_items_orders`
-    - Check constraint: `chk_<table>_<description>` — `chk_orders_total_positive`, `chk_customers_age_range`
-    - Default constraint name for unique columns handled by the `uq_` index naming
+    - Check constraint: `chk_<table>_<description>` — `chk_orders_total_amount_cents_non_negative`, `chk_customers_age_range`
+    - Unique constraint: `uq_<table>_<columns>`, the same as for unique indexes — `uq_customers_email`
 
 !!! tip "Useful tips"
 
     - Explicitly name constraints rather than relying on auto-generated names — error messages become readable: `"violates fk_orders_customers"` tells you exactly which key failed
-    - For composite foreign keys, list both columns: `fk_order_items_order_product`
+    - For composite foreign keys, use the same pattern. The definition lists the columns: `fk_order_items_product_variants`
 
 !!! danger "General anti-patterns"
 
@@ -18,12 +18,12 @@
 ```sql
 ALTER TABLE orders ADD CONSTRAINT pk_orders PRIMARY KEY (id);
 ALTER TABLE orders ADD CONSTRAINT fk_orders_customers FOREIGN KEY (customer_id) REFERENCES customers(id);
-ALTER TABLE orders ADD CONSTRAINT chk_orders_total_positive CHECK (total_cents >= 0);
+ALTER TABLE orders ADD CONSTRAINT chk_orders_total_amount_cents_non_negative CHECK (total_amount_cents >= 0);
 ```
 
 ## Constraint kinds
 
-The examples use an e-commerce checkout. All names have the form `<prefix>_<table>_<description>`.
+The examples use an e-commerce checkout. All names have the form `<prefix>_<table>_<description>`, except `pk_<table>`.
 
 | Kind | Pattern | Example | Why this name |
 |---|---|---|---|
@@ -40,7 +40,7 @@ The examples use an e-commerce checkout. All names have the form `<prefix>_<tabl
 | Check, positive | `chk_<table>_<column>_positive` | `chk_order_items_quantity_positive` | A common rule has a fixed word. |
 | Check, order of dates | `chk_<table>_<later>_after_<earlier>` | `chk_shipments_delivered_after_shipped` | The words state the order. |
 | Check, pair | `chk_<table>_<a>_after_<b>` | `chk_coupons_ends_after_starts` | Matches the `starts_at` and `ends_at` pair. |
-| Check, allowed values | `chk_<table>_<column>_allowed` | `chk_payments_method_allowed` | Use a lookup table or an enum when the list changes often. |
+| Check, allowed values | `chk_<table>_<column>_allowed` | `chk_payments_method_allowed` | Use a lookup table when the list changes often. A PostgreSQL enum cannot drop a value. |
 | Check, format | `chk_<table>_<column>_format` | `chk_currency_code_format` | For example `code ~ '^[A-Z]{3}$'`. |
 | Exclusion | `ex_<table>_<description>` | `ex_price_rules_no_overlap` | PostgreSQL only. The period of two rows must not overlap. |
 | Default (SQL Server) | `df_<table>_<column>` | `df_orders_status` | Only SQL Server names a default as an object. |
@@ -75,7 +75,7 @@ Names with a counter or a hash change when you create the schema again. A migrat
 | Database | Where the name must be unique |
 |---|---|
 | PostgreSQL | In the table. A key that has an index also needs a free name in the schema, because the index takes the same name. |
-| MySQL | In the database. MySQL ignores a name for a primary key, which is always `PRIMARY`. |
+| MySQL | Foreign key and check names: in the database. Unique names are index names: in the table. A primary key is always `PRIMARY`, whatever name you give. |
 | SQL Server | In the schema. |
 
 Put the table name in every constraint name. Then the same name works in all three databases.
