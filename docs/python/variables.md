@@ -1,5 +1,7 @@
+# Variables
+
 !!! success "General patterns"
-    
+
     - Booleans should start with `is_`, `has_`, `should_`: `has_completed`, `is_ready`, `should_retry`
     - Use plural nouns for collections: `users = []`, `pending_orders_by_id = {}`, `active_sessions = set()`
     - Include metric units in the name: `delay_seconds`, `velocity_meters`, `timeout_ms`, `buffer_size_kb`
@@ -20,7 +22,7 @@
     ```
 
 !!! tip "Useful tips"
-    
+
     - Use `i`, `j`, `k` as loop counters — this is the only acceptable exception to the one-letter rule and only inside tight loop scopes
     - For short-lived scope variables, name the value by its meaning: `parsed_order`, `serialized_payload`
     - In list/dict comprehensions, prefer descriptive names for the iteration variable: `(user for user in users if user.is_active)` not `(x for x in xs if x.is_active)`
@@ -28,7 +30,7 @@
     - Align variable names with the domain language from the spec or product requirements
 
 !!! danger "General anti-patterns"
-    
+
     - Abbreviations: `dstr = 100.12`
     - One-letter variables outside tight loops: `v = 'comis'`
     - Generic names like `data`, `info`, `tmp`, `thing`, `obj` — they convey zero intent

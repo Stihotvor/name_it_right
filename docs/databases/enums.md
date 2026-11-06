@@ -1,3 +1,5 @@
+# Enums
+
 !!! success "General patterns"
 
     - Use database-native `ENUM` or `CREATE TYPE` when the set of values is stable and small

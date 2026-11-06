@@ -1,3 +1,5 @@
+# Indexes
+
 !!! success "General patterns"
 
     - Use `idx_<table>_<columns>` for regular indexes: `idx_customers_email`, `idx_orders_customer_id_created_at`
