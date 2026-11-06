@@ -15,9 +15,9 @@ status: new
 !!! tip "Useful tips"
 
     - Name a balance for the moment it describes: `available_balance_cents`, `ledger_balance_cents`, `pending_balance_cents`
-    - Use `posted_at` for the time an entry becomes final, and `created_at` for the time you wrote the row
+    - Use `posted_at` for the time a journal becomes final, and `created_at` for the time you wrote the row. `booked_at` is a timestamp here and `value_date` is a date. ISO 20022 uses dates for both, so use `booking_date` if you need only the date
     - Use a reference that a person can read: `end_to_end_id`, `statement_reference`
-    - Write a rate as a ratio and name the unit: `interest_rate_percent`, `fx_rate`
+    - Name the unit of a rate: `interest_rate_percent` (4.5 means 4.5%) or `interest_rate_bps`. A plain `_rate` is a 0-to-1 ratio or an exchange rate, such as `fx_rate`
 
 !!! danger "General anti-patterns"
 
@@ -35,9 +35,9 @@ The words come from double-entry bookkeeping, from ISO 20022 and from the vocabu
 |---|---|---|---|
 | Customer | The person or company that owns accounts. | `customers` | |
 | Party | Any person or company in a deal. | `parties` | A customer, a counterparty, a beneficiary. |
-| Account | A record that holds a balance for one owner. | `accounts` | A bank account or a ledger account. |
+| Account | A record that holds a balance for one owner. | `accounts` | On this page `account` means the customer account. The books use `ledger_account`. |
 | Account holder | The link between a party and an account. | `account_holders` | Joint accounts have more than one. |
-| Ledger account | An account of the books of the bank. | `ledger_accounts` | Assets, liabilities, income, expenses. |
+| Ledger account | An account of the books of the bank. | `ledger_accounts` | Assets, liabilities, equity, income, expenses. |
 | Journal | A group of entries that must balance. | `journals` | The sum of debits equals the sum of credits. |
 | Ledger entry | One debit or one credit on one ledger account. | `ledger_entries` | Never changed. |
 | Balance | The amount of an account at a moment. | `balances` | A view or a table. |
@@ -65,14 +65,13 @@ The words come from double-entry bookkeeping, from ISO 20022 and from the vocabu
 |---|---|
 | Account | `pending`, `active`, `frozen`, `dormant`, `closed` |
 | Transfer | `created`, `pending`, `booked`, `settled`, `rejected`, `returned`, `canceled` |
-| Ledger entry | `pending`, `posted`. A posted entry is final |
-| Journal | `open`, `posted`, `reversed` |
+| Journal | `open`, `posted`, `reversed`. A posted journal is final, and so are its entries |
 | Mandate | `pending`, `active`, `suspended`, `revoked`, `expired` |
-| Loan | `applied`, `approved`, `disbursed`, `current`, `delinquent`, `defaulted`, `repaid`, `written_off` |
+| Loan | `applied`, `approved`, `declined`, `canceled`, `disbursed`, `current`, `delinquent`, `defaulted`, `repaid`, `written_off` |
 | KYC check | `not_started`, `pending`, `verified`, `rejected`, `expired` |
 | AML alert | `open`, `under_review`, `escalated`, `closed_false_positive`, `reported` |
 
-The states are community practice. They follow the vocabulary of retail banking. No standard fixes them.
+The states are community practice. They follow the vocabulary of retail banking. No standard fixes them. In this guide a transfer is `booked` when its journal is created. The journal is `posted` before the transfer is `settled`.
 
 ## Actions
 
@@ -80,11 +79,11 @@ The states are community practice. They follow the vocabulary of retail banking.
 |---|---|---|---|
 | Open an account | `open_account` | Creates an account. | `create_account` may skip KYC. |
 | Close an account | `close_account` | Ends an account. | The balance must be zero. |
-| Freeze an account | `freeze_account` | Blocks debits. | Credits may still come in. |
-| Post an entry | `post_ledger_entry` | Makes an entry final. | |
-| Reverse an entry | `reverse_journal` | Adds a new journal that cancels an old one. | Never delete. |
+| Freeze an account | `freeze_account` | Blocks debits. | Credits may still come in, by policy. |
+| Post a journal | `post_journal` | Checks that the journal balances and makes it final. | Post a whole journal, never one entry. |
+| Reverse a journal | `reverse_journal` | Adds a new journal that cancels an old one. | Never delete. The new journal has `reverses_journal_id`. |
 | Initiate a transfer | `initiate_transfer` | Starts a transfer. | |
-| Book a transfer | `book_transfer` | Records the two entries. | |
+| Book a transfer | `book_transfer` | Creates the journal with its entries. | |
 | Settle a transfer | `settle_transfer` | Records the final exchange. | |
 | Return a payment | `return_payment` | The receiver bank sends the money back. | Not a refund. |
 | Accrue interest | `accrue_interest` | Adds the daily interest. | |
@@ -100,11 +99,11 @@ The states are community practice. They follow the vocabulary of retail banking.
 | `balance` | Available, ledger or pending? | `available_balance_cents`, `ledger_balance_cents`. |
 | `transaction` | A ledger entry, a database transaction and a bank event share the word. | `ledger_entry`, `bank_transaction`, `db_transaction`. |
 | `debit` and `credit` as signs | Debit means an increase on an asset account and a decrease on a liability account. | A `side` column with `debit` or `credit`, and a positive amount. |
-| `amount` with a sign | Plus and minus differ by bank. | `amount_cents` positive, and the side in `entry_side`. |
+| `amount` with a sign | Plus and minus differ by bank. | `amount_cents` positive, and the side in `side`. |
 | `date` | Booking date, value date or creation date? | `booked_at`, `value_date`, `created_at`. |
-| `booked` and `posted` and `settled` | Three stages that look alike. | `booked` when the bank records, `posted` when final in the ledger, `settled` when the money moved between banks. |
+| `booked` and `posted` and `settled` | Three stages that look alike. In ISO 20022 camt messages, `BOOK` (booked) already means final and `PDNG` means pending. | This guide's convention: `booked` when the transfer is recorded, `posted` when its journal is final in the ledger, `settled` when the money moved between banks. Say which meaning you use. |
 | `reverse` and `refund` and `return` | A reverse is an accounting move. A refund is a business act. A return is an interbank message. | `reverse_journal`, `refund_charge`, `return_payment`. |
-| `account` | A customer account or a ledger account? | `customer_account`, `ledger_account`. |
+| `account` | A customer account or a ledger account? | On this page `account` is the customer account. Use `ledger_account` for the books. When both exist in one system, write `customer_account` in full. |
 | `iban` as a key | It can change. | A surrogate `id` and a unique `iban`. |
 | `interest` | Rate, accrual or paid amount? | `interest_rate_percent`, `interest_accrued_cents`, `interest_paid_cents`. |
 | `fee` and `charge` | Charge also means a card payment. | `fee` for a bank cost, `charge` for a card payment. |
@@ -122,7 +121,7 @@ CREATE TABLE ledger_accounts (
     currency_code   char(3) NOT NULL,
     CONSTRAINT pk_ledger_accounts PRIMARY KEY (id),
     CONSTRAINT uq_ledger_accounts_code UNIQUE (code),
-    CONSTRAINT chk_ledger_accounts_kind CHECK (kind IN ('asset', 'liability', 'equity', 'income', 'expense'))
+    CONSTRAINT chk_ledger_accounts_kind_allowed CHECK (kind IN ('asset', 'liability', 'equity', 'income', 'expense'))
 );
 
 CREATE TABLE journals (
@@ -131,7 +130,11 @@ CREATE TABLE journals (
     booked_at       timestamptz NOT NULL,
     value_date      date NOT NULL,
     status          text NOT NULL DEFAULT 'open',
+    posted_at       timestamptz,
+    reverses_journal_id bigint,
+    created_at      timestamptz NOT NULL DEFAULT now(),
     CONSTRAINT pk_journals PRIMARY KEY (id),
+    CONSTRAINT fk_journals_reversed_journal FOREIGN KEY (reverses_journal_id) REFERENCES journals (id),
     CONSTRAINT chk_journals_status_allowed CHECK (status IN ('open', 'posted', 'reversed'))
 );
 
@@ -139,18 +142,19 @@ CREATE TABLE ledger_entries (
     id                  bigint GENERATED ALWAYS AS IDENTITY,
     journal_id          bigint NOT NULL,
     ledger_account_id   bigint NOT NULL,
-    entry_side          text NOT NULL,
+    side                text NOT NULL,
     amount_cents        bigint NOT NULL,
     currency_code       char(3) NOT NULL,
-    posted_at           timestamptz,
+    created_at          timestamptz NOT NULL DEFAULT now(),
     CONSTRAINT pk_ledger_entries PRIMARY KEY (id),
     CONSTRAINT fk_ledger_entries_journals FOREIGN KEY (journal_id) REFERENCES journals (id),
     CONSTRAINT fk_ledger_entries_ledger_accounts FOREIGN KEY (ledger_account_id) REFERENCES ledger_accounts (id),
-    CONSTRAINT chk_ledger_entries_entry_side_allowed CHECK (entry_side IN ('debit', 'credit')),
+    CONSTRAINT chk_ledger_entries_side_allowed CHECK (side IN ('debit', 'credit')),
     CONSTRAINT chk_ledger_entries_amount_cents_positive CHECK (amount_cents > 0)
 );
 
-CREATE INDEX idx_ledger_entries_ledger_account_id_posted_at ON ledger_entries (ledger_account_id, posted_at);
+CREATE INDEX idx_journals_reverses_journal_id ON journals (reverses_journal_id);
+CREATE INDEX idx_ledger_entries_ledger_account_id ON ledger_entries (ledger_account_id);
 CREATE INDEX idx_ledger_entries_journal_id ON ledger_entries (journal_id);
 ```
 
@@ -165,13 +169,22 @@ POST /v1/journals/{journal_id}:reverse           reverse a journal
 TransferInitiated   TransferBooked   TransferSettled   JournalReversed   AccountFrozen
 ```
 
+The service also checks that the currency of each entry equals the currency of its ledger account.
+
 ```py
+from collections import defaultdict
+
+
 def post_journal(journal: Journal) -> None:
-    debit_total_cents = sum(e.amount_cents for e in journal.entries if e.entry_side == "debit")
-    credit_total_cents = sum(e.amount_cents for e in journal.entries if e.entry_side == "credit")
-    if debit_total_cents != credit_total_cents:
-        raise UnbalancedJournalError(journal.id, debit_total_cents, credit_total_cents)
-    journal.mark_posted()
+    if len(journal.entries) < 2:
+        raise UnbalancedJournalError(journal.id, {})
+    balance_cents_by_currency: dict[str, int] = defaultdict(int)
+    for entry in journal.entries:
+        sign = 1 if entry.side == "debit" else -1
+        balance_cents_by_currency[entry.currency_code] += sign * entry.amount_cents
+    if any(balance_cents != 0 for balance_cents in balance_cents_by_currency.values()):
+        raise UnbalancedJournalError(journal.id, dict(balance_cents_by_currency))
+    journal.mark_posted(posted_at=utc_now())
 ```
 
 !!! info "See also"
