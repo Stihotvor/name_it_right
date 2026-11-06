@@ -3,6 +3,7 @@
 Merged on 2026-11-06 from the opencode plan `~/.opencode/plan/name-it-right-naming-examples.md` and the repo status check.
 The opencode files stay the detailed source: research tables (sections 2-3), page template (4.1), per-step research anchors (7).
 Also there: `name-it-right-naming-examples-loop.md` (delivery loop) and `name-it-right-qa-checklist.py` (QA script).
+These files are local to the author's machine. A fresh clone cannot reach them (see open question 1).
 
 ## Goal
 Add a large, sourced catalogue of naming examples to the site. The site has strong rules but few worked examples. It has no API or operations guidance and no non-Python languages.
@@ -11,7 +12,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 
 ## Status on 2026-11-06
 - Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- A01 is `Done` (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)). The other 31 steps are `Pending`.
+- A01 is `Done` (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)). The other 30 steps are `Pending`.
 - A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
 - The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
