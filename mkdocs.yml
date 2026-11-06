@@ -138,3 +138,6 @@ nav:
           - Exceptions: python/exceptions.md
           - Enums: python/enums.md
           - Special functions: python/special_functions.md
+  - Systems:
+      - Overview: systems/index.md
+      - REST: systems/rest.md
