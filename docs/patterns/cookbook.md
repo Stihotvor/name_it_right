@@ -4,18 +4,18 @@ status: new
 
 # Bad → better cookbook
 
-A catalogue of common weak names and better replacements, grouped by category. Each row says why the new name is better. Use the page as a checklist during code review.
+A catalogue of common weak names and better replacements, grouped by category. Each row says why the new name is better. Use the page as a checklist during code review. Event names use the dotted form (`order.created`) for brokers and topics. In code, the same event is `order_created` or `on_order_created`.
 
 !!! success "General patterns"
 
     - Name what the thing is or does, not its type: `orders`, not `order_list`.
-    - Put the unit, the zone or the key in the name when the type does not carry it: `timeout_seconds`, `created_at`, `orders_by_id`.
+    - Put the unit, the zone or the key in the name when the type does not carry it: `timeout_seconds`, `created_at_utc`, `orders_by_id`.
     - Use one word for one idea in the whole code base.
     - Prefer a name that a new teammate can guess without reading the code.
 
 !!! tip "Useful tips"
 
-    - A "better" name depends on what the code really does. Where a row says "if", check that the condition is true for your code before you rename.
+    - The better names are examples. A better name depends on what the code really does. Check that the replacement is true for your code before you rename. Where a row says "if", the condition is required.
     - Rename in small steps. Rename first, then change behaviour in a separate commit.
     - The pattern pages give the rule behind each row. This page gives only the fast answer.
 
@@ -34,19 +34,19 @@ See [Abbreviations](../common/abbreviations.md).
 | `calc_ttl_amt()` | `calculate_total_amount()` | Three abbreviations in one name hide the meaning. |
 | `addr_ln1` | `address_line_1` | The full words cost little and stay readable. |
 | `pmt_mthd` | `payment_method` | Vowel-dropping hurts search and speech. |
-| `ord_dt` | `ordered_on` | `dt` could be date or datetime. `_on` marks a date. |
-| `UsrMgr` | `UserManager` | A class name is read often. Spell it out. |
+| `ord_dt` | `ordered_on` (if it holds a date only) or `ordered_at` (if it holds a time) | `dt` could be date or datetime. `_on` marks a date. `_at` marks a timestamp. |
+| `UsrRepo` | `UserRepository` | A class name is read often. Spell it out. |
 
 ## Generic names
 
 | Bad | Better | Why |
 |---|---|---|
-| `data` | `order_summary` | `data` fits any variable. |
+| `data` (if it holds an order summary) | `order_summary` | `data` fits any variable. |
 | `info` | `shipping_details` | Say what the information is about. |
 | `process()` | `capture_payment()` | `process` hides the action. |
-| `handle_item(item)` | `pack_item(item)` | Name the step, not the act of dealing with it. |
-| `tmp` | `unpaid_orders` | A temporary value still has a meaning. |
-| `result` | `refund_receipt` | `result` says nothing about content. |
+| `handle_item(item)` (if it packs the item) | `pack_item(item)` | Name the step, not the act of dealing with it. |
+| `tmp` (if it holds unpaid orders) | `unpaid_orders` | A temporary value still has a meaning. |
+| `result` (if it holds a refund receipt) | `refund_receipt` | `result` says nothing about content. |
 | `OrderManager` (if it schedules orders) | `OrderScheduler` | `Manager` hides the job. Name the class after the job. |
 
 ## Misleading names
@@ -54,7 +54,7 @@ See [Abbreviations](../common/abbreviations.md).
 | Bad | Better | Why |
 |---|---|---|
 | `is_valid()` that also saves the order | `validate_order()` and `save_order()` | A check must not change state. |
-| `get_total()` that changes the cart | `recalculate_total()` | `get` suggests a read with no side effect. |
+| `get_total()` that changes the cart | `recalculate_cart_total()` | `get` suggests a read with no side effect. |
 | `orders_list` that is a dict | `orders_by_id` | The type and the name disagree. |
 | `user_email` that holds a user object | `user` | The name promises a string. |
 | `delete_cart()` that only archives | `archive_cart()` | The name must match what happens. |
@@ -71,7 +71,7 @@ See [Booleans, collections, units and time](booleans-collections-units-time.md) 
 | `disable_logging = False` | `is_logging_enabled = True` | A negative name with `False` is a double negative. |
 | `valid` | `is_valid` | A bare adjective hides the type. |
 | `discount` (as a boolean) | `has_discount` | A noun can be an amount, a code or a flag. |
-| `not_shipped` | `is_shipped` (with the value `False`) | State the fact in the positive form. |
+| `not_shipped` | `is_shipped` | State the fact in the positive form. Invert the value: `not_shipped = True` becomes `is_shipped = False`. |
 | `check_stock` (as a field) | `should_check_stock` | A bare verb reads as an action. |
 
 ## Collections
@@ -92,11 +92,11 @@ See [Booleans, collections, units and time](booleans-collections-units-time.md).
 | Bad | Better | Why |
 |---|---|---|
 | `timeout = 30` | `timeout_seconds = 30` | The reader does not need to open the docs. |
-| `price = 19.99` | `price_cents = 1999` | Integer money avoids rounding errors. |
+| `price = 19.99` | `price_cents = 1999` plus `currency_code` | Integer money avoids rounding errors. `_cents` fits currencies with 100 minor units only. |
 | `created` | `created_at` | `_at` marks a timestamp. |
 | `ttl = 3600` | `ttl_seconds = 3600` | A unit removes the guess. |
-| `size` | `file_size_bytes` | `size` has many meanings. |
-| `discount = 0.2` | `discount_rate = 0.2` | A ratio needs a clear word. |
+| `size` (if it holds a file size) | `file_size_bytes` | `size` has many meanings. |
+| `discount = 0.2` (if it is a ratio) | `discount_rate = 0.2` | A ratio needs a clear word. If it is an amount, use `discount_amount_cents`. |
 
 ## Functions
 
@@ -105,7 +105,7 @@ See [Functions](../python/functions.md) and [Action and context](action-context.
 | Bad | Better | Why |
 |---|---|---|
 | `order_cancel()` | `cancel_order()` | Verb first reads as a command. |
-| `check_stock(sku)` returning a boolean | `is_in_stock(sku)` | A boolean function uses `is_` or `has_`. |
+| `check_stock(sku)` returning a boolean | `is_in_stock(sku)` | A boolean function uses `is_`, `has_`, `can_` or `should_`. |
 | `do_checkout()` | `complete_checkout()` | `do` adds no meaning. |
 | `get_and_save_user()` | `get_user()` and `save_user()` | `and` often hides two jobs. |
 | `email(order)` | `send_order_email(order)` | `email` could be a noun or a verb. |
@@ -117,11 +117,11 @@ See [Classes](../python/classes.md) and [Class methods](../python/class_methods.
 
 | Bad | Better | Why |
 |---|---|---|
-| `UserData` | `UserProfile` | `Data` is filler. |
-| `PaymentHelper` | `PaymentGateway` | `Helper` hides the role. |
-| `OrderUtil` | module `orders` with functions | Utility classes group functions that need no state. |
+| `UserData` (if it holds profile fields) | `UserProfile` | `Data` is filler. |
+| `PaymentHelper` (if it calls an external provider) | `PaymentGateway` | `Helper` hides the role. |
+| `OrderUtil` | module `order_rules` with functions | Stateless functions belong in a module, not in a class. |
 | `AbstractBaseOrderFactoryImpl` | `OrderFactory` | Remove layers of filler words. |
-| `Order2` | `OrderSnapshot` | A number does not say how the class differs. |
+| `Order2` (if it is a frozen copy) | `OrderSnapshot` | A number does not say how the class differs. |
 | `Exception1` | `PaymentDeclinedError` | The class name states the failure. |
 
 ## Databases
@@ -132,7 +132,7 @@ See [Tables](../databases/tables.md), [Columns](../databases/columns.md), [Index
 |---|---|---|
 | `tbl_order` | `orders` | A table prefix repeats what the context shows. |
 | `OrderID` | `order_id` | PostgreSQL folds unquoted names to lower case, so mixed case needs quotes. |
-| `fk_user` | `customer_id` | Name a foreign key column after the key it holds. |
+| `fk_user` | `user_id` | A foreign key column is `<referenced_table_singular>_id`. `fk_` fits constraint names, not columns. |
 | `is_deleted TINYINT` | `deleted_at TIMESTAMP` | A timestamp says when. `NULL` says not deleted. |
 | `idx1` | `idx_orders_customer_id` | The index name shows table and column. |
 | `price FLOAT` | `price_cents BIGINT` | Integer minor units avoid rounding errors. |
@@ -156,8 +156,8 @@ See [Tests](../python/tests.md).
 | `GET /getOrders` | `GET /orders` | The HTTP method is the verb. |
 | `POST /orders/create` | `POST /orders` | Same reason. |
 | `GET /order/{id}` | `GET /orders/{id}` | Resources are plural nouns. |
-| `GET /orders?customerID=7` | `GET /orders?customer_id=7` | Keep one casing in query parameters. |
-| `POST /orders/{id}/cancelOrder` | `POST /orders/{id}:cancel` | A custom method uses a colon and a verb. See [Google AIP-136](https://google.aip.dev/136). |
+| `GET /orders?customerID=7` | `GET /orders?customer_id=7` | Pick one casing and use it everywhere. This guide uses snake_case. |
+| `POST /orders/{id}/cancelOrder` | `POST /orders/{id}:cancel` | Google AIP-136 style: a custom method as `:verb`. If your API does not follow AIP, use `POST /orders/{id}/cancel`. See [Google AIP-136](https://google.aip.dev/136). |
 | `{"error": 5}` | `{"code": "PAYMENT_DECLINED"}` | A stable, readable code helps clients. |
 
 ## Events
@@ -166,29 +166,29 @@ See [Tests](../python/tests.md).
 |---|---|---|
 | `CreateOrder` (as an event) | `order.created` | An event is a fact in the past. |
 | `order_create_event` | `order.created` | The word `event` repeats the context. |
-| `OrderUpdate` | `order.address_changed` | Say what changed. |
-| `payment` (as a topic) | `payment.captured` | A topic names a kind of fact. |
-| `process_refund` (as an event) | `refund.processed` | A command is `process_refund`. The event is `refund.processed`. |
+| `OrderUpdate` (if the address changed) | `order.address_changed` | Say what changed. |
+| `payment` (as a topic) | topic `payments` with event types `payment.captured` and `payment.refunded` | A topic holds a stream. Each event type inside it names one fact. |
+| `issue_refund` (as an event name) | `refund.issued` | A command is `issue_refund`. The event is the fact in the past. |
 
 ## Metrics
 
 | Bad | Better | Why |
 |---|---|---|
 | `requests` | `http_requests_total` | A counter ends with `_total`. See [Prometheus naming practices](https://prometheus.io/docs/practices/naming/). |
-| `latency_ms` | `http_request_duration_seconds` | Prometheus recommends base units. |
+| `latency_ms` (as a metric name) | `http_request_duration_seconds` | Prometheus recommends base units. In code, `_ms` is fine. |
 | `errors` | `checkout_errors_total` | Say what fails. |
-| `memoryUsage` | `process_memory_bytes` | One casing and an explicit unit. |
+| `memoryUsage` | `orderapp_memory_bytes` | One casing, an application prefix and an explicit unit. |
 | label `user_id` on a metric | no `user_id` label | A label with many values makes too many series. |
 
 ## Configuration
 
 | Bad | Better | Why |
 |---|---|---|
-| env `Timeout` | `PAYMENT_TIMEOUT_SECONDS` | Environment variables are upper case, with a scope and a unit. |
+| env `Timeout` | `PAYMENT_TIMEOUT_SECONDS` | By convention, environment variables are upper case, with a scope and a unit. |
 | `DISABLE_EMAIL=false` | `EMAIL_ENABLED=true` | Avoid a double negative. |
 | env `db-url` | `DATABASE_URL` | A shell variable name cannot contain a hyphen. |
 | Kubernetes name `OrderService` | `order-service` | Most Kubernetes object names are lower case with hyphens. See [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/). |
-| flag `new_checkout_flag_2` | `checkout_new_payment_form` | The name states the feature and no longer needs a number. |
+| flag `new_checkout_flag_2` (if it turns on a new payment form) | `is_new_payment_form_enabled` | The name states the feature, reads as a boolean and needs no number. |
 
 ## Sources
 
