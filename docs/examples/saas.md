@@ -188,7 +188,13 @@ def has_entitlement(account: Account, feature_key: str) -> bool:
     return entitlement is not None and (entitlement.limit_value is None or entitlement.limit_value > 0)
 ```
 
+## Related patterns
+
+- [Negation and optionality](../patterns/negation-and-optionality.md) for optional dates such as `trial_ends_at`
+- [Feature flags](../systems/feature-flags.md) for permission flags such as `pro_reports`, which this page replaces with `has_entitlement`
+- [Configuration](../systems/configuration.md) for settings of the application, not for plan limits
+
 !!! info "See also"
 
-    - [Examples overview](index.md), [Payments](payments.md), [Tables](../databases/tables.md) and [Feature flags](../systems/feature-flags.md)
+    - [Examples overview](index.md), [Payments](payments.md) and [Tables](../databases/tables.md)
     - [Stripe Billing](https://docs.stripe.com/billing)

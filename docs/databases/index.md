@@ -80,3 +80,10 @@ General naming conventions for database schemas — tables, columns, indexes, co
 | `order_items` | `id`, `order_id`, `product_id`, `quantity`, `unit_price_cents` | Junction table |
 | `products` | `id`, `sku`, `name`, `price_cents`, `is_available`, `stock_count` | `sku` = natural secondary key |
 | `shipping_addresses` | `id`, `user_id`, `street`, `city`, `country_code`, `is_default` | One user can have many addresses |
+
+!!! info "See also"
+
+    - [Naming patterns](../patterns/index.md) for rules about booleans, units and time
+    - [Languages](../languages/index.md) for the case style in the code that reads these tables
+    - [REST](../systems/rest.md) and [Events](../systems/events.md) for the same names in an API and in messages
+    - [Examples](../examples/index.md) for complete schemas in seven domains

@@ -176,6 +176,11 @@ def mark_observation_entered_in_error(observation: Observation, practitioner_id:
     return observation.with_status("entered_in_error", changed_by=practitioner_id)
 ```
 
+## Related patterns
+
+- [Negation and optionality](../patterns/negation-and-optionality.md) for `NULL` as missing, not yet and not applicable
+- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for units and the two clock times
+
 !!! info "See also"
 
     - [Examples overview](index.md), [Tables](../databases/tables.md), [Columns](../databases/columns.md) and [Abbreviations](../common/abbreviations.md)

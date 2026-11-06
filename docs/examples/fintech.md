@@ -187,7 +187,13 @@ def post_journal(journal: Journal) -> None:
     journal.mark_posted(posted_at=utc_now())
 ```
 
+## Related patterns
+
+- [Symmetry](../patterns/symmetry.md) for `debit` and `credit`, `open` and `close`
+- [Booleans, collections, units and time](../patterns/booleans-collections-units-time.md) for `booked_at`, `value_date` and rate units
+- [Constraints](../databases/constraints.md) for the checks that keep a journal valid
+
 !!! info "See also"
 
-    - [Examples overview](index.md), [Payments](payments.md), [Columns](../databases/columns.md) and [Constraints](../databases/constraints.md)
+    - [Examples overview](index.md), [Payments](payments.md) and [Columns](../databases/columns.md)
     - [ISO 20022 message definitions](https://www.iso20022.org/iso-20022-message-definitions), [ISO 4217 currency codes](https://www.iso.org/iso-4217-currency-codes.html)
