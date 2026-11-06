@@ -45,7 +45,7 @@ Each cell holds the usual convention of the language. A cell with two answers ma
 | Enum member | `SCREAMING_SNAKE_CASE` (Python enum docs; PEP 8 is silent) | `PascalCase` (TypeScript handbook) or `SCREAMING_SNAKE_CASE` (Google guide) | `SCREAMING_SNAKE_CASE` (Java); either style (Kotlin) | `PascalCase` | `PascalCase`, often with the type as a prefix: `ColorRed` | `PascalCase` |
 | Package, module or namespace | short `lowercase` for a package, `lower_case` allowed for a module | `lowercase` or `kebab-case` (npm names are lower case) | `lowercase`, no underscores | `PascalCase`, dotted: `Shop.Orders` | one short `lowercase` word | `snake_case` |
 | Source file | `snake_case.py` | `kebab-case.ts` (Google guide: lower case with `-` or `_`); `camelCase.ts` in other guides | `PascalCase.java` equal to the public class; `PascalCase.kt` | `PascalCase.cs` equal to the main type | `snake_case.go` (community practice) | `snake_case.rs` |
-| Private member | `_leading_underscore` | `#field` (JavaScript); the `private` keyword (TypeScript, and the only choice in the Google guide) | no prefix (Java); `_name` for a backing property (Kotlin) | `_camelCase` for fields (C# coding conventions); the naming guidelines forbid underscores | lower-case first letter | no prefix; the `pub` keyword sets the scope |
+| Private member | `_leading_underscore` | `#field` (JavaScript); the `private` keyword (TypeScript, and the only choice in the Google guide) | no prefix (Java); `_name` for a backing property (Kotlin) | `_camelCase` for fields (C# coding conventions); the naming guidelines target public API and do not use underscores | lower-case first letter | no prefix; the `pub` keyword sets the scope |
 | Type parameter | `T`, or `PascalCase` | `T`, `TKey` | `T`; Google Java also allows `RequestT` | `T`, `TKey` | `T`, `K`, `V` | `T`, short `PascalCase` |
 
 !!! warning "Rows with a real conflict"
@@ -81,6 +81,7 @@ For `is_`, `has_` and other word choices that do not depend on the language, see
 | Python | [General rules](../python/index.md), [Variables](../python/variables.md), [Functions](../python/functions.md), [Classes](../python/classes.md), [Class methods](../python/class_methods.md), [Tests](../python/tests.md), [Modules](../python/modules.md), [Constants](../python/constants.md), [Exceptions](../python/exceptions.md), [Enums](../python/enums.md), [Special functions](../python/special_functions.md) |
 | JavaScript / TypeScript | [JavaScript and TypeScript](javascript-typescript.md) |
 | Java / Kotlin | [Java and Kotlin](java-kotlin.md) |
+| C# | [C# and .NET](csharp-dotnet.md) |
 
 !!! info "See also"
 
