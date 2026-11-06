@@ -117,7 +117,7 @@ In Go, a name that starts a field in an exported struct begins with a capital le
 | Retry delay | `retry_delay_ms` | milliseconds | The short form `ms` is common and clear. |
 | Cache lifetime | `cache_ttl_seconds` | seconds | TTL needs a unit. |
 | File size | `file_size_bytes` | bytes | `size` alone could be KB or MB. |
-| Upload limit | `max_upload_megabytes` | megabytes | `mb` could mean megabytes or megabits. |
+| Upload limit | `upload_max_megabytes` | megabytes | `mb` could mean megabytes or megabits. |
 | Distance | `distance_km` | kilometres | Avoids a mix of miles and km. |
 | Weight | `package_weight_grams` | grams | Shipping systems often use grams or ounces. |
 | Temperature | `temperature_celsius` | °C | Kelvin and Fahrenheit also exist. |

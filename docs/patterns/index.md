@@ -34,15 +34,15 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 |---|---|---|
 | [Action and context](action-context.md) | You choose the word order of a function or field. | `get_user_messages`, `cancel_order`, `shipping_address_city` |
 | [Booleans, collections, units and time](booleans-collections-units-time.md) | You name a flag, a group, a number with a unit or a moment. | `is_paid`, `orders_by_id`, `timeout_seconds`, `created_at_utc` |
+| [Symmetry](symmetry.md) | You name two sides of one idea. | `price_min`, `price_max`, `open_session`, `close_session` |
+| [Negation and optionality](negation-and-optionality.md) | You name an opposite state or a value that may be missing. | `is_enabled`, `find_coupon`, `expires_at` |
 
 ## Pages planned
 
-These pages are not published yet. The same running example, an e-commerce checkout, appears on each page. Events and commands get their own pages in the systems section.
+These pages are not published yet. Most pages use an e-commerce checkout as the running example. Events and commands get their own pages in the systems section.
 
 | Planned page | Topic | Example names |
 |---|---|---|
-| Symmetry | Pairs that match | `min_price`, `max_price` |
-| Negation and optionality | Avoid double negatives | `is_enabled` instead of `is_not_disabled` |
 | Bad → better cookbook | 60+ rewrites | `data` → `order_summary` |
 
 ## Pattern at a glance
@@ -56,6 +56,9 @@ These pages are not published yet. The same running example, an e-commerce check
 | Full words | No guessable abbreviations | `customer_id` | `cust_id` |
 | Boolean statement | `is_`, `has_`, `can_`, `should_` | `has_discount` | `discount_flag` |
 | Units | Unit in the name | `timeout_seconds` | `timeout` |
+| Symmetry | Exact opposite words, one pair per idea | `price_min` and `price_max` | `price_min` and `highest_price` |
+| Positive names | Name the state that is true | `is_enabled` | `is_not_disabled` |
+| Optional results | Say that a result may be missing | `find_coupon` | `get_coupon` that returns `None` |
 | Event as fact | Past tense | `order_created` | `create_order_event` |
 | Command as instruction | Imperative, as a function name | `create_order` | `order_creation` |
 
