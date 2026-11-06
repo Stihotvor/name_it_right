@@ -34,18 +34,20 @@ The examples use an e-commerce shop. The name patterns below are community pract
 | Kind | Pattern | Examples | Why this name |
 |---|---|---|---|
 | Not found | `<RESOURCE>_NOT_FOUND` | `ORDER_NOT_FOUND`, `CUSTOMER_NOT_FOUND` | The resource and the problem. |
-| Already exists | `<RESOURCE>_ALREADY_EXISTS` | `COUPON_ALREADY_EXISTS` | Same pattern. |
+| Already exists | `<RESOURCE>_ALREADY_EXISTS` | `COUPON_ALREADY_EXISTS` | The resource and the problem, as for `NOT_FOUND`. |
 | Invalid value | `INVALID_<FIELD>` | `INVALID_EMAIL`, `INVALID_QUANTITY` | The field is in the name. |
-| Missing value | `MISSING_<FIELD>` | `MISSING_CURRENCY_CODE` | Different from invalid. |
+| Missing value | `MISSING_<FIELD>` | `MISSING_CURRENCY_CODE` | The client sent nothing. Invalid means the client sent a wrong value. |
 | State conflict | `<RESOURCE>_<STATE>` | `ORDER_ALREADY_SHIPPED`, `ORDER_NOT_CANCELLABLE` | The state that blocks the action. |
-| Permission | `PERMISSION_DENIED`, `UNAUTHENTICATED` | `PERMISSION_DENIED` | The gRPC names are well known. |
+| Permission | `PERMISSION_DENIED`, `UNAUTHENTICATED` (gRPC status names) | `PERMISSION_DENIED` | These names are known to many clients. |
 | Limit | `<THING>_LIMIT_EXCEEDED` | `RATE_LIMIT_EXCEEDED`, `CART_ITEM_LIMIT_EXCEEDED` | The limit and the fact. |
-| Payment | `PAYMENT_<REASON>` | `PAYMENT_DECLINED`, `PAYMENT_EXPIRED_CARD` | Groups related codes. |
+| Payment | `PAYMENT_<PROBLEM>` | `PAYMENT_DECLINED`, `PAYMENT_CARD_EXPIRED` | The thing first and the problem second, as in the other names. |
 | Dependency | `<SERVICE>_UNAVAILABLE` | `PAYMENT_GATEWAY_UNAVAILABLE` | Says which service failed. |
-| Precondition | `FAILED_PRECONDITION` (gRPC and AIP-193) | `FAILED_PRECONDITION` | The system is not in a state for this call. |
-| Internal | `INTERNAL` (gRPC) | `INTERNAL` | A bug in the server. The client cannot fix it. |
+| Precondition | `FAILED_PRECONDITION` (a gRPC status) | `FAILED_PRECONDITION` | The system is not in a state for this call. |
+| Internal | `INTERNAL` (a gRPC status) | `INTERNAL` | A bug in the server. The client cannot fix it. |
 
 ## HTTP status and code
+
+The mapping follows the `google.rpc.Code` table. It is not a gRPC standard. The table also has `400` for `FAILED_PRECONDITION` and `OUT_OF_RANGE`, `499` for `CANCELLED`, and `504` for `DEADLINE_EXCEEDED`.
 
 | HTTP status | gRPC code | Example code | Meaning |
 |---|---|---|---|
@@ -59,6 +61,10 @@ The examples use an e-commerce shop. The name patterns below are community pract
 | `500` | `INTERNAL` | `INTERNAL` | A server bug. |
 | `503` | `UNAVAILABLE` | `PAYMENT_GATEWAY_UNAVAILABLE` | A temporary failure. |
 
+## Error details (AIP-193)
+
+Google AIP-193 puts an `ErrorInfo` in an error. The `reason` is a stable `UPPER_SNAKE_CASE` code of at most 63 characters, such as `ORDER_NOT_FOUND`. The `domain` names the service that owns the reason, such as `orders.shop.example.com`. The `metadata` keys use `lowerCamelCase`.
+
 ## Problem details (RFC 9457)
 
 RFC 9457 (which replaces RFC 7807) defines a JSON body for an HTTP error with standard member names.
@@ -67,9 +73,9 @@ RFC 9457 (which replaces RFC 7807) defines a JSON body for an HTTP error with st
 |---|---|---|
 | `type` | A URI that names the kind of problem. | `https://api.shop.example/problems/order-not-found` |
 | `title` | A short summary that does not change. | `Order not found` |
-| `status` | The HTTP status. | `404` |
+| `status` | The HTTP status. It is advisory; the real status is in the response line. | `404` |
 | `detail` | An explanation for this case. | `Order 12345 does not exist.` |
-| `instance` | A URI for this case. | `/v1/orders/12345` |
+| `instance` | A URI reference for this one occurrence of the problem. | `/errors/9f2c7a41` |
 | `code` | An extension: the stable code. | `ORDER_NOT_FOUND` |
 | `errors` | An extension: a list of field problems. | `[{ "field": "email", "code": "INVALID_EMAIL" }]` |
 
@@ -79,12 +85,12 @@ The media type is `application/problem+json`.
 
 | Language | Pattern | Examples | Notes |
 |---|---|---|---|
-| Python | `<Problem>Error` | `OrderNotFoundError`, `InvalidCouponError` | PEP 8: use the suffix `Error` for an error. |
-| Java | `<Problem>Exception` | `OrderNotFoundException` | The Java suffix. |
+| Python | `<Problem>Error` | `OrderNotFoundError`, `InvalidCouponError` | PEP 8: use the suffix `Error` when the exception is an error. |
+| Java | `<Problem>Exception` | `OrderNotFoundException` | The JDK names exceptions with the suffix `Exception`. |
 | C# | `<Problem>Exception` | `OrderNotFoundException` | The .NET guidelines require the suffix. |
-| JavaScript, TypeScript | `<Problem>Error` | `OrderNotFoundError` | `Error` is the base class. |
-| Go | `Err<Problem>`, `<Problem>Error` | `ErrNotFound`, `NotFoundError` | A value or a type. |
-| Rust | `<Problem>Error` and variants | `OrderError::NotFound` | The type says `Error`. |
+| JavaScript, TypeScript | `<Problem>Error` | `OrderNotFoundError` | The built-in classes end with `Error` (`TypeError`), and your class extends `Error`. |
+| Go | `Err<Problem>` for a value, `<Problem>Error` for a type | `ErrNotFound`, `NotFoundError` | Effective Go and the standard library use both forms. |
+| Rust | `<Problem>Error` and variants | `OrderError::NotFound` | The type ends with `Error`, so the variant names only the cause. |
 
 For the language rules, see the [Languages overview](../languages/index.md).
 
