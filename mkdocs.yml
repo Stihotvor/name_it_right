@@ -99,6 +99,7 @@ nav:
   - Home: index.md
   - Common:
       - Overview: common/index.md
+      - References and glossary: common/references-and-glossary.md
       - Abbreviations: common/abbreviations.md
       - Meaning and clarity: common/meaning.md
       - Consistency: common/consistency.md
