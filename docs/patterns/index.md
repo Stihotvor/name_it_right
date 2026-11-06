@@ -33,6 +33,7 @@ Patterns work across languages. Learn the pattern once, then use it for variable
 | Page | Use it when | Example names |
 |---|---|---|
 | [Action and context](action-context.md) | You choose the word order of a function or field. | `get_user_messages`, `cancel_order`, `shipping_address_city` |
+| [Booleans, collections, units and time](booleans-collections-units-time.md) | You name a flag, a group, a number with a unit or a moment. | `is_paid`, `orders_by_id`, `timeout_seconds`, `created_at_utc` |
 
 ## Pages planned
 
@@ -40,9 +41,6 @@ These pages are not published yet. The same running example, an e-commerce check
 
 | Planned page | Topic | Example names |
 |---|---|---|
-| Booleans | Prefixes and affirmative names | `is_paid`, `has_discount` |
-| Collections and counts | Plurals, `_by_`, counts | `orders_by_id`, `order_count` |
-| Units and time | Units, money, time zones | `timeout_seconds`, `created_at_utc` |
 | Symmetry | Pairs that match | `min_price`, `max_price` |
 | Negation and optionality | Avoid double negatives | `is_enabled` instead of `is_not_disabled` |
 | Bad → better cookbook | 60+ rewrites | `data` → `order_summary` |

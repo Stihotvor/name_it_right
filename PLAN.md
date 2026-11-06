@@ -12,7 +12,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 
 ## Status on 2026-11-06
 - Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)). The other 29 steps are `Pending`.
+- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)), B01 (2026-11-06, [PR #8](https://github.com/Stihotvor/name_it_right/pull/8)). The other 28 steps are `Pending`.
 - A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
 - The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
@@ -50,7 +50,7 @@ Branch numbers follow the opencode plan. Fix the numbering conflicts below befor
 |---|---|---|---|
 | A Foundations | A01 (Done) | `docs/01-references-and-glossary` | Sources (30+) and master glossary |
 | | A02 (Done) | `docs/03-patterns-index-action-context` | Patterns overview, action-and-context page |
-| B Patterns | B01 | `docs/04-patterns-booleans-collections-units-time` | Booleans, collections, units, money, time |
+| B Patterns | B01 (Done) | `docs/04-patterns-booleans-collections-units-time` | Booleans, collections, units, money, time |
 | | B02 | `docs/05-patterns-symmetry-negation` | Symmetry pairs, negation, optionality |
 | | B03 | `docs/06-patterns-cookbook` | 60+ bad -> better rows in 10+ categories |
 | C Python | C01-C04 | `docs/08` to `docs/11-python-*` | Variables, functions, classes, class methods |
