@@ -1,0 +1,3423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find the right name for every code entity — variable, table field, function, class, and more. Make it clear. Make it standard.">
+      
+      
+        <meta name="author" content="Yevhen D.">
+      
+      
+        <link rel="canonical" href="https://stihotvor.github.io/name_it_right/databases/tables/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../columns/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Tables - Name it Right</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Name it Right" class="md-header__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Name it Right
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../common/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../patterns/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Naming patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Databases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../languages/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Languages
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../interlinks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Site map
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Name it Right" class="md-nav__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Name it Right
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/references-and-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References and glossary
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/abbreviations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abbreviations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/meaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meaning and clarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../patterns/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming patterns
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Naming patterns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/action-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action and context
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/booleans-collections-units-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Booleans, collections, units and time
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/negation-and-optionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Negation and optionality
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bad → better cookbook
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singular-or-plural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Singular or plural?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-by-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples by kind
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples by kind">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-and-junction-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity and junction tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-version-and-audit-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History, version and audit tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-event-and-queue-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition, event and queue tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bridge-fact-and-dimension-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bridge, fact and dimension tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bad-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad → better
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../columns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indexes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indexes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../warehouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse and analytics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../languages/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Languages
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Languages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript and TypeScript
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/java-kotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java and Kotlin
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/csharp-dotnet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# and .NET
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/go/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Go
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/rust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rust
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/class_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/special_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../systems/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systems
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/graphql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/feature-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature flags
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command line
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../examples/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ecommerce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-commerce
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/payments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Payments
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/fintech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fintech and banking
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/healthcare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/logistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/saas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SaaS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine learning
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interlinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Site map
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singular-or-plural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Singular or plural?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-by-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples by kind
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples by kind">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-and-junction-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity and junction tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lookup tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-version-and-audit-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History, version and audit tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-event-and-queue-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partition, event and queue tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bridge-fact-and-dimension-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bridge, fact and dimension tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bad-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad → better
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h1>
+<div class="admonition success">
+<p class="admonition-title">General patterns</p>
+<ul>
+<li>Use <code>snake_case</code> and plural nouns: <code>users</code>, <code>orders</code>, <code>order_items</code>, <code>shipping_addresses</code></li>
+<li>Use singular nouns for lookup / enum tables: <code>country</code>, <code>currency</code>, <code>order_status</code></li>
+<li>Junction (many-to-many) tables: combine both entity names, listing the primary/owner entity first: <code>user_roles</code>, <code>product_categories</code>, <code>student_courses</code></li>
+<li>Junction table PK: for a pure link table, use a composite key <code>(a_id, b_id)</code>, not a surrogate <code>id</code>. If the same pair can repeat, such as two redemptions of one coupon, use a surrogate <code>id</code></li>
+<li>Use a single-word name when possible; two words if needed: <code>invoices</code> not <code>customer_invoice_data</code></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Useful tips</p>
+<ul>
+<li>Avoid prefixes and suffixes: <code>users</code> not <code>tbl_users</code> or <code>users_table</code></li>
+<li>Keep table names under 30 characters for cross-database portability</li>
+<li>Use consistent singular/plural — plural for rows (collections), singular for dictionaries (status, type)</li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">General anti-patterns</p>
+<ul>
+<li>Prefixes like <code>tbl_</code>, <code>tab_</code>, <code>tb_</code> — they add noise and serve no purpose</li>
+<li>Names like <code>Table1</code>, <code>tmp</code>, <code>test</code> — never commit these</li>
+<li>Including the database or schema name in the table name: <code>app_users</code> inside the <code>app</code> schema</li>
+</ul>
+</div>
+<h2 id="singular-or-plural">Singular or plural?<a class="headerlink" href="#singular-or-plural" title="Permanent link">&para;</a></h2>
+<p>Both styles work. Choose one style and use it for all tables of the same kind.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Examples</th>
+<th>Who uses it</th>
+<th>Why choose it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plural for entity tables</td>
+<td><code>users</code>, <code>orders</code>, <code>order_items</code></td>
+<td>Rails: <a href="https://guides.rubyonrails.org/active_record_basics.html">Active Record basics</a> names tables in the plural</td>
+<td>A table holds many rows. Queries read well: <code>FROM orders</code>.</td>
+</tr>
+<tr>
+<td>Singular for lookup tables</td>
+<td><code>country</code>, <code>currency</code>, <code>order_status</code></td>
+<td>This guide</td>
+<td>A lookup table is a dictionary of values.</td>
+</tr>
+<tr>
+<td>Singular for all tables</td>
+<td><code>user</code>, <code>order</code>, <code>order_item</code></td>
+<td>Some teams</td>
+<td>The table name matches the model name. <code>order</code> and <code>user</code> are reserved words in PostgreSQL, so they need quotes.</td>
+</tr>
+<tr>
+<td>App prefix plus model name</td>
+<td><code>shop_order</code>, <code>shop_orderitem</code></td>
+<td>Django: see <a href="https://docs.djangoproject.com/en/5.1/ref/models/options/">model options</a> for <code>db_table</code></td>
+<td>The default is the app label, an underscore and the lower-case model name, with no underscores inside it. Set <code>db_table</code> to get other names.</td>
+</tr>
+</tbody>
+</table>
+<p>This guide uses plural names for entity tables and singular names for lookup tables. A container noun stays singular: <code>audit_log</code>, <code>job_queue</code>, <code>order_history</code>, <code>order_archive</code>.</p>
+<h2 id="examples-by-kind">Examples by kind<a class="headerlink" href="#examples-by-kind" title="Permanent link">&para;</a></h2>
+<p>The tables use an e-commerce checkout. For column names inside these tables, see <a href="../columns/">Columns</a>.</p>
+<h3 id="entity-and-junction-tables">Entity and junction tables<a class="headerlink" href="#entity-and-junction-tables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Kind</th>
+<th>Meaning</th>
+<th>Why this name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customers</code></td>
+<td>Entity</td>
+<td>The people who buy.</td>
+<td>A plural noun.</td>
+</tr>
+<tr>
+<td><code>orders</code></td>
+<td>Entity</td>
+<td>The purchases.</td>
+<td>A plural noun.</td>
+</tr>
+<tr>
+<td><code>order_items</code></td>
+<td>Dependent entity</td>
+<td>The lines of an order.</td>
+<td>The owner first, then the part.</td>
+</tr>
+<tr>
+<td><code>shipping_addresses</code></td>
+<td>Entity</td>
+<td>Addresses for delivery.</td>
+<td>A plural noun with a clear role.</td>
+</tr>
+<tr>
+<td><code>product_categories</code></td>
+<td>Junction</td>
+<td>Links products to categories.</td>
+<td>Both entity names.</td>
+</tr>
+<tr>
+<td><code>customer_roles</code></td>
+<td>Junction</td>
+<td>Links customers to roles.</td>
+<td>The owner first.</td>
+</tr>
+<tr>
+<td><code>coupon_redemptions</code></td>
+<td>Junction with data</td>
+<td>A customer used a coupon.</td>
+<td>A domain word for a link with its own attributes.</td>
+</tr>
+<tr>
+<td><code>enrollments</code></td>
+<td>Junction with data</td>
+<td>A student takes a course.</td>
+<td>Name the meaning, not both table names.</td>
+</tr>
+</tbody>
+</table>
+<p>A junction table with extra data usually has its own domain name. <code>order_items</code> carries quantity and price, so it is not named <code>order_products</code>.</p>
+<h3 id="lookup-tables">Lookup tables<a class="headerlink" href="#lookup-tables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Meaning</th>
+<th>Why this name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>country</code></td>
+<td>ISO countries.</td>
+<td>A dictionary, singular.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>ISO 4217 currencies.</td>
+<td>A dictionary, singular.</td>
+</tr>
+<tr>
+<td><code>order_status</code></td>
+<td>Allowed order states.</td>
+<td>A dictionary, singular.</td>
+</tr>
+<tr>
+<td><code>payment_method</code></td>
+<td>Allowed ways to pay.</td>
+<td>A dictionary, singular.</td>
+</tr>
+<tr>
+<td><code>shipping_carrier</code></td>
+<td>Known carriers.</td>
+<td>A dictionary, singular.</td>
+</tr>
+</tbody>
+</table>
+<p>For enum types and their values, see <a href="../enums/">Enums</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Name clash in PostgreSQL</p>
+<p>PostgreSQL makes a row type with the name of each table. A table <code>order_status</code> and an enum type <code>order_status</code> in the same schema collide. Use a table or an enum, not both.</p>
+</div>
+<h3 id="history-version-and-audit-tables">History, version and audit tables<a class="headerlink" href="#history-version-and-audit-tables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Meaning</th>
+<th>Why this name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_history</code></td>
+<td>Every past state of an order, as rows.</td>
+<td><code>_history</code> for time-ordered copies.</td>
+</tr>
+<tr>
+<td><code>order_status_history</code></td>
+<td>Only the status changes of an order.</td>
+<td>Narrow the scope in the name.</td>
+</tr>
+<tr>
+<td><code>product_versions</code></td>
+<td>Every saved version of a product.</td>
+<td><code>_versions</code> when users read old versions.</td>
+</tr>
+<tr>
+<td><code>document_revisions</code></td>
+<td>Edits of a document.</td>
+<td><code>_revisions</code> for edit trails.</td>
+</tr>
+<tr>
+<td><code>price_changes</code></td>
+<td>One row per price change.</td>
+<td>A change log with a clear subject.</td>
+</tr>
+<tr>
+<td><code>audit_log</code></td>
+<td>Who changed what, for all tables.</td>
+<td>One shared log with a generic scope.</td>
+</tr>
+<tr>
+<td><code>order_archive</code></td>
+<td>Orders moved out of the live table.</td>
+<td><code>_archive</code> for rows that left the live table. Prefer a <code>deleted_at</code> column unless rows must leave.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="partition-event-and-queue-tables">Partition, event and queue tables<a class="headerlink" href="#partition-event-and-queue-tables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Meaning</th>
+<th>Why this name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>orders_2026_11</code></td>
+<td>The partition of <code>orders</code> for November 2026.</td>
+<td>The parent name plus the range.</td>
+</tr>
+<tr>
+<td><code>orders_2026_12</code></td>
+<td>The next monthly partition.</td>
+<td>Same pattern, so partitions sort.</td>
+</tr>
+<tr>
+<td><code>orders_default</code></td>
+<td>Rows that match no other partition.</td>
+<td><code>_default</code> for the catch-all.</td>
+</tr>
+<tr>
+<td><code>events_p0</code>, <code>events_p1</code></td>
+<td>Hash partitions of <code>events</code> in PostgreSQL.</td>
+<td><code>p</code> and the number. In MySQL, <code>p0</code> is a partition name inside the table, not a table.</td>
+</tr>
+<tr>
+<td><code>outbox_events</code></td>
+<td>Events that wait to be published.</td>
+<td>The pattern name plus the content.</td>
+</tr>
+<tr>
+<td><code>job_queue</code></td>
+<td>Background jobs that wait to run.</td>
+<td>A container noun stays singular.</td>
+</tr>
+<tr>
+<td><code>webhook_deliveries</code></td>
+<td>Each attempt to call a webhook.</td>
+<td>A plural noun for events with a result.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bridge-fact-and-dimension-tables">Bridge, fact and dimension tables<a class="headerlink" href="#bridge-fact-and-dimension-tables" title="Permanent link">&para;</a></h3>
+<p>The prefixes <code>fact_</code>, <code>dim_</code> and <code>bridge_</code> name the role of the table in an analytics model. They do not repeat the object type, so they do not break the rule against prefixes. Some teams use <code>dim_date</code> (singular) and dbt projects often use <code>fct_</code> for facts. Choose one form for the project.</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Kind</th>
+<th>Meaning</th>
+<th>Why this name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fact_orders</code></td>
+<td>Fact</td>
+<td>One row per order.</td>
+<td><code>fact_</code> marks a fact table.</td>
+</tr>
+<tr>
+<td><code>fact_order_items</code></td>
+<td>Fact</td>
+<td>One row per order line.</td>
+<td>A finer grain than <code>fact_orders</code>.</td>
+</tr>
+<tr>
+<td><code>dim_customers</code></td>
+<td>Dimension</td>
+<td>Customer attributes.</td>
+<td><code>dim_</code> marks a dimension.</td>
+</tr>
+<tr>
+<td><code>dim_products</code></td>
+<td>Dimension</td>
+<td>Product attributes.</td>
+<td>Same prefix.</td>
+</tr>
+<tr>
+<td><code>dim_dates</code></td>
+<td>Dimension</td>
+<td>One row per calendar day.</td>
+<td>A date dimension.</td>
+</tr>
+<tr>
+<td><code>bridge_order_promotions</code></td>
+<td>Bridge</td>
+<td>Links orders to many promotions.</td>
+<td><code>bridge_</code> links a fact to a multivalued dimension (Kimball).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bad-better">Bad → better<a class="headerlink" href="#bad-better" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bad</th>
+<th>Better</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tbl_orders</code></td>
+<td><code>orders</code></td>
+<td>A prefix repeats what the context shows.</td>
+</tr>
+<tr>
+<td><code>orders_table</code></td>
+<td><code>orders</code></td>
+<td>A suffix repeats the object type.</td>
+</tr>
+<tr>
+<td><code>Order</code></td>
+<td><code>orders</code></td>
+<td>PostgreSQL folds an unquoted <code>Order</code> to <code>order</code>, a reserved word, so queries fail.</td>
+</tr>
+<tr>
+<td><code>order_product</code> (with quantity and price)</td>
+<td><code>order_items</code></td>
+<td>A link with data has a domain name.</td>
+</tr>
+<tr>
+<td><code>user_role_map</code></td>
+<td><code>user_roles</code></td>
+<td><code>map</code> adds nothing.</td>
+</tr>
+<tr>
+<td><code>customer_invoice_data</code></td>
+<td><code>invoices</code></td>
+<td><code>data</code> is filler, and the owner is clear.</td>
+</tr>
+<tr>
+<td><code>orders_old</code></td>
+<td><code>order_history</code> or a partition <code>orders_2025_12</code></td>
+<td><code>old</code> has no date and no meaning.</td>
+</tr>
+<tr>
+<td><code>orders_backup_final2</code></td>
+<td><code>order_archive</code></td>
+<td>Version words in names rot.</td>
+</tr>
+<tr>
+<td><code>temp</code>, <code>test1</code></td>
+<td>name the real purpose</td>
+<td>Never commit these.</td>
+</tr>
+<tr>
+<td><code>app_users</code> (inside schema <code>app</code>)</td>
+<td><code>users</code></td>
+<td>The schema already gives the scope.</td>
+</tr>
+<tr>
+<td><code>statuses</code> (a dictionary)</td>
+<td><code>order_status</code></td>
+<td>Lookup tables are singular in this guide.</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td><code>audit_log</code> or <code>webhook_deliveries</code></td>
+<td>A bare <code>log</code> has no scope.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../columns/">Columns</a>, <a href="../indexes/">Indexes</a>, <a href="../constraints/">Constraints</a> and <a href="../enums/">Enums</a></li>
+<li><a href="../../patterns/cookbook/">Bad → better cookbook</a> for more rewrites</li>
+<li><a href="../../patterns/symmetry/">Symmetry</a> for pairs such as <code>source</code> and <code>target</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 &ndash;2026 Yevhen D.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

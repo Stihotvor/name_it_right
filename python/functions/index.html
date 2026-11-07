@@ -1,0 +1,5128 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find the right name for every code entity — variable, table field, function, class, and more. Make it clear. Make it standard.">
+      
+      
+        <meta name="author" content="Yevhen D.">
+      
+      
+        <link rel="canonical" href="https://stihotvor.github.io/name_it_right/python/functions/">
+      
+      
+        <link rel="prev" href="../variables/">
+      
+      
+        <link rel="next" href="../classes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Functions - Name it Right</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Name it Right" class="md-header__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Name it Right
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../common/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../patterns/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Naming patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Databases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../languages/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Languages
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../interlinks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Site map
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Name it Right" class="md-nav__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Name it Right
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/references-and-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References and glossary
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/abbreviations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abbreviations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/meaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meaning and clarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../patterns/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming patterns
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Naming patterns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/action-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action and context
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/booleans-collections-units-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Booleans, collections, units and time
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/negation-and-optionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Negation and optionality
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bad → better cookbook
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../databases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/columns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/indexes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indexes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/warehouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse and analytics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../languages/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Languages
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Languages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript and TypeScript
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/java-kotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java and Kotlin
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/csharp-dotnet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# and .NET
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/go/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Go
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/rust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rust
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verb-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verb families
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verb families">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event handler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#name-by-return-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Name by return type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bad-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad → better
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        J
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../special_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../systems/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systems
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/graphql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/feature-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature flags
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command line
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../examples/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ecommerce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-commerce
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/payments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Payments
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/fintech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fintech and banking
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/healthcare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/logistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/saas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SaaS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine learning
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interlinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Site map
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verb-families" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verb families
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verb families">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event handler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#name-by-return-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Name by return type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bad-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bad → better
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        J
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h1>
+<div class="admonition success">
+<p class="admonition-title">General patterns</p>
+<ul>
+<li>Use <code>snake_case</code> in function names ONLY. Don't look at some bad examples, even if they have 1k+ stars on GitHub</li>
+<li>Functions which <abbr title="Check that data meets required constraints or rules">validate</abbr> or <abbr title="Run a test and return a report or an outcome">check</abbr> something and return boolean should <abbr title="Begin execution of a process or service">start</abbr> with <code>is_</code>, <code>has_</code>: <code>has_tax_applied()</code>, <code>is_valid()</code></li>
+<li>Functions not covered by the above rule should have executable names: <code>compile()</code>, <code>collect()</code>, <code>process()</code>, <code>fetch()</code></li>
+<li>If the function has <code>and</code> in the name, there is a high chance it does multiple things. Split it.</li>
+<li>Name CRUD functions after the resource and action: <code>create_order()</code>, <code>list_customer_orders()</code>, <code>update_shipping_address()</code>, <code>delete_expired_carts()</code></li>
+<li>Name query functions by what they return: <code>list_pending_payments()</code>, <code>find_user_by_email()</code>, <code>search_products()</code>, <code>list_active_discounts()</code></li>
+<li>Name action functions by the side effect: <code>apply_discount_to()</code>, <code>refund_payment()</code>, <code>cancel_subscription()</code>, <code>dispatch_order()</code></li>
+<li>Use domain vocabulary consistently — if you say <code>fetch</code> throughout, never mix in <code>retrieve</code> or <code>get</code> for the same operation</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># E-commerce function naming in practice</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_order_total</span><span class="p">(</span><span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">...</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">apply_promo_discount</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Order</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">...</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">send_order_confirmation_email</span><span class="p">(</span><span class="n">user_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Order</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="o">...</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">is_product_in_stock</span><span class="p">(</span><span class="n">sku</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="o">...</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">refund_line_item</span><span class="p">(</span><span class="n">transaction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RefundReceipt</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="o">...</span>
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Useful tips</p>
+<ul>
+<li>Good function arguments can help to shorten the function name: <code>add_car_to_catalog(name: str)</code> → <code>add_car_to(catalog: Catalog)</code></li>
+<li>Pick one verb per operation and never mix. If the codebase uses <code>fetch_</code> for remote reads, use <code>fetch_</code> for all remote reads — no <code>retrieve_</code>.</li>
+<li>Use the module name to shorten function names:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Before</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">food</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_french_fries</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">create_french_fries</span><span class="p">()</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">...</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># After</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">food</span><span class="w"> </span><span class="kn">import</span> <span class="n">france</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">france</span><span class="o">.</span><span class="n">create_fries</span><span class="p">()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="o">...</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># Or even shorter</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kn">from</span><span class="w"> </span><span class="nn">food.france</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_fries</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">create_fries</span><span class="p">()</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="o">...</span>
+</code></pre></div></li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">General anti-patterns</p>
+<ul>
+<li>Abbreviations: <code>compile_frst()</code></li>
+<li>One-letter functions: <code>v()</code></li>
+</ul>
+</div>
+<h2 id="verb-families">Verb families<a class="headerlink" href="#verb-families" title="Permanent link">&para;</a></h2>
+<p>Choose one verb per operation and keep it in the whole code base. The tables group the verbs by the job they do. For the word order inside a name, see <a href="../../patterns/action-context/">Action and context</a>. For more verbs, see the <a href="#glossary">Glossary</a> below and the <a href="../../common/references-and-glossary/">master glossary</a>.</p>
+<h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get</code></td>
+<td>You <abbr title="Read and return data from a source">read</abbr> data from memory or by a cheap lookup. It raises an error if the item is missing, unlike <code>dict.get</code>.</td>
+<td><code>get_order</code>, <code>get_user_email</code>, <code>get_order_total</code> (a stored value)</td>
+</tr>
+<tr>
+<td><code>find</code></td>
+<td>You return one item by key or criteria, or <code>None</code>. No result is a normal answer.</td>
+<td><code>find_user_by_email</code>, <code>find_product_by_sku</code>, <code>find_open_cart</code></td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>You return a collection, often filtered or paged.</td>
+<td><code>list_open_orders</code>, <code>list_active_discounts</code>, <code>list_user_addresses</code></td>
+</tr>
+<tr>
+<td><code>fetch</code></td>
+<td>You <abbr title="Read and return data from a source">read</abbr> over a network or from a slow API.</td>
+<td><code>fetch_exchange_rates</code>, <code>fetch_carrier_tracking</code>, <code>fetch_customer_profile</code></td>
+</tr>
+<tr>
+<td><code>load</code></td>
+<td>You <abbr title="Read and return data from a source">read</abbr> stored data from a file or a database into memory.</td>
+<td><code>load_cart</code>, <code>load_pricing_rules</code>, <code>load_tax_table</code></td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>You return many matches, possibly ranked, as a <abbr title="Return a collection of items, often with filtering or pagination">list</abbr>.</td>
+<td><code>search_products</code>, <code>search_orders_by_note</code></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>You return the number of matches.</td>
+<td><code>count_open_orders</code>, <code>count_unread_notices</code></td>
+</tr>
+</tbody>
+</table>
+<p>One rule decides between the <abbr title="Read and return data from a source">read</abbr> verbs: <code>get</code> for memory or a cheap lookup, <code>load</code> for local storage, <code>fetch</code> for a network or a slow API. Do not use <code>get_</code> and <code>fetch_</code> for the same operation.</p>
+<h3 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create</code></td>
+<td>You make a new record.</td>
+<td><code>create_order</code>, <code>create_refund</code>, <code>create_shipment</code></td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>You change a record.</td>
+<td><code>update_shipping_address</code>, <code>update_cart_item</code>, <code>update_payment_method</code></td>
+</tr>
+<tr>
+<td><code>save</code></td>
+<td>You <abbr title="Save data to durable storage">persist</abbr> a record, new or changed. It pairs with <code>load</code>.</td>
+<td><code>save_order</code>, <code>save_cart</code>, <code>save_user</code></td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>You remove a record.</td>
+<td><code>delete_expired_carts</code>, <code>delete_draft_order</code>, <code>delete_saved_card</code></td>
+</tr>
+<tr>
+<td><code>cancel</code></td>
+<td>You <abbr title="Terminate execution of a process or service">stop</abbr> a planned or running operation.</td>
+<td><code>cancel_order</code>, <code>cancel_subscription</code>, <code>cancel_shipment</code></td>
+</tr>
+<tr>
+<td><code>send</code></td>
+<td>You cause a message to go out.</td>
+<td><code>send_receipt_email</code>, <code>send_shipping_notice</code>, <code>send_payment_reminder</code></td>
+</tr>
+<tr>
+<td><code>apply</code></td>
+<td>You put a rule or an effect on data.</td>
+<td><code>apply_coupon</code>, <code>apply_tax_rule</code>, <code>apply_shipping_discount</code></td>
+</tr>
+<tr>
+<td><code>refund</code></td>
+<td>You give money back.</td>
+<td><code>refund_payment</code>, <code>refund_line_item</code>, <code>refund_shipping</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="boolean">Boolean<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>is_</code></td>
+<td>You <abbr title="Run a test and return a report or an outcome">check</abbr> a state.</td>
+<td><code>is_cart_empty</code>, <code>is_order_paid</code>, <code>is_in_stock</code></td>
+</tr>
+<tr>
+<td><code>has_</code></td>
+<td>You <abbr title="Run a test and return a report or an outcome">check</abbr> ownership.</td>
+<td><code>has_discount</code>, <code>has_saved_card</code>, <code>has_open_order</code></td>
+</tr>
+<tr>
+<td><code>can_</code></td>
+<td>You <abbr title="Run a test and return a report or an outcome">check</abbr> ability or permission.</td>
+<td><code>can_cancel_order</code>, <code>can_refund_payment</code>, <code>can_ship_express</code></td>
+</tr>
+<tr>
+<td><code>should_</code></td>
+<td>You <abbr title="Run a test and return a report or an outcome">check</abbr> a decision.</td>
+<td><code>should_retry_payment</code>, <code>should_send_receipt</code></td>
+</tr>
+<tr>
+<td><code>must_</code></td>
+<td>You <abbr title="Run a test and return a report or an outcome">check</abbr> a requirement.</td>
+<td><code>must_validate_address</code>, <code>must_accept_terms</code></td>
+</tr>
+</tbody>
+</table>
+<p>For all boolean prefixes, including <code>was_</code>, <code>will_</code> and <code>allows_</code>, see <a href="../../patterns/booleans-collections-units-time/">Booleans, collections, units and time</a>.</p>
+<h3 id="conversion">Conversion<a class="headerlink" href="#conversion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;source&gt;_to_&lt;target&gt;</code></td>
+<td>You <abbr title="Change the format, type, or representation of data">convert</abbr> one shape to another.</td>
+<td><code>order_to_invoice</code>, <code>cents_to_decimal</code>, <code>cart_to_order</code></td>
+</tr>
+<tr>
+<td><code>to_&lt;target&gt;</code></td>
+<td>A method converts its own object.</td>
+<td><code>order.to_dict</code>, <code>money.to_decimal</code>, <code>address.to_label</code></td>
+</tr>
+<tr>
+<td><code>from_&lt;source&gt;</code></td>
+<td>A class method builds an object.</td>
+<td><code>Order.from_cart</code>, <code>Money.from_cents</code>, <code>Address.from_dict</code></td>
+</tr>
+<tr>
+<td><code>parse_&lt;thing&gt;</code></td>
+<td>You <abbr title="Read and return data from a source">read</abbr> text into a structure.</td>
+<td><code>parse_coupon_code</code>, <code>parse_delivery_date</code>, <code>parse_price</code></td>
+</tr>
+<tr>
+<td><code>format_&lt;thing&gt;</code></td>
+<td>You <abbr title="Write data to storage, a stream, or an output">write</abbr> a structure as text.</td>
+<td><code>format_price</code>, <code>format_address</code>, <code>format_tracking_number</code></td>
+</tr>
+<tr>
+<td><code>serialize</code> / <code>deserialize</code></td>
+<td>You <abbr title="Change the format, type, or representation of data">convert</abbr> to and from a transfer <abbr title="Arrange data into a specified layout or representation">format</abbr>.</td>
+<td><code>serialize_order</code>, <code>deserialize_order</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lifecycle">Lifecycle<a class="headerlink" href="#lifecycle" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open</code> / <code>close</code></td>
+<td>You acquire and release a resource, as a pair.</td>
+<td><code>open_session</code>, <code>close_session</code>, <code>open_connection</code></td>
+</tr>
+<tr>
+<td><code>start</code> / <code>stop</code></td>
+<td>You <abbr title="Execute a process, command, or workflow">run</abbr> a <abbr title="Perform a series of operations on input data">process</abbr>.</td>
+<td><code>start_worker</code>, <code>stop_worker</code>, <code>start_scheduler</code></td>
+</tr>
+<tr>
+<td><code>pause</code> / <code>resume</code></td>
+<td>A <abbr title="Perform a series of operations on input data">process</abbr> continues later.</td>
+<td><code>pause_subscription</code>, <code>resume_subscription</code></td>
+</tr>
+<tr>
+<td><code>initialize</code></td>
+<td>You <abbr title="Assign a value to a property, setting, or configuration">set</abbr> up state before first use. <code>setup</code> overlaps, so keep one of the two.</td>
+<td><code>initialize_cart</code>, <code>initialize_gateway</code></td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>You return to the initial state.</td>
+<td><code>reset_cart</code>, <code>reset_retry_count</code></td>
+</tr>
+<tr>
+<td><code>dispose</code></td>
+<td>You free what an object owns, with no matching <code>open</code>. Where there is an <code>open</code>, use <code>close</code>.</td>
+<td><code>dispose_connection_pool</code>, <code>dispose_temp_files</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-handler">Event handler<a class="headerlink" href="#event-handler" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on_&lt;owner&gt;_&lt;event&gt;</code></td>
+<td>The callback for one named event.</td>
+<td><code>on_order_created</code>, <code>on_payment_failed</code>, <code>on_cart_expired</code></td>
+</tr>
+<tr>
+<td><code>handle_&lt;source&gt;</code></td>
+<td>An entry point receives a raw message, such as a webhook or a <abbr title="Add to a waiting line for sequential processing">queue</abbr> message, and calls the <code>on_</code> functions.</td>
+<td><code>handle_payment_webhook</code>, <code>handle_refund_message</code></td>
+</tr>
+<tr>
+<td><code>emit_&lt;event&gt;</code></td>
+<td>You publish an event.</td>
+<td><code>emit_order_created</code>, <code>emit_payment_captured</code></td>
+</tr>
+<tr>
+<td><code>subscribe_to_&lt;topic&gt;</code></td>
+<td>You register for events.</td>
+<td><code>subscribe_to_orders</code>, <code>subscribe_to_refunds</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validate</code></td>
+<td>You <abbr title="Read and return data from a source">read</abbr> the input and return or raise a <abbr title="Return a collection of items, often with filtering or pagination">list</abbr> of problems. It never changes state.</td>
+<td><code>validate_order</code>, <code>validate_address</code>, <code>validate_coupon</code></td>
+</tr>
+<tr>
+<td><code>verify</code></td>
+<td>You confirm that a claim is genuine and raise if it is not. A boolean form is <code>is_signature_valid</code>.</td>
+<td><code>verify_signature</code>, <code>verify_email_token</code>, <code>verify_webhook_secret</code></td>
+</tr>
+<tr>
+<td><code>ensure</code></td>
+<td>You raise on the first failure of a condition that must hold. It does not repair anything.</td>
+<td><code>ensure_cart_has_items</code>, <code>ensure_stock_available</code></td>
+</tr>
+<tr>
+<td><code>check</code></td>
+<td>You <abbr title="Execute a process, command, or workflow">run</abbr> a test and return a report or an outcome, not a bare boolean.</td>
+<td><code>check_fraud_risk</code>, <code>check_address_deliverability</code></td>
+</tr>
+<tr>
+<td><code>sanitize</code></td>
+<td>You remove unsafe content.</td>
+<td><code>sanitize_order_note</code>, <code>sanitize_search_query</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="calculation">Calculation<a class="headerlink" href="#calculation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>Use it when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>calculate</code></td>
+<td>You <abbr title="Perform a mathematical or logical calculation">compute</abbr> a value from inputs. Prefer <code>calculate_</code> to <code>compute_</code>.</td>
+<td><code>calculate_order_total</code>, <code>calculate_cart_tax</code>, <code>calculate_shipping_cost</code></td>
+</tr>
+<tr>
+<td><code>estimate</code></td>
+<td>The result is approximate.</td>
+<td><code>estimate_delivery_date</code>, <code>estimate_shipping_weight</code></td>
+</tr>
+<tr>
+<td><code>sum</code></td>
+<td>You <abbr title="Append an item to a collection or perform a mathematical addition">add</abbr> numbers. It is a narrow case of <code>calculate</code>.</td>
+<td><code>sum_line_item_cents</code>, <code>sum_refunds</code></td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td>You change precision.</td>
+<td><code>round_to_cents</code>, <code>round_price_up</code></td>
+</tr>
+<tr>
+<td><code>convert</code></td>
+<td>You change a currency with a rate. For other units, use the <code>_to_</code> form: <code>grams_to_ounces</code>.</td>
+<td><code>convert_currency</code>, <code>convert_price_to_eur</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="name-by-return-type">Name by return type<a class="headerlink" href="#name-by-return-type" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Returns</th>
+<th>Pattern</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool</code></td>
+<td><code>is_</code>, <code>has_</code>, <code>can_</code>, <code>should_</code>, <code>must_</code></td>
+<td><code>is_cart_empty</code>, <code>has_discount</code></td>
+</tr>
+<tr>
+<td>One item that must exist</td>
+<td><code>get_&lt;item&gt;</code></td>
+<td><code>get_order</code>, <code>get_customer</code></td>
+</tr>
+<tr>
+<td>One item or <code>None</code></td>
+<td><code>find_&lt;item&gt;</code></td>
+<td><code>find_coupon</code>, <code>find_user_by_email</code></td>
+</tr>
+<tr>
+<td>A <abbr title="Return a collection of items, often with filtering or pagination">list</abbr></td>
+<td><code>list_&lt;items&gt;</code>, <code>search_&lt;items&gt;</code></td>
+<td><code>list_open_orders</code>, <code>search_products</code></td>
+</tr>
+<tr>
+<td>A number</td>
+<td><code>count_&lt;items&gt;</code>, <code>calculate_&lt;value&gt;</code></td>
+<td><code>count_open_orders</code>, <code>calculate_order_total</code></td>
+</tr>
+<tr>
+<td>A new object</td>
+<td><code>create_&lt;thing&gt;</code> (stored), <code>build_&lt;thing&gt;</code> (in memory only)</td>
+<td><code>create_order</code>, <code>build_invoice</code></td>
+</tr>
+<tr>
+<td>Nothing</td>
+<td>a verb for the side effect</td>
+<td><code>cancel_order</code>, <code>send_receipt_email</code></td>
+</tr>
+<tr>
+<td>An iterator</td>
+<td><code>iter_&lt;items&gt;</code></td>
+<td><code>iter_order_rows</code>, <code>iter_pending_refunds</code></td>
+</tr>
+<tr>
+<td>A converted value</td>
+<td><code>&lt;source&gt;_to_&lt;target&gt;</code>, <code>parse_</code>, <code>format_</code></td>
+<td><code>order_to_invoice</code>, <code>parse_price</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bad-better">Bad → better<a class="headerlink" href="#bad-better" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Bad</th>
+<th>Better</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_cancel()</code></td>
+<td><code>cancel_order()</code></td>
+<td>Verb first reads as a command.</td>
+</tr>
+<tr>
+<td><code>check_stock(sku)</code> returning a boolean</td>
+<td><code>is_in_stock(sku)</code></td>
+<td>A boolean function uses <code>is_</code>, <code>has_</code>, <code>can_</code> or <code>should_</code>.</td>
+</tr>
+<tr>
+<td><code>do_checkout()</code> (if it completes the checkout)</td>
+<td><code>complete_checkout()</code></td>
+<td><code>do</code> adds no meaning.</td>
+</tr>
+<tr>
+<td><code>get_and_save_user()</code></td>
+<td><code>get_user()</code> and <code>save_user()</code></td>
+<td><code>and</code> often hides two jobs.</td>
+</tr>
+<tr>
+<td><code>get_coupon()</code> that may return <code>None</code></td>
+<td><code>find_coupon()</code></td>
+<td><code>find</code> says that no result is a normal answer.</td>
+</tr>
+<tr>
+<td><code>get_all_orders()</code> that returns a <abbr title="Return a collection of items, often with filtering or pagination">list</abbr></td>
+<td><code>list_orders()</code></td>
+<td><code>list</code> states the return shape.</td>
+</tr>
+<tr>
+<td><code>fetch_total()</code> that adds numbers locally</td>
+<td><code>calculate_order_total()</code></td>
+<td><code>fetch</code> suggests a remote <abbr title="Read and return data from a source">read</abbr>.</td>
+</tr>
+<tr>
+<td><code>validate_order()</code> that saves</td>
+<td><code>validate_order()</code> and <code>save_order()</code></td>
+<td>A <abbr title="Run a test and return a report or an outcome">check</abbr> must not change state.</td>
+</tr>
+<tr>
+<td><code>handle_data(order)</code> (if it applies a coupon)</td>
+<td><code>apply_coupon(order)</code></td>
+<td>Bare <code>handle_</code> names no action.</td>
+</tr>
+<tr>
+<td><code>process()</code> (if it captures a payment)</td>
+<td><code>capture_payment()</code></td>
+<td><code>process</code> hides the action.</td>
+</tr>
+<tr>
+<td>bare <code>convert(order)</code> (if it builds an invoice)</td>
+<td><code>order_to_invoice(order)</code></td>
+<td>Name both the source and the target.</td>
+</tr>
+<tr>
+<td><code>email(order)</code> (if it sends an email)</td>
+<td><code>send_order_email(order)</code></td>
+<td><code>email</code> could be a noun or a verb.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../variables/">Variables</a> for the values these functions take and return</li>
+<li><a href="../class_methods/">Class methods</a> for methods on objects</li>
+<li><a href="../../patterns/cookbook/">Bad → better cookbook</a> for more rewrites</li>
+<li><a href="../../patterns/symmetry/">Symmetry</a> for matching pairs such as <code>open</code> and <code>close</code></li>
+</ul>
+</div>
+<h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h2>
+<h3 id="a">A<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accept</td>
+<td>access</td>
+<td>acquire</td>
+<td>activate</td>
+</tr>
+<tr>
+<td><abbr title="Append an item to a collection or perform a mathematical addition">add</abbr></td>
+<td>adjust</td>
+<td><abbr title="Combine multiple values into a single summarized result">aggregate</abbr></td>
+<td>alert</td>
+</tr>
+<tr>
+<td>align</td>
+<td><abbr title="Reserve and assign a resource for a specific purpose">allocate</abbr></td>
+<td>analyze</td>
+<td>append</td>
+</tr>
+<tr>
+<td><abbr title="Execute a function against data or enact a rule/effect">apply</abbr></td>
+<td>archive</td>
+<td>arrange</td>
+<td>assign</td>
+</tr>
+<tr>
+<td>associate</td>
+<td>attach</td>
+<td>attempt</td>
+<td>audit</td>
+</tr>
+<tr>
+<td><abbr title="Verify the identity of a user or system">authenticate</abbr></td>
+<td><abbr title="Verify that a user or system has permission to act">authorize</abbr></td>
+<td>average</td>
+<td>await</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b">B<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Create a copy of data for recovery purposes">backup</abbr></td>
+<td>balance</td>
+<td><abbr title="Process multiple items as a single group">batch</abbr></td>
+<td>bind</td>
+</tr>
+<tr>
+<td>block</td>
+<td>bootstrap</td>
+<td>borrow</td>
+<td>branch</td>
+</tr>
+<tr>
+<td>broadcast</td>
+<td>browse</td>
+<td><abbr title="Accumulate data in a temporary storage before processing">buffer</abbr></td>
+<td><abbr title="Construct a complex object step by step, often with configuration">build</abbr></td>
+</tr>
+<tr>
+<td>bundle</td>
+<td>burn</td>
+<td>bypass</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="c">C<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Store computed results for reuse">cache</abbr></td>
+<td><abbr title="Compute a value from inputs by following fixed rules (preferred over compute)">calculate</abbr></td>
+<td><abbr title="Abort a planned or running operation before completion">cancel</abbr></td>
+<td>capture</td>
+</tr>
+<tr>
+<td><abbr title="Convert a value to a different type">cast</abbr></td>
+<td>catch</td>
+<td>certify</td>
+<td><abbr title="Run a test and return a report or an outcome">check</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Split data into smaller segments">chunk</abbr></td>
+<td><abbr title="Remove temporary, invalid, or unwanted data">clean</abbr></td>
+<td>clear</td>
+<td>clone</td>
+</tr>
+<tr>
+<td><abbr title="Release an open resource or connection">close</abbr></td>
+<td><abbr title="Force a value to a different type, often with implicit rules">coerce</abbr></td>
+<td>collect</td>
+<td>combine</td>
+</tr>
+<tr>
+<td><abbr title="Finalize a transaction or make changes permanent">commit</abbr></td>
+<td>compare</td>
+<td><abbr title="Transform source code into executable form">compile</abbr></td>
+<td>complete</td>
+</tr>
+<tr>
+<td>compose</td>
+<td>compress</td>
+<td><abbr title="Perform a mathematical or logical calculation">compute</abbr></td>
+<td>confirm</td>
+</tr>
+<tr>
+<td><abbr title="Set up an object or system with given parameters">configure</abbr></td>
+<td>connect</td>
+<td>consume</td>
+<td><abbr title="Change the format, type, or representation of data">convert</abbr></td>
+</tr>
+<tr>
+<td>copy</td>
+<td>correct</td>
+<td><abbr title="Determine the number of elements in a collection">count</abbr></td>
+<td><abbr title="Instantiate a new entity, record, or object">create</abbr></td>
+</tr>
+<tr>
+<td>crop</td>
+<td>cut</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d">D<a class="headerlink" href="#d" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deactivate</td>
+<td>debug</td>
+<td><abbr title="Convert encrypted data back to its original form">decrypt</abbr></td>
+<td><abbr title="Remove duplicate entries from a collection">deduplicate</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Supply a fallback value when the primary value is absent">default</abbr></td>
+<td>define</td>
+<td><abbr title="Remove an entity permanently from storage">delete</abbr></td>
+<td>deliver</td>
+</tr>
+<tr>
+<td>deny</td>
+<td>derive</td>
+<td><abbr title="Convert a serialized format (JSON, pickle etc.) back to an object">deserialize</abbr></td>
+<td>destroy</td>
+</tr>
+<tr>
+<td>detach</td>
+<td>detect</td>
+<td>determine</td>
+<td>diagnose</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>disconnect</td>
+<td>discover</td>
+<td><abbr title="Send a command or event to its destination">dispatch</abbr></td>
+</tr>
+<tr>
+<td>display</td>
+<td><abbr title="Free what an object owns, when there is no matching open">dispose</abbr></td>
+<td>distribute</td>
+<td>download</td>
+</tr>
+<tr>
+<td>drain</td>
+<td>draw</td>
+<td>drop</td>
+<td><abbr title="Write the full content of data, typically for backup or debugging">dump</abbr></td>
+</tr>
+<tr>
+<td>duplicate</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="e">E<a class="headerlink" href="#e" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Publish an event or signal to its listeners">emit</abbr></td>
+<td>enable</td>
+<td><abbr title="Convert data into a specific format for transmission or storage">encode</abbr></td>
+<td><abbr title="Convert data into a secure encoded form">encrypt</abbr></td>
+</tr>
+<tr>
+<td>enforce</td>
+<td><abbr title="Raise on the first failure of a condition that must hold">ensure</abbr></td>
+<td><abbr title="Iterate over items with their index">enumerate</abbr></td>
+<td>erase</td>
+</tr>
+<tr>
+<td><abbr title="Produce an approximate value">estimate</abbr></td>
+<td>evaluate</td>
+<td>exchange</td>
+<td>exclude</td>
+</tr>
+<tr>
+<td>execute</td>
+<td>exhaust</td>
+<td>exist</td>
+<td>exit</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>expect</td>
+<td>expire</td>
+<td><abbr title="Send data to an external system, file, or format">export</abbr></td>
+</tr>
+<tr>
+<td>expose</td>
+<td>extend</td>
+<td>extract</td>
+<td><abbr title="Estimate values beyond the known range">extrapolate</abbr></td>
+</tr>
+</tbody>
+</table>
+<h3 id="f">F<a class="headerlink" href="#f" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fail</td>
+<td>fallback</td>
+<td><abbr title="Retrieve data over a network or from a slow source">fetch</abbr></td>
+<td><abbr title="Keep only elements that match a given predicate">filter</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Perform the last required steps to complete a process">finalize</abbr></td>
+<td><abbr title="Locate and return an item matching search criteria">find</abbr></td>
+<td>finish</td>
+<td>fire</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>flatten</td>
+<td>flush</td>
+<td>fold</td>
+</tr>
+<tr>
+<td>forbid</td>
+<td>force</td>
+<td>forecast</td>
+<td>fork</td>
+</tr>
+<tr>
+<td><abbr title="Arrange data into a specified layout or representation">format</abbr></td>
+<td>forward</td>
+<td>freeze</td>
+<td>fulfill</td>
+</tr>
+</tbody>
+</table>
+<h3 id="g">G<a class="headerlink" href="#g" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gather</td>
+<td><abbr title="Produce data or objects, often lazily or programmatically">generate</abbr></td>
+<td><abbr title="Retrieve a value by its identifier, often a simple accessor">get</abbr></td>
+<td>grant</td>
+</tr>
+<tr>
+<td>group</td>
+<td>grow</td>
+<td>guard</td>
+<td>guess</td>
+</tr>
+<tr>
+<td>guide</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>halt</td>
+<td><abbr title="Respond to an event, signal, or incoming data">handle</abbr></td>
+<td>harvest</td>
+<td>hash</td>
+</tr>
+<tr>
+<td>hide</td>
+<td>highlight</td>
+<td>hold</td>
+<td>hook</td>
+</tr>
+<tr>
+<td><abbr title="Populate an object with data from a persistence layer">hydrate</abbr></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="i">I<a class="headerlink" href="#i" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identify</td>
+<td>ignore</td>
+<td>implement</td>
+<td><abbr title="Bring data in from an external source">import</abbr></td>
+</tr>
+<tr>
+<td>increment</td>
+<td>index</td>
+<td><abbr title="Deduce a type or value from context">infer</abbr></td>
+<td><abbr title="Set up state before first use">initialize</abbr></td>
+</tr>
+<tr>
+<td>inject</td>
+<td>inline</td>
+<td>insert</td>
+<td>inspect</td>
+</tr>
+<tr>
+<td>install</td>
+<td><abbr title="Capture and potentially modify a call or event before it reaches its target">intercept</abbr></td>
+<td>intersect</td>
+<td><abbr title="Mark a cached value or session as stale">invalidate</abbr></td>
+</tr>
+<tr>
+<td>invert</td>
+<td>invoke</td>
+<td>isolate</td>
+<td>issue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="j">J<a class="headerlink" href="#j" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>join</td>
+<td>jump</td>
+<td>justify</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="k">K<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>keep</td>
+<td>key</td>
+<td>kick</td>
+<td>kill</td>
+</tr>
+</tbody>
+</table>
+<h3 id="l">L<a class="headerlink" href="#l" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>launch</td>
+<td>lay</td>
+<td>lead</td>
+<td>leave</td>
+</tr>
+<tr>
+<td>link</td>
+<td><abbr title="Return a collection of items, often with filtering or pagination">list</abbr></td>
+<td><abbr title="Read data from storage into memory">load</abbr></td>
+<td>locate</td>
+</tr>
+<tr>
+<td><abbr title="Restrict concurrent access to a resource">lock</abbr></td>
+<td><abbr title="Record an event for auditing, monitoring, or debugging">log</abbr></td>
+<td>login</td>
+<td>logout</td>
+</tr>
+<tr>
+<td>lookup</td>
+<td>loop</td>
+<td>lower</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="m">M<a class="headerlink" href="#m" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Transform each element of a collection using a function">map</abbr></td>
+<td>mark</td>
+<td>match</td>
+<td><abbr title="Determine a numeric value, duration, or metric">measure</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Combine multiple entities, sets, or data streams into one">merge</abbr></td>
+<td><abbr title="Move data or schema from one version to another">migrate</abbr></td>
+<td>mimic</td>
+<td>minimize</td>
+</tr>
+<tr>
+<td>mirror</td>
+<td><abbr title="Create a fake implementation for testing">mock</abbr></td>
+<td>modify</td>
+<td>monitor</td>
+</tr>
+<tr>
+<td>mount</td>
+<td>move</td>
+<td>multiply</td>
+<td><abbr title="Change the state of an object in-place">mutate</abbr></td>
+</tr>
+</tbody>
+</table>
+<h3 id="n">N<a class="headerlink" href="#n" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>navigate</td>
+<td>negate</td>
+<td>nest</td>
+<td>next</td>
+</tr>
+<tr>
+<td><abbr title="Transform data into a standard form">normalize</abbr></td>
+<td><abbr title="Send a message or alert to a user, system, or channel">notify</abbr></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="o">O<a class="headerlink" href="#o" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>observe</td>
+<td>obtain</td>
+<td><abbr title="Access a resource and make it ready for reading or writing">open</abbr></td>
+<td>operate</td>
+</tr>
+<tr>
+<td>optimize</td>
+<td>order</td>
+<td>organize</td>
+<td>output</td>
+</tr>
+<tr>
+<td>override</td>
+<td>overwrite</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="p">P<a class="headerlink" href="#p" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pack</td>
+<td><abbr title="Analyze a string or structured input into a meaningful data structure">parse</abbr></td>
+<td><abbr title="Split data into subsets based on a condition">partition</abbr></td>
+<td>pass</td>
+</tr>
+<tr>
+<td><abbr title="Suspend a running operation temporarily">pause</abbr></td>
+<td>perform</td>
+<td><abbr title="Save data to durable storage">persist</abbr></td>
+<td><abbr title="Direct data from one function's output to another's input">pipe</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Repeatedly check a condition or resource for changes">poll</abbr></td>
+<td><abbr title="Fill a data structure or database with initial data">populate</abbr></td>
+<td>postpone</td>
+<td>prepare</td>
+</tr>
+<tr>
+<td>present</td>
+<td>preserve</td>
+<td>pretty_print</td>
+<td>prevent</td>
+</tr>
+<tr>
+<td><abbr title="Perform a series of operations on input data">process</abbr></td>
+<td>produce</td>
+<td>project</td>
+<td>prompt</td>
+</tr>
+<tr>
+<td><abbr title="Spread a change or event through a system">propagate</abbr></td>
+<td>prune</td>
+<td>publish</td>
+<td>pull</td>
+</tr>
+<tr>
+<td><abbr title="Permanently remove data that is no longer needed">purge</abbr></td>
+<td>pursue</td>
+<td>push</td>
+<td>put</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q">Q<a class="headerlink" href="#q" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qualify</td>
+<td>quantify</td>
+<td>query</td>
+<td><abbr title="Add to a waiting line for sequential processing">queue</abbr></td>
+</tr>
+<tr>
+<td>quit</td>
+<td>quote</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="r">R<a class="headerlink" href="#r" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raise</td>
+<td><abbr title="Read and return data from a source">read</abbr></td>
+<td>rebuild</td>
+<td>receive</td>
+</tr>
+<tr>
+<td>recognize</td>
+<td>recommend</td>
+<td>record</td>
+<td>recover</td>
+</tr>
+<tr>
+<td>redirect</td>
+<td><abbr title="Combine a collection of elements into a single value">reduce</abbr></td>
+<td>refine</td>
+<td><abbr title="Reload or renew data that may have become stale">refresh</abbr></td>
+</tr>
+<tr>
+<td>register</td>
+<td>reject</td>
+<td>release</td>
+<td>reload</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>rename</td>
+<td>render</td>
+<td>reorder</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td>replace</td>
+<td>report</td>
+<td>request</td>
+</tr>
+<tr>
+<td>require</td>
+<td><abbr title="Return an object to its initial state">reset</abbr></td>
+<td><abbr title="Convert a symbolic name or identifier to its concrete target">resolve</abbr></td>
+<td>respond</td>
+</tr>
+<tr>
+<td>restore</td>
+<td>restrict</td>
+<td><abbr title="Continue a paused operation from where it stopped">resume</abbr></td>
+<td>retain</td>
+</tr>
+<tr>
+<td>retract</td>
+<td>retrieve</td>
+<td>return</td>
+<td>reuse</td>
+</tr>
+<tr>
+<td>review</td>
+<td>revise</td>
+<td>rewind</td>
+<td>rewrite</td>
+</tr>
+<tr>
+<td>rotate</td>
+<td>route</td>
+<td><abbr title="Execute a process, command, or workflow">run</abbr></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="s">S<a class="headerlink" href="#s" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Persist data to durable storage">save</abbr></td>
+<td>scan</td>
+<td>schedule</td>
+<td><abbr title="Look for items that match given criteria">search</abbr></td>
+</tr>
+<tr>
+<td>secure</td>
+<td>seed</td>
+<td>select</td>
+<td><abbr title="Cause a message to go out to a recipient or destination">send</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Convert an object to a format suitable for storage or transmission">serialize</abbr></td>
+<td><abbr title="Assign a value to a property, setting, or configuration">set</abbr></td>
+<td><abbr title="Prepare an environment, object, or system for use">setup</abbr></td>
+<td>share</td>
+</tr>
+<tr>
+<td>shift</td>
+<td>show</td>
+<td>shut</td>
+<td>sign</td>
+</tr>
+<tr>
+<td>simplify</td>
+<td>simulate</td>
+<td>skip</td>
+<td><abbr title="Arrange items by a specified key or comparator">sort</abbr></td>
+</tr>
+<tr>
+<td><abbr title="Create a new subprocess or concurrent task">spawn</abbr></td>
+<td><abbr title="Divide an entity, string, or collection into multiple parts">split</abbr></td>
+<td><abbr title="Begin execution of a process or service">start</abbr></td>
+<td><abbr title="Terminate execution of a process or service">stop</abbr></td>
+</tr>
+<tr>
+<td>store</td>
+<td><abbr title="Process data sequentially as it becomes available">stream</abbr></td>
+<td><abbr title="Convert a value to its string representation">stringify</abbr></td>
+<td>strip</td>
+</tr>
+<tr>
+<td>submit</td>
+<td><abbr title="Register interest to receive a feed of events or data">subscribe</abbr></td>
+<td>subtract</td>
+<td><abbr title="Add numbers into one total">sum</abbr></td>
+</tr>
+<tr>
+<td>summarize</td>
+<td>swap</td>
+<td>sync</td>
+<td><abbr title="Combine data or signals to produce a new result">synthesize</abbr></td>
+</tr>
+</tbody>
+</table>
+<h3 id="t">T<a class="headerlink" href="#t" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tag</td>
+<td><abbr title="Clean up resources after a test or operation completes">tear_down</abbr></td>
+<td>test</td>
+<td>timeout</td>
+</tr>
+<tr>
+<td><abbr title="Follow the state or progress of something over time">track</abbr></td>
+<td><abbr title="Convert data from one shape or structure to another">transform</abbr></td>
+<td>translate</td>
+<td>transmit</td>
+</tr>
+<tr>
+<td>trigger</td>
+<td>trim</td>
+<td><abbr title="Shorten data by removing leading or trailing parts">truncate</abbr></td>
+<td>tune</td>
+</tr>
+<tr>
+<td>turn</td>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="u">U<a class="headerlink" href="#u" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unblock</td>
+<td>undo</td>
+<td>ungroup</td>
+<td>unify</td>
+</tr>
+<tr>
+<td><abbr title="Remove an access restriction from a resource">unlock</abbr></td>
+<td>unregister</td>
+<td>unsubscribe</td>
+<td><abbr title="Modify an existing entity with new values">update</abbr></td>
+</tr>
+<tr>
+<td>upgrade</td>
+<td>upload</td>
+<td>use</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="v">V<a class="headerlink" href="#v" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Check that data meets required constraints or rules">validate</abbr></td>
+<td><abbr title="Confirm that a claim, such as a signature or a token, is genuine, or raise if it is not">verify</abbr></td>
+<td>version</td>
+<td>view</td>
+</tr>
+</tbody>
+</table>
+<h3 id="w">W<a class="headerlink" href="#w" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wait</td>
+<td>warn</td>
+<td>watch</td>
+<td>wipe</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td><abbr title="Write data to storage, a stream, or an output">write</abbr></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="z">Z<a class="headerlink" href="#z" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zero</td>
+<td>zip</td>
+<td>zone</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 &ndash;2026 Yevhen D.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

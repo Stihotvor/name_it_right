@@ -1,0 +1,3436 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find the right name for every code entity — variable, table field, function, class, and more. Make it clear. Make it standard.">
+      
+      
+        <meta name="author" content="Yevhen D.">
+      
+      
+        <link rel="canonical" href="https://stihotvor.github.io/name_it_right/examples/ml/">
+      
+      
+        <link rel="prev" href="../saas/">
+      
+      
+        <link rel="next" href="../../interlinks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Machine learning - Name it Right</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#machine-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Name it Right" class="md-header__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Name it Right
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Machine learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../common/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../patterns/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Naming patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Databases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../languages/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Languages
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../interlinks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Site map
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Name it Right" class="md-nav__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Name it Right
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/references-and-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References and glossary
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/abbreviations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abbreviations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/meaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meaning and clarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../patterns/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming patterns
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Naming patterns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/action-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action and context
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/booleans-collections-units-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Booleans, collections, units and time
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/negation-and-optionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Negation and optionality
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bad → better cookbook
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../databases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/columns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/indexes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indexes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/warehouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse and analytics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../languages/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Languages
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Languages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript and TypeScript
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/java-kotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java and Kotlin
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/csharp-dotnet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# and .NET
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/go/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Go
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/rust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rust
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/class_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/special_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../systems/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systems
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/graphql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/feature-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature flags
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command line
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecommerce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-commerce
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Payments
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fintech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fintech and banking
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthcare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SaaS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine learning
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine learning
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interlinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Site map
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="machine-learning">Machine learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
+<div class="admonition success">
+<p class="admonition-title">General patterns</p>
+<ul>
+<li>Name an experiment for the question it answers, and a run for one try: <code>experiment</code>, <code>run</code></li>
+<li>Name a model for what it predicts, and a model version for one trained copy: <code>churn_classifier</code>, <code>churn_classifier</code> version <code>7</code></li>
+<li>Keep the data, the code and the result of a run apart: <code>dataset_version</code>, <code>git_commit</code>, <code>metric</code></li>
+<li>Name a metric with its split: <code>val_accuracy</code>, <code>test_auc</code></li>
+<li>Name a feature for the thing and the window: <code>customer_orders_count_30d</code></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Useful tips</p>
+<ul>
+<li>Use <code>snake_case</code> for parameters and metrics. MLflow accepts many characters, but a plain name is easy to query</li>
+<li>Use <code>X_train</code>, <code>y_train</code> only inside a short function. Use full names for fields that you store</li>
+<li>Use <code>dataset_version</code> and a hash, not <code>data_v2_final</code></li>
+<li>Use an alias such as <code>champion</code> for the version that serves traffic. MLflow aliases replace the older stages</li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">General anti-patterns</p>
+<ul>
+<li><code>model</code> for the code, the weights and the service at once</li>
+<li><code>data2</code>, <code>data_new</code>, <code>final_final</code></li>
+<li><code>acc</code> and <code>accuracy</code> for different things in two runs</li>
+<li>A metric with no split: <code>loss</code></li>
+<li><code>prod</code> as a model name</li>
+</ul>
+</div>
+<p>The words follow MLflow Tracking and the MLflow Model Registry: <code>Experiment</code>, <code>Run</code>, <code>Param</code>, <code>Metric</code>, <code>Artifact</code>, <code>Registered Model</code>, <code>Model Version</code>. MLflow run statuses are <code>RUNNING</code>, <code>SCHEDULED</code>, <code>FINISHED</code>, <code>FAILED</code> and <code>KILLED</code>. The model version stages <code>None</code>, <code>Staging</code>, <code>Production</code> and <code>Archived</code> are deprecated in favor of aliases and tags.</p>
+<h2 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Meaning</th>
+<th>Table</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Experiment</td>
+<td>A group of runs for one question.</td>
+<td><code>experiments</code></td>
+<td>MLflow <code>Experiment</code>.</td>
+</tr>
+<tr>
+<td>Run</td>
+<td>One execution of training or evaluation.</td>
+<td><code>runs</code></td>
+<td>MLflow <code>Run</code>.</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td>An input value of a run.</td>
+<td><code>run_params</code></td>
+<td>A key and a value.</td>
+</tr>
+<tr>
+<td>Metric</td>
+<td>A number that a run measures.</td>
+<td><code>run_metrics</code></td>
+<td>A key, a value, a step, a time.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>A label on a run or a model.</td>
+<td><code>run_tags</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Artifact</td>
+<td>A file that a run makes.</td>
+<td><code>artifacts</code></td>
+<td>A plot, a model file.</td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td>A named source of data.</td>
+<td><code>datasets</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Dataset version</td>
+<td>A fixed snapshot of a dataset.</td>
+<td><code>dataset_versions</code></td>
+<td>Has a hash.</td>
+</tr>
+<tr>
+<td>Feature</td>
+<td>A column that a model reads.</td>
+<td><code>features</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Feature view</td>
+<td>A group of features with one source.</td>
+<td><code>feature_views</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Label</td>
+<td>The true answer for an example.</td>
+<td><code>labels</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Training job</td>
+<td>A job that runs training.</td>
+<td><code>training_jobs</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>A list of steps that make a model.</td>
+<td><code>pipelines</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Model</td>
+<td>A named model in the registry.</td>
+<td><code>models</code></td>
+<td>MLflow: registered model.</td>
+</tr>
+<tr>
+<td>Model version</td>
+<td>One trained copy of a model.</td>
+<td><code>model_versions</code></td>
+<td>A number, 1, 2, 3.</td>
+</tr>
+<tr>
+<td>Model alias</td>
+<td>A name that points to a version.</td>
+<td><code>model_aliases</code></td>
+<td><code>champion</code>, <code>challenger</code>.</td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>A test of a model version on a dataset.</td>
+<td><code>evaluations</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>A model version that runs in an environment.</td>
+<td><code>deployments</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>The address that serves predictions.</td>
+<td><code>endpoints</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Prediction</td>
+<td>One answer of a model.</td>
+<td><code>predictions</code></td>
+<td>Often not stored in a database.</td>
+</tr>
+<tr>
+<td>Drift report</td>
+<td>A report on the change of data.</td>
+<td><code>drift_reports</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Prompt</td>
+<td>A text template for a language model.</td>
+<td><code>prompts</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>MLflow keeps experiments, runs, parameters, metrics and tags in its own store. The tables above matter only if you mirror them. The worked example keeps only the registry link.</p>
+<h2 id="states">States<a class="headerlink" href="#states" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>States</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run (MLflow)</td>
+<td><code>RUNNING</code>, <code>SCHEDULED</code>, <code>FINISHED</code>, <code>FAILED</code>, <code>KILLED</code></td>
+</tr>
+<tr>
+<td>Model version (MLflow)</td>
+<td><code>PENDING_REGISTRATION</code>, <code>FAILED_REGISTRATION</code>, <code>READY</code></td>
+</tr>
+<tr>
+<td>Model version stage (deprecated in MLflow)</td>
+<td><code>None</code>, <code>Staging</code>, <code>Production</code>, <code>Archived</code></td>
+</tr>
+<tr>
+<td>Training job</td>
+<td><code>queued</code>, <code>running</code>, <code>succeeded</code>, <code>failed</code>, <code>canceled</code></td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td><code>creating</code>, <code>ready</code>, <code>degraded</code>, <code>failed</code>, <code>retiring</code>, <code>retired</code></td>
+</tr>
+<tr>
+<td>Dataset version</td>
+<td><code>draft</code>, <code>validated</code>, <code>deprecated</code></td>
+</tr>
+</tbody>
+</table>
+<p>MLflow writes these states in upper case. If you mirror MLflow exactly, keep its values. Otherwise store lower case (<code>ready</code>) and map at the boundary. The worked example below keeps the MLflow values. The deployment states are the choice of this guide and are lower case. A training job maps to a run: <code>running</code> to <code>RUNNING</code>, <code>succeeded</code> to <code>FINISHED</code>, <code>failed</code> to <code>FAILED</code>, <code>canceled</code> to <code>KILLED</code>.</p>
+<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Function name</th>
+<th>Meaning</th>
+<th>Trap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start a run</td>
+<td><code>mlflow.start_run</code></td>
+<td>Opens a run.</td>
+<td>Use it as a context manager.</td>
+</tr>
+<tr>
+<td>Log a parameter</td>
+<td><code>mlflow.log_param</code></td>
+<td>Stores an input value.</td>
+<td>A param is a string.</td>
+</tr>
+<tr>
+<td>Log a metric</td>
+<td><code>mlflow.log_metric</code></td>
+<td>Stores a number.</td>
+<td>Add a <code>step</code> for a curve.</td>
+</tr>
+<tr>
+<td>Log an artifact</td>
+<td><code>mlflow.log_artifact</code></td>
+<td>Stores a file.</td>
+<td></td>
+</tr>
+<tr>
+<td>Log a model</td>
+<td><code>mlflow.&lt;flavor&gt;.log_model</code></td>
+<td>Stores a model in a run. For example <code>mlflow.sklearn.log_model</code>.</td>
+<td>It is registered only if you pass <code>registered_model_name</code>.</td>
+</tr>
+<tr>
+<td>Register a model</td>
+<td><code>mlflow.register_model</code></td>
+<td>Adds a version to the registry.</td>
+<td></td>
+</tr>
+<tr>
+<td>Fit</td>
+<td><code>fit</code></td>
+<td>Trains on data.</td>
+<td>Not <code>train_model</code> in a class that has <code>fit</code>.</td>
+</tr>
+<tr>
+<td>Predict</td>
+<td><code>predict</code></td>
+<td>Gives an answer.</td>
+<td><code>predict_proba</code> gives a probability.</td>
+</tr>
+<tr>
+<td>Evaluate</td>
+<td><code>evaluate_model</code></td>
+<td>Measures on a test set.</td>
+<td>Do not use the training set.</td>
+</tr>
+<tr>
+<td>Split</td>
+<td><code>split_dataset</code></td>
+<td>Makes train, validation and test sets.</td>
+<td>Fix the random seed.</td>
+</tr>
+<tr>
+<td>Promote</td>
+<td><code>MlflowClient.set_registered_model_alias</code></td>
+<td>Points an alias to a version.</td>
+<td>The old term is a stage transition.</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>deploy_model_version</code></td>
+<td>Starts serving.</td>
+<td></td>
+</tr>
+<tr>
+<td>Roll back</td>
+<td><code>rollback_deployment</code></td>
+<td>Returns to the last good version.</td>
+<td></td>
+</tr>
+<tr>
+<td>Detect drift</td>
+<td><code>detect_drift</code></td>
+<td>Compares live data to training data.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Names with the <code>mlflow.</code> prefix or <code>MlflowClient</code> are MLflow APIs. The other names are wrappers in your own application.</p>
+<h2 id="traps">Traps<a class="headerlink" href="#traps" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>Why it is a problem</th>
+<th>Better</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model</code></td>
+<td>Code, weights and service are different.</td>
+<td><code>model</code> for the registry name, <code>model_version</code> for the weights, <code>endpoint</code> for the service.</td>
+</tr>
+<tr>
+<td><code>experiment</code> and <code>run</code></td>
+<td>A run is one try. An experiment is the group.</td>
+<td><code>experiment_id</code>, <code>run_id</code>.</td>
+</tr>
+<tr>
+<td><code>loss</code></td>
+<td>Training or validation?</td>
+<td><code>train_loss</code>, <code>val_loss</code>.</td>
+</tr>
+<tr>
+<td><code>acc</code> and <code>accuracy</code></td>
+<td>Two names in two runs.</td>
+<td><code>accuracy</code> with a split: <code>val_accuracy</code>.</td>
+</tr>
+<tr>
+<td><code>data_v2_final</code></td>
+<td>The name tells nothing and the file can change.</td>
+<td><code>dataset_version</code> with a hash.</td>
+</tr>
+<tr>
+<td><code>train</code>, <code>test</code>, <code>val</code>, <code>eval</code>, <code>dev</code></td>
+<td>Names for splits vary.</td>
+<td><code>train</code>, <code>validation</code>, <code>test</code> in stored fields. <code>val_</code> only as a metric prefix.</td>
+</tr>
+<tr>
+<td><code>X</code> and <code>y</code></td>
+<td>Fine in a formula, vague in a field.</td>
+<td><code>features</code> and <code>labels</code> in stored fields.</td>
+</tr>
+<tr>
+<td><code>feature</code></td>
+<td>A column, a feature view or a flag?</td>
+<td><code>feature</code> for the model input. A <a href="../../systems/feature-flags/">feature flag</a> is a different thing.</td>
+</tr>
+<tr>
+<td><code>prod</code></td>
+<td>An environment or a version?</td>
+<td><code>production</code> environment, and an alias <code>champion</code>.</td>
+</tr>
+<tr>
+<td><code>stage</code></td>
+<td>Pipeline stage or model stage?</td>
+<td><code>pipeline_step</code> and <code>model_alias</code>.</td>
+</tr>
+<tr>
+<td><code>target</code>, <code>label</code>, <code>y</code></td>
+<td>Three words for the answer.</td>
+<td><code>label</code> for a stored true answer, <code>target</code> for the column name in a training table.</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td>A probability, a metric or a ranking?</td>
+<td><code>predicted_probability</code>, <code>metric_value</code>, <code>ranking_score</code>.</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>Which one?</td>
+<td><code>split_seed</code> for a split, <code>training_seed</code> for the model.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="worked-example">Worked example<a class="headerlink" href="#worked-example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">model_versions</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">id</span><span class="w">                  </span><span class="nb">bigint</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">IDENTITY</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">model_id</span><span class="w">            </span><span class="nb">bigint</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">version_number</span><span class="w">      </span><span class="nb">integer</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">run_id</span><span class="w">              </span><span class="nb">text</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">dataset_version_id</span><span class="w">  </span><span class="nb">bigint</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">git_commit</span><span class="w">          </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">status</span><span class="w">              </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'READY'</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">created_at</span><span class="w">          </span><span class="n">timestamptz</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">pk_model_versions</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">chk_model_versions_status_allowed</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">'PENDING_REGISTRATION'</span><span class="p">,</span><span class="w"> </span><span class="s1">'FAILED_REGISTRATION'</span><span class="p">,</span><span class="w"> </span><span class="s1">'READY'</span><span class="p">)),</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uq_model_versions_model_id_version_number</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">version_number</span><span class="p">),</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">uq_model_versions_model_id_id</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_model_versions_models</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_model_versions_dataset_versions</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">dataset_version_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">dataset_versions</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_model_versions_dataset_version_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_versions</span><span class="w"> </span><span class="p">(</span><span class="n">dataset_version_id</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">model_aliases</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">model_id</span><span class="w">            </span><span class="nb">bigint</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">alias</span><span class="w">               </span><span class="nb">text</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">model_version_id</span><span class="w">    </span><span class="nb">bigint</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">pk_model_aliases</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="k">alias</span><span class="p">),</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_model_aliases_models</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_model_aliases_model_versions</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">model_version_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">model_versions</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">);</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_model_aliases_model_id_model_version_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_aliases</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">model_version_id</span><span class="p">);</span>
+</code></pre></div>
+<p>The tables <code>models</code> and <code>dataset_versions</code> are not shown. The column <code>run_id</code> points into the MLflow tracking server, so it has no foreign key. A version can exist without a run.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">train_churn_classifier</span><span class="p">(</span><span class="n">dataset_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">"churn_prediction"</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="s2">"churn_classifier"</span><span class="p">)</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"dataset_version"</span><span class="p">,</span> <span class="n">dataset_version</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"git_commit"</span><span class="p">,</span> <span class="n">current_git_commit</span><span class="p">())</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">"learning_rate"</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="n">model</span> <span class="o">=</span> <span class="n">fit_classifier</span><span class="p">(</span><span class="n">dataset_version</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">"val_accuracy"</span><span class="p">,</span> <span class="n">evaluate_accuracy</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">))</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">"val_auc"</span><span class="p">,</span> <span class="n">evaluate_auc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">))</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"model"</span><span class="p">,</span> <span class="n">registered_model_name</span><span class="o">=</span><span class="s2">"churn_classifier"</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="k">return</span> <span class="n">run</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>POST /v1/models/{model_id}/versions                   register a version
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>PUT  /v1/models/{model_id}/aliases/{alias}            point an alias to a version
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>POST /v1/deployments                                  deploy a model version
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>POST /v1/endpoints/{endpoint_id}:predict           get predictions
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ModelVersionRegistered   ModelAliasSet   DeploymentActivated   DriftDetected   DeploymentRolledBack
+</code></pre></div>
+<h2 id="related-patterns">Related patterns<a class="headerlink" href="#related-patterns" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../patterns/booleans-collections-units-time/">Booleans, collections, units and time</a> for units and <code>_at</code> timestamps</li>
+<li><a href="../../systems/observability/">Observability</a> for the metric name format and unit suffixes</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../">Examples overview</a>, <a href="../../python/variables/">Python variables</a> and <a href="../../databases/tables/">Tables</a></li>
+<li><a href="https://mlflow.org/docs/latest/ml/tracking/">MLflow Tracking</a>, <a href="https://mlflow.org/docs/latest/ml/model-registry/">MLflow Model Registry</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 &ndash;2026 Yevhen D.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

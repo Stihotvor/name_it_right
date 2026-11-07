@@ -1,0 +1,3871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Find the right name for every code entity — variable, table field, function, class, and more. Make it clear. Make it standard.">
+      
+      
+        <meta name="author" content="Yevhen D.">
+      
+      
+        <link rel="canonical" href="https://stihotvor.github.io/name_it_right/python/classes/">
+      
+      
+        <link rel="prev" href="../functions/">
+      
+      
+        <link rel="next" href="../class_methods/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Classes - Name it Right</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#classes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Name it Right" class="md-header__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Name it Right
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Classes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../common/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../patterns/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Naming patterns
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../databases/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Databases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../languages/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Languages
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../systems/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Systems
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../interlinks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Site map
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Name it Right" class="md-nav__button md-logo" aria-label="Name it Right" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Name it Right
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Stihotvor/name_it_right" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stihotvor/name_it_right
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/references-and-glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References and glossary
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/abbreviations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abbreviations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/meaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meaning and clarity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Consistency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../patterns/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming patterns
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Naming patterns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/action-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action and context
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/booleans-collections-units-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Booleans, collections, units and time
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/symmetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symmetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/negation-and-optionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Negation and optionality
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../patterns/cookbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bad → better cookbook
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../databases/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Databases
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Databases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/tables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/columns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/indexes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Indexes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/constraints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../databases/warehouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warehouse and analytics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../languages/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Languages
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Languages
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/javascript-typescript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript and TypeScript
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/java-kotlin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java and Kotlin
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/csharp-dotnet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# and .NET
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/go/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Go
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../languages/rust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rust
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_7" id="__nav_5_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#suffix-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suffix glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manager-and-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manager and Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-examples-by-the-context-or-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming examples by the context or use-case
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming examples by the context or use-case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services / Managers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factories-builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factories / Builders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositories-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repositories / Data access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategies-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies / Policies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllers-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controllers / Handlers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dtos-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DTOs / Data classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapters-gateways-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapters / Gateways / Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mappers-converters-presenters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappers / Converters / Presenters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../class_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../special_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Special functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../systems/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systems
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/graphql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/feature-flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature flags
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command line
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../examples/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ecommerce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-commerce
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/payments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Payments
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/fintech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fintech and banking
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/healthcare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/logistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logistics
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/saas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SaaS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Machine learning
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interlinks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Site map
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--new" title="Recently added">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#suffix-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suffix glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manager-and-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manager and Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structural-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-examples-by-the-context-or-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming examples by the context or use-case
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming examples by the context or use-case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services / Managers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factories-builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factories / Builders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositories-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repositories / Data access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategies-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategies / Policies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllers-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controllers / Handlers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dtos-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DTOs / Data classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapters-gateways-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapters / Gateways / Clients
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mappers-converters-presenters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mappers / Converters / Presenters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h1>
+<div class="admonition success">
+<p class="admonition-title">General patterns</p>
+<ul>
+<li>Use CamelCase in the class names</li>
+<li>The class represents an object with a complex, encapsulated (or not) functionality. Use nouns to reflect it.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Useful tips</p>
+<ul>
+<li>Use a consistent naming convention throughout your code, so it's easy to understand and navigate. If you're
+  working on a team, agree on a naming convention to use across all your code.</li>
+<li>Class names should be concise and easy to type, but also descriptive enough to convey their purpose. Avoid
+  excessively long names that are difficult to read or type.</li>
+<li>Use mnemonics: If your class name is hard to remember or pronounce, consider using a mnemonic or an acronym
+  to help people remember it. Just make sure the mnemonic or acronym is easy to understand and related to
+  the purpose of the class.</li>
+<li>When choosing a class name, consider the future scalability of your code. Choose a name that can easily
+  accommodate potential future changes or additions to your code, without requiring a complete rewrite.</li>
+</ul>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">General anti-patterns</p>
+<ul>
+<li>Avoid using abbreviations in your class names, unless they are commonly understood within your domain.
+  Abbreviations can be confusing and make your code harder to read.</li>
+<li>Avoid the <code>Manager</code> or <code>Service</code> suffix on every class — not every class manages something. Use precise suffixes: <code>Validator</code>, <code>Builder</code>, <code>Parser</code>, <code>Gateway</code>, <code>Mapper</code></li>
+<li>Avoid including a pattern name in the class name unless the pattern is the public API: <code>UserFactory</code> is fine; <code>UserSingletonFactoryProxy</code> is not</li>
+<li>Avoid <code>Utils</code> / <code>Helper</code> classes — they are dumping grounds for unrelated logic. Split into domain-specific classes</li>
+</ul>
+</div>
+<h2 id="suffix-glossary">Suffix glossary<a class="headerlink" href="#suffix-glossary" title="Permanent link">&para;</a></h2>
+<p>A suffix tells the reader the role of the class. Use a suffix only when the class really has that role. The examples use an e-commerce checkout.</p>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Use it when</th>
+<th>Example</th>
+<th>Avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Validator</code></td>
+<td>The class checks input against rules and reports problems.</td>
+<td><code>OrderValidator</code>, <code>AddressValidator</code></td>
+<td><code>OrderChecker</code> next to <code>OrderValidator</code></td>
+</tr>
+<tr>
+<td><code>Parser</code></td>
+<td>The class reads text into a structure.</td>
+<td><code>CouponCodeParser</code>, <code>PriceParser</code></td>
+<td><code>PriceReader</code></td>
+</tr>
+<tr>
+<td><code>Serializer</code></td>
+<td>The class turns an object into a transfer format and back.</td>
+<td><code>OrderSerializer</code>, <code>InvoiceSerializer</code></td>
+<td><code>OrderConverter</code> for the same job</td>
+</tr>
+<tr>
+<td><code>Builder</code></td>
+<td>The class builds a complex object step by step.</td>
+<td><code>InvoiceBuilder</code>, <code>SearchQueryBuilder</code></td>
+<td><code>InvoiceMaker</code></td>
+</tr>
+<tr>
+<td><code>Factory</code></td>
+<td>The class creates objects of a family or picks the type.</td>
+<td><code>PaymentMethodFactory</code>, <code>NotifierFactory</code></td>
+<td>A factory that only calls a constructor</td>
+</tr>
+<tr>
+<td><code>Repository</code></td>
+<td>The class stores and loads one kind of record, like a collection.</td>
+<td><code>OrderRepository</code>, <code>CustomerRepository</code></td>
+<td><code>OrderManager</code>, <code>OrderDao</code> in the same code base</td>
+</tr>
+<tr>
+<td><code>Gateway</code></td>
+<td>The class is the domain-facing entry to an external system.</td>
+<td><code>PaymentGateway</code>, <code>ShippingGateway</code></td>
+<td><code>PaymentHelper</code></td>
+</tr>
+<tr>
+<td><code>Client</code></td>
+<td>The class is the low-level caller of a remote API.</td>
+<td><code>TaxApiClient</code>, <code>CarrierApiClient</code></td>
+<td><code>Client</code> alone</td>
+</tr>
+<tr>
+<td><code>Adapter</code></td>
+<td>The class implements one interface on top of another system.</td>
+<td><code>LegacyOrderAdapter</code>, <code>StripeAdapter</code></td>
+<td><code>Wrapper</code></td>
+</tr>
+<tr>
+<td><code>Mapper</code></td>
+<td>The class converts between two models.</td>
+<td><code>OrderMapper</code>, <code>AddressMapper</code></td>
+<td><code>OrderUtil</code></td>
+</tr>
+<tr>
+<td><code>Policy</code></td>
+<td>The class holds one business rule that can change.</td>
+<td><code>RefundPolicy</code>, <code>FreeShippingPolicy</code></td>
+<td>Rule flags spread over many functions</td>
+</tr>
+<tr>
+<td><code>Strategy</code></td>
+<td>The class is one swappable algorithm.</td>
+<td><code>FlatRateShippingStrategy</code>, <code>PercentDiscountStrategy</code></td>
+<td><code>ShippingType</code> with <code>if</code> chains</td>
+</tr>
+<tr>
+<td><code>Handler</code></td>
+<td>The class receives a raw message, a webhook or a command.</td>
+<td><code>CancelOrderHandler</code>, <code>PaymentWebhookHandler</code></td>
+<td><code>OrderHandler</code> for everything</td>
+</tr>
+<tr>
+<td><code>Controller</code></td>
+<td>The class receives web requests and calls the code that runs the use cases.</td>
+<td><code>OrderController</code>, <code>CartController</code></td>
+<td>A controller that holds business rules</td>
+</tr>
+<tr>
+<td><code>Listener</code></td>
+<td>The class reacts to one named event.</td>
+<td><code>OrderCreatedListener</code>, <code>PaymentFailedListener</code></td>
+<td><code>OrderObserver</code> next to <code>OrderListener</code></td>
+</tr>
+<tr>
+<td><code>Publisher</code></td>
+<td>The class sends events to subscribers.</td>
+<td><code>OrderEventPublisher</code>, <code>PaymentEventPublisher</code></td>
+<td><code>OrderNotifier</code> for event publishing</td>
+</tr>
+<tr>
+<td><code>Provider</code></td>
+<td>The class supplies a value or a dependency on request, such as the current time or a rate.</td>
+<td><code>TaxRateProvider</code>, <code>ClockProvider</code></td>
+<td>A <code>Factory</code> that builds domain objects</td>
+</tr>
+<tr>
+<td><code>Registry</code></td>
+<td>The class holds named entries for lookup.</td>
+<td><code>PaymentMethodRegistry</code>, <code>HandlerRegistry</code></td>
+<td>A bare module-level dict changed from many places</td>
+</tr>
+<tr>
+<td><code>Resolver</code></td>
+<td>The class maps a symbolic name or key to a concrete target by rules, such as aliases or fallbacks. It is not a store: use <code>Repository</code> for records by id.</td>
+<td><code>TaxRuleResolver</code>, <code>CarrierResolver</code></td>
+<td><code>Finder</code></td>
+</tr>
+<tr>
+<td><code>Coordinator</code></td>
+<td>The class runs several collaborators in one workflow.</td>
+<td><code>CheckoutCoordinator</code>, <code>RefundCoordinator</code></td>
+<td><code>CheckoutManager</code></td>
+</tr>
+<tr>
+<td><code>Processor</code></td>
+<td>The class is a stage in a pipeline that transforms items.</td>
+<td><code>ReceiptLineProcessor</code>, <code>ImageResizeProcessor</code></td>
+<td><code>Processor</code> for any class that has a <code>process</code> method</td>
+</tr>
+<tr>
+<td><code>Engine</code></td>
+<td>The class is a core component that runs complex logic by its own rules.</td>
+<td><code>PricingEngine</code>, <code>RuleEngine</code></td>
+<td><code>Engine</code> for a small helper</td>
+</tr>
+<tr>
+<td><code>Job</code></td>
+<td>The class is scheduled or recurring work. Do not use both <code>Job</code> and <code>Task</code> in one code base.</td>
+<td><code>ExpireCartsJob</code>, <code>SendDigestJob</code></td>
+<td><code>CartCleanup</code></td>
+</tr>
+<tr>
+<td><code>Worker</code></td>
+<td>The class is a process or thread that runs jobs.</td>
+<td><code>EmailWorker</code>, <code>ImportWorker</code></td>
+<td><code>Runner</code></td>
+</tr>
+<tr>
+<td><code>Task</code></td>
+<td>The class is one queued unit of work.</td>
+<td><code>SendReceiptTask</code>, <code>SyncStockTask</code></td>
+<td><code>Task</code> for a plain function</td>
+</tr>
+<tr>
+<td><code>Command</code></td>
+<td>The object is a request to change something.</td>
+<td><code>CancelOrderCommand</code>, <code>ApplyCouponCommand</code></td>
+<td><code>CancelOrderData</code></td>
+</tr>
+<tr>
+<td><code>Query</code></td>
+<td>The object is a request to read something.</td>
+<td><code>ListOpenOrdersQuery</code>, <code>ListRefundsQuery</code></td>
+<td><code>OrderFilterData</code></td>
+</tr>
+<tr>
+<td><code>Result</code></td>
+<td>The object is the outcome of an operation.</td>
+<td><code>RefundResult</code>, <code>ValidationResult</code></td>
+<td>A bare <code>tuple</code></td>
+</tr>
+<tr>
+<td><code>Snapshot</code></td>
+<td>The object is a frozen copy at one time.</td>
+<td><code>OrderSnapshot</code>, <code>PriceSnapshot</code></td>
+<td><code>Order2</code></td>
+</tr>
+<tr>
+<td><code>Config</code></td>
+<td>The object holds the settings of one component.</td>
+<td><code>GatewayConfig</code>, <code>RetryConfig</code></td>
+<td>Both <code>Settings</code> and <code>Config</code> in one code base</td>
+</tr>
+<tr>
+<td><code>Options</code></td>
+<td>The object holds optional parameters of one call.</td>
+<td><code>SearchOptions</code>, <code>ExportOptions</code></td>
+<td><code>Params</code></td>
+</tr>
+<tr>
+<td><code>Context</code></td>
+<td>The object holds data shared during one call or request.</td>
+<td><code>CheckoutContext</code>, <code>RequestContext</code></td>
+<td><code>Context</code> for any dict</td>
+</tr>
+<tr>
+<td><code>Session</code></td>
+<td>The object holds the state of one interaction with a start and an end.</td>
+<td><code>ShoppingSession</code>, <code>CheckoutSession</code></td>
+<td><code>Session</code> for a user record</td>
+</tr>
+<tr>
+<td><code>State</code></td>
+<td>The type represents the states of a state machine.</td>
+<td><code>OrderState</code>, <code>PaymentState</code></td>
+<td>Both <code>Status</code> and <code>State</code> for the same concept in one code base</td>
+</tr>
+<tr>
+<td><code>Cursor</code></td>
+<td>The object marks a position in a sequence.</td>
+<td><code>OrderCursor</code>, <code>EventCursor</code></td>
+<td><code>Pointer</code></td>
+</tr>
+<tr>
+<td><code>Page</code></td>
+<td>The object is one slice of a paged result.</td>
+<td><code>OrderPage</code>, <code>ProductPage</code></td>
+<td><code>OrderList</code></td>
+</tr>
+<tr>
+<td><code>Dto</code></td>
+<td>The object carries data across a boundary and has no behaviour.</td>
+<td><code>OrderDto</code>, <code>CustomerDto</code></td>
+<td><code>OrderData</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Acronyms in class names</p>
+<p>PEP 8 asks for all letters of an acronym in capitals in CapWords, as in <code>HTTPServerError</code>, so <code>OrderDTO</code> and <code>TaxAPIClient</code> follow PEP 8. The examples on this page use <code>Dto</code>, <code>Api</code> and <code>Id</code> on purpose, for readability. Choose one form and keep it in the whole code base. See <a href="../../common/abbreviations/">Abbreviations</a>.</p>
+</div>
+<h2 id="manager-and-service">Manager and Service<a class="headerlink" href="#manager-and-service" title="Permanent link">&para;</a></h2>
+<p><code>Manager</code> and <code>Service</code> are the most overused suffixes. Use them with care.</p>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Fine when</th>
+<th>Better when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Service</code></td>
+<td>The class holds domain logic that fits no entity, and the name states the domain.</td>
+<td>The class is mostly a wrapper around one entity or one store.</td>
+<td><code>PricingService</code> is fine. Use <code>OrderRepository</code> for storage.</td>
+</tr>
+<tr>
+<td><code>Manager</code></td>
+<td>Rarely. A framework may require it.</td>
+<td>The class has a real job.</td>
+<td><code>OrderManager</code> (schedules orders) → <code>OrderScheduler</code>. (Stores orders) → <code>OrderRepository</code>. (Runs the checkout steps) → <code>CheckoutCoordinator</code>.</td>
+</tr>
+<tr>
+<td><code>Helper</code>, <code>Util</code>, <code>Utils</code></td>
+<td>Never.</td>
+<td>Split the class by job, or use module functions.</td>
+<td><code>OrderUtil</code> → module <code>order_rules</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="structural-types">Structural types<a class="headerlink" href="#structural-types" title="Permanent link">&para;</a></h2>
+<p>The base class or the decorator also shapes the name.</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Naming rule</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Protocol</code></td>
+<td>Name the capability. Use an adjective, an <code>-able</code> word or a <code>Supports</code> prefix.</td>
+<td><code>Refundable</code>, <code>SupportsRefund</code>, <code>Cancellable</code></td>
+</tr>
+<tr>
+<td><code>ABC</code></td>
+<td>Use a plain noun for the contract. Avoid <code>Abstract</code> as a prefix unless the code base already uses it.</td>
+<td><code>PaymentMethod</code>, <code>ShippingCarrier</code></td>
+</tr>
+<tr>
+<td><code>Mixin</code></td>
+<td>End the name with <code>Mixin</code>. Name the added ability.</td>
+<td><code>TimestampMixin</code>, <code>SoftDeleteMixin</code>, <code>AuditMixin</code></td>
+</tr>
+<tr>
+<td><code>@dataclass</code></td>
+<td>Use a singular noun for the record. Add <code>frozen=True</code> for a value object.</td>
+<td><code>OrderLine</code>, <code>Address</code>, <code>Money</code></td>
+</tr>
+<tr>
+<td><code>TypedDict</code></td>
+<td>Name the shape of the payload.</td>
+<td><code>OrderPayload</code>, <code>CouponPayload</code></td>
+</tr>
+<tr>
+<td><code>NamedTuple</code></td>
+<td>Use a short noun for a small fixed record.</td>
+<td><code>PriceRange</code>, <code>GeoPoint</code></td>
+</tr>
+<tr>
+<td><code>Generic</code></td>
+<td>Use a short CapWords name for a type variable, such as <code>T</code> or <code>KeyT</code>. Add <code>_co</code> or <code>_contra</code> for variance. Name the class for its job.</td>
+<td><code>T</code>, <code>OrderT</code>, <code>Repository[OrderT]</code></td>
+</tr>
+<tr>
+<td><code>Enum</code></td>
+<td>Use a singular noun. Members are upper case. See <a href="../enums/">Enums</a>.</td>
+<td><code>OrderStatus</code>, <code>ShippingMethod</code></td>
+</tr>
+<tr>
+<td><code>Exception</code></td>
+<td>End the name with <code>Error</code> (<code>Warning</code> for warnings). See <a href="../exceptions/">Exceptions</a>.</td>
+<td><code>PaymentDeclinedError</code>, <code>OutOfStockError</code></td>
+</tr>
+<tr>
+<td><code>NewType</code></td>
+<td>Name the meaning of the id or the value. The string must match the name: <code>OrderId = NewType("OrderId", int)</code>.</td>
+<td><code>OrderId</code>, <code>CustomerId</code>, <code>CurrencyCode</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">See also</p>
+<ul>
+<li><a href="../functions/">Functions</a> and <a href="../class_methods/">Class methods</a> for the methods of these classes</li>
+<li><a href="../variables/">Variables</a> for the instances</li>
+<li><a href="../../patterns/cookbook/">Bad → better cookbook</a> for more rewrites</li>
+<li><a href="../../common/references-and-glossary/">Glossary</a> for verbs and nouns</li>
+</ul>
+</div>
+<h2 id="naming-examples-by-the-context-or-use-case">Naming examples by the context or use-case<a class="headerlink" href="#naming-examples-by-the-context-or-use-case" title="Permanent link">&para;</a></h2>
+<h3 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validator</td>
+<td>InputChecker</td>
+<td>DataVerifier</td>
+<td>FormValidator</td>
+</tr>
+<tr>
+<td>ParamValidator</td>
+<td>RequestValidator</td>
+<td>ModelValidator</td>
+<td>SchemaValidator</td>
+</tr>
+<tr>
+<td>InputValidator</td>
+<td>VerificationEngine</td>
+<td>Verifier</td>
+<td>RuleValidator</td>
+</tr>
+<tr>
+<td>IntegrityValidator</td>
+<td>TypeChecker</td>
+<td>ValueValidator</td>
+<td>ValidationEngine</td>
+</tr>
+<tr>
+<td>AssertionValidator</td>
+<td>ConstraintValidator</td>
+<td>DataIntegrityChecker</td>
+<td>FormatValidator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="services-managers">Services / Managers<a class="headerlink" href="#services-managers" title="Permanent link">&para;</a></h3>
+<p>These names are common. Prefer the job-based names from the suffix glossary above where the class has a clear job.</p>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OrderService</td>
+<td>UserManager</td>
+<td>PaymentProcessor</td>
+<td>NotificationService</td>
+</tr>
+<tr>
+<td>InventoryManager</td>
+<td>CacheService</td>
+<td>SyncOrchestrator</td>
+<td>WorkflowManager</td>
+</tr>
+<tr>
+<td>ReportingService</td>
+<td>QueueManager</td>
+<td>SessionManager</td>
+<td>FileProcessor</td>
+</tr>
+<tr>
+<td>HealthMonitor</td>
+<td>AuditService</td>
+<td>ImportManager</td>
+<td>ExportService</td>
+</tr>
+<tr>
+<td>EmailDispatcher</td>
+<td>TaskScheduler</td>
+<td>SubscriptionManager</td>
+<td>BillingService</td>
+</tr>
+</tbody>
+</table>
+<h3 id="factories-builders">Factories / Builders<a class="headerlink" href="#factories-builders" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UserFactory</td>
+<td>OrderFactory</td>
+<td>PaymentGatewayFactory</td>
+<td>ReportBuilder</td>
+</tr>
+<tr>
+<td>QueryBuilder</td>
+<td>ResponseBuilder</td>
+<td>ConfigurationFactory</td>
+<td>NotificationBuilder</td>
+</tr>
+<tr>
+<td>ConnectionFactory</td>
+<td>ModelFactory</td>
+<td>SerializerFactory</td>
+<td>ParserFactory</td>
+</tr>
+<tr>
+<td>CacheBuilder</td>
+<td>IndexBuilder</td>
+<td>WorkflowBuilder</td>
+<td>SchemaFactory</td>
+</tr>
+<tr>
+<td>WidgetFactory</td>
+<td>FormBuilder</td>
+<td>TestDataFactory</td>
+<td>ViewFactory</td>
+</tr>
+</tbody>
+</table>
+<h3 id="repositories-data-access">Repositories / Data access<a class="headerlink" href="#repositories-data-access" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UserRepository</td>
+<td>OrderRepository</td>
+<td>ProductRepository</td>
+<td>CustomerRepository</td>
+</tr>
+<tr>
+<td>SessionStore</td>
+<td>CacheRepository</td>
+<td>AuditLogStore</td>
+<td>EventStore</td>
+</tr>
+<tr>
+<td>DocumentRepository</td>
+<td>FileRepository</td>
+<td>ConfigRepository</td>
+<td>MetricRepository</td>
+</tr>
+<tr>
+<td>UserPreferencesStore</td>
+<td>NotificationStore</td>
+<td>TokenRepository</td>
+<td>PaymentMethodRepository</td>
+</tr>
+</tbody>
+</table>
+<h3 id="strategies-policies">Strategies / Policies<a class="headerlink" href="#strategies-policies" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DiscountStrategy</td>
+<td>ShippingStrategy</td>
+<td>PaymentStrategy</td>
+<td>PricingStrategy</td>
+</tr>
+<tr>
+<td>AuthenticationStrategy</td>
+<td>TaxCalculationStrategy</td>
+<td>NotificationStrategy</td>
+<td>RetryStrategy</td>
+</tr>
+<tr>
+<td>EncryptionPolicy</td>
+<td>CacheEvictionPolicy</td>
+<td>ValidationPolicy</td>
+<td>RateLimitPolicy</td>
+</tr>
+<tr>
+<td>NamingConventionStrategy</td>
+<td>SerializationStrategy</td>
+<td>CompressionStrategy</td>
+<td>RoutingStrategy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="controllers-handlers">Controllers / Handlers<a class="headerlink" href="#controllers-handlers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UserController</td>
+<td>OrderController</td>
+<td>PaymentController</td>
+<td>AdminController</td>
+</tr>
+<tr>
+<td>EventHandler</td>
+<td>ExceptionHandler</td>
+<td>RequestHandler</td>
+<td>CommandHandler</td>
+</tr>
+<tr>
+<td>WebhookController</td>
+<td>CallbackHandler</td>
+<td>StreamHandler</td>
+<td>MessageHandler</td>
+</tr>
+<tr>
+<td>HealthCheckController</td>
+<td>FileUploadController</td>
+<td>ApiGatewayController</td>
+<td>RedirectHandler</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dtos-data-classes">DTOs / Data classes<a class="headerlink" href="#dtos-data-classes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UserDto</td>
+<td>OrderRequest</td>
+<td>PaymentResponse</td>
+<td>CustomerProfile</td>
+</tr>
+<tr>
+<td>LoginCredentials</td>
+<td>RegistrationForm</td>
+<td>ProductFilter</td>
+<td>SearchResult</td>
+</tr>
+<tr>
+<td>PaginationParams</td>
+<td>SortCriteria</td>
+<td>ApiResponse</td>
+<td>ErrorPayload</td>
+</tr>
+<tr>
+<td>ShippingAddressDto</td>
+<td>InvoiceLineItem</td>
+<td>SubscriptionPlan</td>
+<td>UserPreferences</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adapters-gateways-clients">Adapters / Gateways / Clients<a class="headerlink" href="#adapters-gateways-clients" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PaymentGatewayAdapter</td>
+<td>StripeClient</td>
+<td>EmailServiceAdapter</td>
+<td>SmsGateway</td>
+</tr>
+<tr>
+<td>DatabaseAdapter</td>
+<td>FileSystemAdapter</td>
+<td>CacheClient</td>
+<td>HttpClient</td>
+</tr>
+<tr>
+<td>LdapClient</td>
+<td>OAuthProvider</td>
+<td>MessageQueueAdapter</td>
+<td>CloudStorageAdapter</td>
+</tr>
+<tr>
+<td>SearchClient</td>
+<td>MetricsCollector</td>
+<td>ThirdPartyApiClient</td>
+<td>FtpGateway</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mappers-converters-presenters">Mappers / Converters / Presenters<a class="headerlink" href="#mappers-converters-presenters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+<th>──</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UserMapper</td>
+<td>OrderConverter</td>
+<td>EntityMapper</td>
+<td>DataPresenter</td>
+</tr>
+<tr>
+<td>ModelSerializer</td>
+<td>ResponseFormatter</td>
+<td>TypeConverter</td>
+<td>DateFormatter</td>
+</tr>
+<tr>
+<td>DocumentMapper</td>
+<td>ObjectMapper</td>
+<td>HtmlPresenter</td>
+<td>JsonTransformer</td>
+</tr>
+<tr>
+<td>CsvSerializer</td>
+<td>XmlExporter</td>
+<td>ValueConverter</td>
+<td>StatusPresenter</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 &ndash;2026 Yevhen D.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
