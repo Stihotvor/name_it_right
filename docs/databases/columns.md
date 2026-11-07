@@ -1,3 +1,5 @@
+# Columns
+
 !!! success "General patterns"
 
     - Use `snake_case`: `first_name`, `created_at`, `order_total`

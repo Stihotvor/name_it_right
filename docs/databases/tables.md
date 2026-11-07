@@ -1,3 +1,5 @@
+# Tables
+
 !!! success "General patterns"
 
     - Use `snake_case` and plural nouns: `users`, `orders`, `order_items`, `shipping_addresses`

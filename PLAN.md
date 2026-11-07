@@ -10,9 +10,9 @@ Add a large, sourced catalogue of naming examples to the site. The site has stro
 
 Out of scope: theme or build changes, generated content, analytics, licence changes, translation.
 
-## Status on 2026-11-06
-- Repo `Stihotvor/name_it_right`, default branch `main`. No open issues, no open PRs.
-- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)), B01 (2026-11-06, [PR #8](https://github.com/Stihotvor/name_it_right/pull/8)), B02 (2026-11-06, [PR #9](https://github.com/Stihotvor/name_it_right/pull/9)), B03 (2026-11-06, [PR #10](https://github.com/Stihotvor/name_it_right/pull/10)), C01 (2026-11-06, [PR #11](https://github.com/Stihotvor/name_it_right/pull/11)), C02 (2026-11-06, [PR #12](https://github.com/Stihotvor/name_it_right/pull/12)), C03 (2026-11-06, [PR #13](https://github.com/Stihotvor/name_it_right/pull/13)), C04 (2026-11-06, [PR #14](https://github.com/Stihotvor/name_it_right/pull/14)), C05a (2026-11-06, [PR #15](https://github.com/Stihotvor/name_it_right/pull/15)), C05b (2026-11-06, [PR #16](https://github.com/Stihotvor/name_it_right/pull/16)), D01 (2026-11-06, [PR #17](https://github.com/Stihotvor/name_it_right/pull/17)), D02 (2026-11-06, [PR #18](https://github.com/Stihotvor/name_it_right/pull/18)), D03 (2026-11-06, [PR #19](https://github.com/Stihotvor/name_it_right/pull/19)), D04 (2026-11-07, [PR #20](https://github.com/Stihotvor/name_it_right/pull/20)), E01 (2026-11-07, [PR #21](https://github.com/Stihotvor/name_it_right/pull/21)), E02 (2026-11-07, [PR #22](https://github.com/Stihotvor/name_it_right/pull/22)), E03 (2026-11-07, [PR #23](https://github.com/Stihotvor/name_it_right/pull/23)), E04 (2026-11-07, [PR #24](https://github.com/Stihotvor/name_it_right/pull/24)), E05 (2026-11-07, [PR #25](https://github.com/Stihotvor/name_it_right/pull/25)), E06 (2026-11-07, [PR #26](https://github.com/Stihotvor/name_it_right/pull/26)), F01 (2026-11-07, [PR #27](https://github.com/Stihotvor/name_it_right/pull/27)), F02 (2026-11-07, [PR #28](https://github.com/Stihotvor/name_it_right/pull/28)), F03 (2026-11-07, [PR #29](https://github.com/Stihotvor/name_it_right/pull/29)), F04 (2026-11-07, [PR #30](https://github.com/Stihotvor/name_it_right/pull/30)), F05 (2026-11-07, [PR #31](https://github.com/Stihotvor/name_it_right/pull/31)), G01 (2026-11-07, [PR #32](https://github.com/Stihotvor/name_it_right/pull/32)), G02 (2026-11-07, [PR #33](https://github.com/Stihotvor/name_it_right/pull/33)), G03 (2026-11-07, [PR #34](https://github.com/Stihotvor/name_it_right/pull/34)), H01 (2026-11-07, [PR #35](https://github.com/Stihotvor/name_it_right/pull/35)). The other 1 step are `Pending`.
+## Status on 2026-11-07
+- Repo `Stihotvor/name_it_right`, default branch `main`. No open issues. Step PRs were merged one at a time.
+- Done: A01 (2026-11-06, [PR #5](https://github.com/Stihotvor/name_it_right/pull/5)), A02 (2026-11-06, [PR #7](https://github.com/Stihotvor/name_it_right/pull/7)), B01 (2026-11-06, [PR #8](https://github.com/Stihotvor/name_it_right/pull/8)), B02 (2026-11-06, [PR #9](https://github.com/Stihotvor/name_it_right/pull/9)), B03 (2026-11-06, [PR #10](https://github.com/Stihotvor/name_it_right/pull/10)), C01 (2026-11-06, [PR #11](https://github.com/Stihotvor/name_it_right/pull/11)), C02 (2026-11-06, [PR #12](https://github.com/Stihotvor/name_it_right/pull/12)), C03 (2026-11-06, [PR #13](https://github.com/Stihotvor/name_it_right/pull/13)), C04 (2026-11-06, [PR #14](https://github.com/Stihotvor/name_it_right/pull/14)), C05a (2026-11-06, [PR #15](https://github.com/Stihotvor/name_it_right/pull/15)), C05b (2026-11-06, [PR #16](https://github.com/Stihotvor/name_it_right/pull/16)), D01 (2026-11-06, [PR #17](https://github.com/Stihotvor/name_it_right/pull/17)), D02 (2026-11-06, [PR #18](https://github.com/Stihotvor/name_it_right/pull/18)), D03 (2026-11-06, [PR #19](https://github.com/Stihotvor/name_it_right/pull/19)), D04 (2026-11-07, [PR #20](https://github.com/Stihotvor/name_it_right/pull/20)), E01 (2026-11-07, [PR #21](https://github.com/Stihotvor/name_it_right/pull/21)), E02 (2026-11-07, [PR #22](https://github.com/Stihotvor/name_it_right/pull/22)), E03 (2026-11-07, [PR #23](https://github.com/Stihotvor/name_it_right/pull/23)), E04 (2026-11-07, [PR #24](https://github.com/Stihotvor/name_it_right/pull/24)), E05 (2026-11-07, [PR #25](https://github.com/Stihotvor/name_it_right/pull/25)), E06 (2026-11-07, [PR #26](https://github.com/Stihotvor/name_it_right/pull/26)), F01 (2026-11-07, [PR #27](https://github.com/Stihotvor/name_it_right/pull/27)), F02 (2026-11-07, [PR #28](https://github.com/Stihotvor/name_it_right/pull/28)), F03 (2026-11-07, [PR #29](https://github.com/Stihotvor/name_it_right/pull/29)), F04 (2026-11-07, [PR #30](https://github.com/Stihotvor/name_it_right/pull/30)), F05 (2026-11-07, [PR #31](https://github.com/Stihotvor/name_it_right/pull/31)), G01 (2026-11-07, [PR #32](https://github.com/Stihotvor/name_it_right/pull/32)), G02 (2026-11-07, [PR #33](https://github.com/Stihotvor/name_it_right/pull/33)), G03 (2026-11-07, [PR #34](https://github.com/Stihotvor/name_it_right/pull/34)), H01 (2026-11-07, [PR #35](https://github.com/Stihotvor/name_it_right/pull/35)), H02 (2026-11-07, [PR #36](https://github.com/Stihotvor/name_it_right/pull/36)). All 31 steps are Done.
 - A01 result: 45 sources, 172 verbs, 100 nouns, 34 suffixes, 48 states, 5 links to Python pages.
 - The uncommitted copy in `~/PycharmProjects/name_it_right` (branch `docs/01-references-and-glossary`) is now obsolete. The user decides when to remove it.
 - CI deploys on push to `main` only. No build check on pull requests.
@@ -44,7 +44,7 @@ Out of scope: theme or build changes, generated content, analytics, licence chan
 7. Ask the user to compact the chat when the user is present. Repeat.
 
 ## Backlog
-Branch numbers follow the opencode plan. Fix the numbering conflicts below before step B01.
+Branch numbers follow the opencode plan. The numbering conflicts below were fixed before step B01.
 
 | Phase | Step | Branch | Scope |
 |---|---|---|---|
@@ -54,14 +54,35 @@ Branch numbers follow the opencode plan. Fix the numbering conflicts below befor
 | | B02 (Done) | `docs/05-patterns-symmetry-negation` | Symmetry pairs, negation, optionality |
 | | B03 (Done) | `docs/06-patterns-cookbook` | 60+ bad -> better rows in 10+ categories |
 | C Python | C01-C04 (Done) | `docs/08` to `docs/11-python-*` | Variables, functions, classes, class methods |
-| | C05a (Done), C05b (Done) | `docs/12a-...`, `docs/12b-...` | Test naming patterns, advanced test topics |
+| | C05a (Done), C05b (Done) | `docs/12-python-test-naming-patterns`, `docs/12-python-test-advanced` | Test naming patterns, advanced test topics |
 | D Databases | D01 (Done), D02 (Done), D03 (Done), D04 (Done) | `docs/13` to `docs/16-db-*` | Columns, tables, indexes and constraints, warehouse |
 | E Languages | E01 (Done) | `docs/17-languages-index` | Languages overview, move Python nav, check links |
 | | E02 (Done), E03 (Done), E04 (Done), E05 (Done), E06 (Done) | `docs/18` to `docs/22` | JS/TS, Java/Kotlin, C#/.NET, Go, Rust |
 | F Systems | F01 (Done), F02 (Done), F03 (Done), F04 (Done), F05 (Done) | `docs/23` to `docs/27` | REST, GraphQL and events, errors and config, flags and observability, CLI |
 | G Domains | G01 (Done), G02 (Done), G03 (Done) | `docs/28` to `docs/30` | E-commerce, payments/fintech/healthcare, logistics/SaaS/ML |
 | H Final | H01 (Done) | `docs/31-index-crosslinks` | Home cards, landing cards, cross-links |
-| | H02 | `docs/32-editorial-qa` | Consistency pass, link check, QA script |
+| | H02 (Done) | `docs/32-editorial-qa` | Consistency pass, link check, QA script |
+
+## QA report (H02, 2026-11-07)
+Checks run on the whole site (55 pages):
+- `mkdocs build --strict` passes. It fails on a broken internal link or anchor.
+- `python3 scripts/check_docs.py` reports `ok`. It checks a top heading on each page, balanced code fences (at any indent), no trailing spaces or tabs, no duplicate `##` headings, and the minimum rows on the seven example pages. The minimums are 15 entities, 8 to 12 actions and 8 to 10 traps (see `EXAMPLE_MINIMUMS` in the script). The script does not check the identifier counts or the "Why" columns of the page rules.
+- Example pages: every page has 20 or more entities, 12 or more actions and 13 or more traps.
+- Glossary: the script checks `##` headings only. The repeated letter headings (`####`) are the verb list and the noun list. They are not duplicate entries.
+
+Fixed in H02: 7 pages had no top heading (Tables, Columns, Indexes, Constraints, Enums, Variables, Classes). 32 trailing spaces were removed from three Python pages (Functions, Classes, Variables).
+
+Left as it is, on purpose:
+- Admonition kinds. The pages use `success`, `tip` and `danger` for the three standard blocks, `warning` for the common anti-pattern pages, `info` for "See also" and `note` for side remarks. This follows the original pages.
+- Contractions in the original pages (`don't`, `it's`). The new pages avoid them. A full tone rewrite of the original pages is out of scope.
+- Spelling of `canceled` and `cancelled`. The examples use `canceled`. The healthcare page keeps the FHIR spelling `cancelled` and says so. The glossary, the Python enums and tests pages, and the gRPC code on the errors page use `cancelled`. These were left as they are.
+- External URLs were not fetched. The Stripe, Shopify, ISO 20022, FHIR, GS1 and MLflow facts come from reviewer knowledge. Check them against the live pages before you rely on them.
+
+Delivery notes:
+- The step PRs (#5, and #7 to #36) were squash merged and opened ready, not as drafts. PR #36 is the last one. The repo rules for `git-agent` say merge commits and draft PRs. The user asked for squash merges in the overnight loop.
+- The squash message of PR #18 has the trailer `Claude Haiku 5.5`. The other squash messages have `Claude Sonnet 5.5`.
+- `gh-pages` was force updated many times by the CI step `mkdocs gh-deploy --force`. This is expected.
+- CI has no build check on pull requests (open question 4).
 
 ## Problems found in the opencode plan
 - Step B01 and B02 in the backlog overlap in scope. The progress log renumbers them (B01 combined, B02 symmetry, B03 cookbook). Use the progress-log version.

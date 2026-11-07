@@ -1,11 +1,11 @@
 # Functions
 
 !!! success "General patterns"
-    
-    - Use `snake_case` in function names ONLY. Don't look at some bad examples, even if they have 1k+ stars on GitHub  
-    - Functions which validate or check something and return boolean should start with `is_`, `has_`: `has_tax_applied()`, `is_valid()`  
-    - Functions not covered by the above rule should have executable names: `compile()`, `collect()`, `process()`, `fetch()`  
-    - If the function has `and` in the name, there is a high chance it does multiple things. Split it.  
+
+    - Use `snake_case` in function names ONLY. Don't look at some bad examples, even if they have 1k+ stars on GitHub
+    - Functions which validate or check something and return boolean should start with `is_`, `has_`: `has_tax_applied()`, `is_valid()`
+    - Functions not covered by the above rule should have executable names: `compile()`, `collect()`, `process()`, `fetch()`
+    - If the function has `and` in the name, there is a high chance it does multiple things. Split it.
     - Name CRUD functions after the resource and action: `create_order()`, `list_customer_orders()`, `update_shipping_address()`, `delete_expired_carts()`
     - Name query functions by what they return: `list_pending_payments()`, `find_user_by_email()`, `search_products()`, `list_active_discounts()`
     - Name action functions by the side effect: `apply_discount_to()`, `refund_payment()`, `cancel_subscription()`, `dispatch_order()`
@@ -28,35 +28,35 @@
     def refund_line_item(transaction_id: str, amount: Decimal) -> RefundReceipt:
         ...
     ```
-    
-!!! tip "Useful tips"  
 
-    - Good function arguments can help to shorten the function name: `add_car_to_catalog(name: str)` → `add_car_to(catalog: Catalog)`  
+!!! tip "Useful tips"
+
+    - Good function arguments can help to shorten the function name: `add_car_to_catalog(name: str)` → `add_car_to(catalog: Catalog)`
     - Pick one verb per operation and never mix. If the codebase uses `fetch_` for remote reads, use `fetch_` for all remote reads — no `retrieve_`.
-    - Use the module name to shorten function names:  
+    - Use the module name to shorten function names:
     ```py
     # Before
     from food import create_french_fries
-    
+
     create_french_fries()
     ...
-    
+
     # After
     from food import france
-    
+
     france.create_fries()
     ...
-    
+
     # Or even shorter
     from food.france import create_fries
-    
+
     create_fries()
     ...
     ```
-    
+
 !!! danger "General anti-patterns"
-    
-    - Abbreviations: `compile_frst()`  
+
+    - Abbreviations: `compile_frst()`
     - One-letter functions: `v()`
 
 ## Verb families

@@ -1,3 +1,5 @@
+# Constraints
+
 !!! success "General patterns"
 
     - Primary key: `pk_<table>` — `pk_customers`, `pk_order_items`
